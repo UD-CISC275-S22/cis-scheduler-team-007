@@ -12,6 +12,8 @@ function App(): JSX.Element {
                 automatically reload.
             </p>
             <h2>Joshua Strassle : jstrassl@udel.edu</h2>
+            <p>Final Project done by: Eric Toreki</p>
+
         </div>
     );
 }
