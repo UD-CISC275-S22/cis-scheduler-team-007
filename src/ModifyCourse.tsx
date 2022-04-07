@@ -13,7 +13,7 @@ const compSciCourses = Courses.map(
 );
 
 export function ModifyCourse(): JSX.Element {
-    const [course, setCourse] = useState<Course[]>();
+    const [course, setCourse] = useState<Course[]>(compSciCourses);
 
     function deleteCourse(id: string) {
         setCourse(
