@@ -25,10 +25,13 @@
             "name": "Introduction to Systems Programming",
             "credits": 3,
             "courseId": 210,
-            "preReq":[]
+            "prereq":[]
         },
         {
             "id": "CISC-220",
-            "name": "Data Structures"
+            "name": "Data Structures",
+            "credits": 3,
+            "courseId": 220,
+            "prereq":[]
         }
     ]
