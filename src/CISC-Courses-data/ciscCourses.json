@@ -1,0 +1,23 @@
+    [
+        {
+            "id": "CISC-106",
+            "name": "General Computer Science for engineers ",
+            "credits": 3,
+            "courseId": 106,
+            "preReq":[]
+        },
+        {
+            "id": "CISC-108",
+            "name": "Introduction to Computer Science I ",
+            "credits": 3,
+            "courseId": 108,
+            "preReq":[]
+        },
+        {
+            "id":"CISC",
+            "name":"Introduction to Computer Science II ",
+            "credits": 3,
+            "courseId": 181,
+            "preReq":[]
+        }
+    ]
