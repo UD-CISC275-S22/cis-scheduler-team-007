@@ -14,10 +14,21 @@
             "preReq":[]
         },
         {
-            "id":"CISC",
+            "id":"CISC-181",
             "name":"Introduction to Computer Science II ",
             "credits": 3,
             "courseId": 181,
             "preReq":[]
+        },
+        {
+            "id": "CISC-210",
+            "name": "Introduction to Systems Programming",
+            "credits": 3,
+            "courseId": 210,
+            "preReq":[]
+        },
+        {
+            "id": "CISC-220",
+            "name": "Data Structures"
         }
     ]
