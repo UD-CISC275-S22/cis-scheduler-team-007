@@ -27,5 +27,9 @@ export function ModifyCourse(): JSX.Element {
             )
         );
     }
-    return <div></div>;
+    return (
+        <div>
+            deleteCourse = {deleteCourse} editCourse={editCourse}
+        </div>
+    );
 }
