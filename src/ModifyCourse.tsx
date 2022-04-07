@@ -16,9 +16,7 @@ export function ModifyCourse(): JSX.Element {
     const [course, setCourse] = useState<Course[]>(compSciCourses);
 
     function deleteCourse(id: string) {
-        setCourse(
-            compSciCourses.filter((course: Course): boolean => course.id !== id)
-        );
+        setCourse(course.filter((course: Course): boolean => course.id !== id));
     }
     return <div></div>;
 }
