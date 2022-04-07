@@ -8,7 +8,7 @@ const compSciCourses = Courses.map(
         id: course.id,
         name: course.name,
         courseId: course.courseId,
-        prereq: course.preReq
+        prereq: course.preReq as Course[]
     })
 );
 
@@ -17,6 +17,15 @@ export function ModifyCourse(): JSX.Element {
 
     function deleteCourse(id: string) {
         setCourse(course.filter((course: Course): boolean => course.id !== id));
+    }
+
+    function editCourse(id: string, aNewCourse: Course) {
+        setCourse(
+            course.map(
+                (newCourse: Course): Course =>
+                    newCourse.id === id ? aNewCourse : newCourse
+            )
+        );
     }
     return <div></div>;
 }
