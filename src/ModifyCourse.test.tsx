@@ -6,9 +6,4 @@ describe("Modify Course.test", () => {
     beforeEach(() => {
         render(<ModifyCourse />);
     });
-    
-    test("CISC-108 is shown", () => {
-        const CISC108 = screen.getByText(/ModifyCourse: (.*)/i);
-        expect(CISC108).toBeInTheDocument();
-    });
 });
