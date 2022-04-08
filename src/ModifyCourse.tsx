@@ -8,7 +8,7 @@ const compSciCourses = Courses.map(
         id: course.id,
         name: course.name,
         courseId: course.courseId,
-        prereq: course.prereq as unknown as string
+        prereq: course.prereq
     })
 );
 
