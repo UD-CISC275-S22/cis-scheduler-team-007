@@ -4,34 +4,34 @@
             "name": "General Computer Science for engineers ",
             "credits": 3,
             "courseId": 106,
-            "preReq":[]
+            "preReq":"None"
         },
         {
             "id": "CISC-108",
             "name": "Introduction to Computer Science I ",
             "credits": 3,
             "courseId": 108,
-            "preReq":[]
+            "preReq":"None"
         },
         {
             "id":"CISC-181",
             "name":"Introduction to Computer Science II ",
             "credits": 3,
             "courseId": 181,
-            "preReq":[]
+            "preReq":"CISC-108 or CISC 106"
         },
         {
             "id": "CISC-210",
             "name": "Introduction to Systems Programming",
             "credits": 3,
             "courseId": 210,
-            "prereq":[]
+            "prereq":"CISC-106 or CISC-108"
         },
         {
             "id": "CISC-220",
             "name": "Data Structures",
             "credits": 3,
             "courseId": 220,
-            "prereq":[]
+            "prereq":"CISC 210"
         }
     ]
