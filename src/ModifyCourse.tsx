@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Course } from "./Planner-Interfaces/course";
 import Courses from "./CISC-Courses-data/ciscCourses.json";
+import { Button } from "react-bootstrap";
 
 const compSciCourses = Courses.map(
     (course): Course => ({
@@ -15,7 +16,7 @@ const compSciCourses = Courses.map(
 export function ModifyCourse(): JSX.Element {
     const [course, setCourse] = useState<Course[]>(compSciCourses);
 
-    function deleteCourse(id: string) {
+    function deleteCourse(id: string): void {
         setCourse(course.filter((course: Course): boolean => course.id !== id));
     }
 
@@ -29,7 +30,8 @@ export function ModifyCourse(): JSX.Element {
     }
     return (
         <div>
-            deleteCourse = {deleteCourse} editCourse={editCourse}
+            <Button onClick={() => deleteCourse}>Delete Course</Button>
+            <Button onClick={() => editCourse}>Edit Course</Button>
         </div>
     );
 }
