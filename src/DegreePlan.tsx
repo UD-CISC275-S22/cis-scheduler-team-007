@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Button } from "react-bootstrap";
+import { makeId } from "./createId";
 import { Plan } from "./Planner-Interfaces/plan";
 import { Semester } from "./Planner-Interfaces/semester";
 
@@ -19,7 +20,7 @@ export function DegreePlan({
             newSemesters.findIndex((semester: Semester) => semester.id === id) +
             1;
         newSemesters.splice(insertIndex, 0, {
-            id: "I dont know",
+            id: makeId(),
             name: "",
             year: plan.semester[insertIndex - 1].year,
             courses: [],
@@ -50,7 +51,7 @@ export function DegreePlan({
             semester: [
                 ...plan.semester,
                 {
-                    id: "I dont know",
+                    id: makeId(),
                     name: "",
                     year: 2022,
                     courses: [],
