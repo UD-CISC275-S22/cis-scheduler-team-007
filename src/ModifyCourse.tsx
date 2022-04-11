@@ -28,8 +28,19 @@ export function ModifyCourse(): JSX.Element {
             )
         );
     }
+
+    function addCourse(aNewCourse: Course) {
+        const currentCourse = course.find(
+            (course: Course): boolean => course.id === aNewCourse.id
+        );
+        if (currentCourse === undefined) {
+            setCourse([...course, aNewCourse]);
+        }
+    }
+
     return (
         <div>
+            <Button onClick={() => addCourse}>Add Course</Button>
             <Button onClick={() => deleteCourse}>Delete Course</Button>
             <Button onClick={() => editCourse}>Edit Course</Button>
         </div>
