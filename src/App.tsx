@@ -3,7 +3,7 @@ import "./App.css";
 import { Plan } from "./Planner-Interfaces/plan";
 
 function App(): JSX.Element {
-    const [degreePlans, setDegreePlans] = useState<Plan[]>([
+    const [degreePlans] = useState<Plan[]>([
         { id: "1", name: "Test1", semester: [], requiredCourses: [] },
         { id: "2", name: "Test2", semester: [], requiredCourses: [] }
     ]);
