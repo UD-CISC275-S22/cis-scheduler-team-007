@@ -44,6 +44,22 @@ export function DegreePlan({
         newDegreePlans.splice(replaceIndex, 1, plan);
         setDegreePlans(newDegreePlans);
     }
+    function addSemester() {
+        setPlan({
+            ...plan,
+            semester: [
+                ...plan.semester,
+                {
+                    id: "I dont know",
+                    name: "",
+                    year: 2022,
+                    courses: [],
+                    season: "",
+                    credits: 0
+                }
+            ]
+        });
+    }
     return (
         <div>
             <h4>{plan.name}</h4>
@@ -58,6 +74,7 @@ export function DegreePlan({
                     </Button>
                 </div>
             ))}
+            <Button onClick={() => addSemester()}>Add Semester</Button>
             <Button onClick={() => saveChanges()}>Save Plan Changes</Button>
         </div>
     );
