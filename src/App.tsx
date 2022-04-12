@@ -1,18 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
+import { DegreePlan } from "./DegreePlan";
+import { Plan } from "./Planner-Interfaces/plan";
 import { ModifyCourse } from "./ModifyCourse";
 
 function App(): JSX.Element {
+    const [degreePlans, setDegreePlans] = useState<Plan[]>([
+        { id: "1", name: "Test1", semester: [], requiredCourses: [] },
+        { id: "2", name: "Test2", semester: [], requiredCourses: [] }
+    ]);
     return (
         <div className="App">
-            <header className="App-header">
-                UD CISC275 with React Hooks and TypeScript
-            </header>
-            <p>My name is Maxwell Wang</p>
-            <h2>Joshua Strassle : jstrassl@udel.edu</h2>
-            <p>Final Project done by: Eric Toreki</p>
-            main
-            <ModifyCourse></ModifyCourse>
+            <header className="App-header">UD CISC Degree Planner</header>
+            <p>By: Eric Toreki, Maxwell Wang, Joshua Strassle</p>
+            {degreePlans.map((plan: Plan) => (
+                <DegreePlan
+                    key={plan.id}
+                    degreePlans={degreePlans}
+                    setDegreePlans={setDegreePlans}
+                    currentPlan={plan}
+                ></DegreePlan>
+            ))}
         </div>
     );
 }
