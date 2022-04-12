@@ -21,7 +21,7 @@ export function DegreePlan({
             1;
         newSemesters.splice(insertIndex, 0, {
             id: makeId(),
-            name: "New Semester",
+            name: "Inserted Semester",
             year: plan.semester[insertIndex - 1].year,
             courses: [],
             season: "",

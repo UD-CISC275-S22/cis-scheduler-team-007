@@ -59,4 +59,22 @@ describe("DegreePlan Component Tests", () => {
             screen.getByRole("button", { name: /Delete This Semester/i })
         ).toBeInTheDocument();
     });
+    test("Insert button works", () => {
+        const addButton = screen.getByRole("button", { name: /Add Semester/i });
+        addButton.click();
+        const insertButton = screen.getByRole("button", {
+            name: /Insert New Semester/i
+        });
+        insertButton.click();
+        expect(screen.getByText("Inserted Semester")).toBeInTheDocument();
+    });
+    test("Delete button works", () => {
+        const addButton = screen.getByRole("button", { name: /Add Semester/i });
+        addButton.click();
+        const delButton = screen.getByRole("button", {
+            name: /Delete This Semester/i
+        });
+        delButton.click();
+        expect(screen.queryByText("New Semester")).not.toBeInTheDocument();
+    });
 });
