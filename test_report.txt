@@ -2,17 +2,27 @@
 > react-typescript-starter@0.1.0 test
 > react-scripts test "--coverage"
 
+PASS src/DegreePlan.test.tsx
+PASS src/ModifyCourse.test.tsx
 PASS src/App.test.tsx
-  ✓ renders the course name somewhere (39 ms)
+------------------------|---------|----------|---------|---------|-------------------
+File                    | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+------------------------|---------|----------|---------|---------|-------------------
+All files               |   61.22 |        0 |   51.72 |   60.86 |                   
+ src                    |   61.22 |        0 |   51.72 |   60.86 |                   
+  App.tsx               |     100 |      100 |     100 |     100 |                   
+  DegreePlan.tsx        |   72.72 |      100 |   76.92 |   71.42 | 41-46,79          
+  ModifyCourse.tsx      |   26.66 |        0 |   18.18 |   28.57 | 20-37,43-45       
+  createId.ts           |     100 |      100 |     100 |     100 |                   
+  semester-table.tsx    |       0 |      100 |       0 |       0 | 41-53             
+ src/Planner-Interfaces |       0 |        0 |       0 |       0 |                   
+  course.ts             |       0 |        0 |       0 |       0 |                   
+  plan.ts               |       0 |        0 |       0 |       0 |                   
+  semester.ts           |       0 |        0 |       0 |       0 |                   
+------------------------|---------|----------|---------|---------|-------------------
 
-----------|---------|----------|---------|---------|-------------------
-File      | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
-----------|---------|----------|---------|---------|-------------------
-All files |     100 |      100 |     100 |     100 |                   
- App.tsx  |     100 |      100 |     100 |     100 |                   
-----------|---------|----------|---------|---------|-------------------
-Test Suites: 1 passed, 1 total
-Tests:       1 passed, 1 total
+Test Suites: 3 passed, 3 total
+Tests:       8 passed, 8 total
 Snapshots:   0 total
-Time:        1.664 s
+Time:        3.965 s
 Ran all test suites.
