@@ -21,7 +21,7 @@ export function DegreePlan({
             1;
         newSemesters.splice(insertIndex, 0, {
             id: makeId(),
-            name: "",
+            name: "New Semester",
             year: plan.semester[insertIndex - 1].year,
             courses: [],
             season: "",
@@ -52,7 +52,7 @@ export function DegreePlan({
                 ...plan.semester,
                 {
                     id: makeId(),
-                    name: "",
+                    name: "New Semester",
                     year: 2022,
                     courses: [],
                     season: "",
@@ -66,7 +66,7 @@ export function DegreePlan({
             <h4>{plan.name}</h4>
             {plan.semester.map((semester: Semester) => (
                 <div key={semester.id}>
-                    <p>Semester Component goes here</p>
+                    <p>{semester.name}</p>
                     <Button onClick={() => insertSemester(semester.id)}>
                         Insert New Semester
                     </Button>
