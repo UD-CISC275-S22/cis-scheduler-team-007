@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./App.css";
 import { DegreePlan } from "./DegreePlan";
 import { Plan } from "./Planner-Interfaces/plan";
+import { ModifyCourse } from "./ModifyCourse";
 
 function App(): JSX.Element {
     const [degreePlans, setDegreePlans] = useState<Plan[]>([

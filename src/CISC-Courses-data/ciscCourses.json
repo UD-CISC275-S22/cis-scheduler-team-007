@@ -4,20 +4,76 @@
             "name": "General Computer Science for engineers ",
             "credits": 3,
             "courseId": 106,
-            "preReq":[]
+            "preReq":"None"
         },
         {
             "id": "CISC-108",
             "name": "Introduction to Computer Science I ",
             "credits": 3,
             "courseId": 108,
-            "preReq":[]
+            "preReq":"None"
         },
         {
-            "id":"CISC",
+            "id":"CISC-181",
             "name":"Introduction to Computer Science II ",
             "credits": 3,
             "courseId": 181,
-            "preReq":[]
+            "preReq":"CISC-108 or CISC 106"
+        },
+        {
+            "id": "CISC-210",
+            "name": "Introduction to Systems Programming",
+            "credits": 3,
+            "courseId": 210,
+            "prereq":"CISC-106 or CISC-108"
+        },
+        {
+            "id": "CISC-220",
+            "name": "Data Structures",
+            "credits": 3,
+            "courseId": 220,
+            "prereq":"CISC 210"
+        },
+        {
+            "id": "CISC-260",
+            "name": "Machine Organization and Assembly Language",
+            "credits": 3,
+            "courseId": 260,
+            "prereq":"CISC 210"
+        },
+        {
+            "id": "CISC-275",
+            "name": "Introduction to Software Engineering",
+            "credits": 3,
+            "courseId": 275,
+            "prereq":"CISC 181 and CISC 220"
+        },
+        {
+            "id": "CISC-303",
+            "name": "Automata Theory",
+            "credits": 3,
+            "courseId": 303,
+            "prereq":"CISC 220 and MATH 210"
+        },
+        {
+            "id": "CISC-320",
+            "name": "Introduction to Algorithims",
+            "credits": 3,
+            "courseId": 320,
+            "prereq":"CISC 220 and MATH 210"
+        },
+        {
+            "id": "CISC-361",
+            "name": "Operating Systens",
+            "credits": 3,
+            "courseId": 361,
+            "prereq":"CISC 220 and CISC 260"
+        },
+        {
+            "id": "CISC-372",
+            "name": "Parallel Computing",
+            "credits": 3,
+            "courseId": 372,
+            "prereq":"CISC 220 and CISC 260"
         }
     ]
