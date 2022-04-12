@@ -40,6 +40,18 @@ export function ModifyCourse(): JSX.Element {
 
     return (
         <div>
+            <h1>
+                Greetings CISC majors and minors, welcome to the UD CISC
+                planner!
+            </h1>
+            <h2>
+                You will see the selection of courses that you will choose down
+                below
+            </h2>
+            <h2>
+                You can either add, delete or modify a course with the help of
+                each buttons
+            </h2>
             <Button onClick={() => addCourse}>Add Course</Button>
             <Button onClick={() => deleteCourse}>Delete Course</Button>
             <Button onClick={() => editCourse}>Edit Course</Button>
