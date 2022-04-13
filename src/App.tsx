@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import { ModifyCourse } from "./ModifyCourse";
+import { DisplayCourse } from "./Course";
 
 function App(): JSX.Element {
     return (
@@ -12,7 +12,15 @@ function App(): JSX.Element {
             <h2>Joshua Strassle : jstrassl@udel.edu</h2>
             <p>Final Project done by: Eric Toreki</p>
             main
-            <ModifyCourse></ModifyCourse>
+            <DisplayCourse
+                existingCourse={{
+                    id: "",
+                    name: "",
+                    credits: 0,
+                    courseId: 0,
+                    prereq: ""
+                }}
+            ></DisplayCourse>
         </div>
     );
 }
