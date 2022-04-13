@@ -3,18 +3,19 @@ import React from "react";
 import { Semester } from "./Planner-Interfaces/semester";
 import { Course } from "./Planner-Interfaces/course";
 //import { Semester } from "./Planner-Interfaces/semester";
-
+/*
 interface thisCourse {
     course: Course;
     remove_course: (num: number, str: string) => void;
 }
+*/
 interface thisSemester {
     courses: Course[];
     semesterId: number;
     semList: Semester[];
     update: (semester: Semester[]) => void;
 }
-
+/*
 function display_course({ course, remove_course }: thisCourse) {
     return (
         <tr>
@@ -35,12 +36,8 @@ function display_course({ course, remove_course }: thisCourse) {
         </tr>
     );
 }
-export function displaySemester({
-    courses,
-    semesterId,
-    semList,
-    update
-}: thisSemester) {
+*/
+export function displaySemester({ courses }: thisSemester) {
     return (
         <div>
             <table>
@@ -52,7 +49,7 @@ export function displaySemester({
                     </tr>
                 </thead>
                 <tbody>
-                    {courses.map((course: Course, listNum: number) => {
+                    {courses.map((course: Course) => {
                         return course;
                     })}
                 </tbody>
