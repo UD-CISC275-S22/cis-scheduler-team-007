@@ -13,7 +13,7 @@ const compSciCourses = Courses.map(
     })
 );
 
-export function Course({
+export function DisplayCourse({
     existingCourse
 }: {
     existingCourse: Course;
@@ -53,8 +53,8 @@ export function Course({
                 <Col>{existingCourse.credits}</Col>
             </Row>
             <Button onClick={() => addCourse}>Add Course</Button>
-            <Button onClick={() => editCourse}>Add Course</Button>
-            <Button onClick={() => deleteCourse}>Add Course</Button>
+            <Button onClick={() => editCourse}>Edit Course</Button>
+            <Button onClick={() => deleteCourse}>Remove Course</Button>
         </div>
     );
 }

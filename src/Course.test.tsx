@@ -1,11 +1,11 @@
-import { Course } from "./Course";
+import { DisplayCourse } from "./Course";
 import { render, screen } from "@testing-library/react";
 import React from "react";
 
 describe("Modify Course.test", () => {
     beforeEach(() => {
         render(
-            <Course
+            <DisplayCourse
                 existingCourse={{
                     id: "",
                     name: "",
