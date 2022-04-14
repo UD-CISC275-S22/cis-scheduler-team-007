@@ -7,7 +7,6 @@ import { makeId } from "./createId";
 import { Form } from "react-bootstrap";
 import { DisplayCourse } from "./Course";
 import classesExamples from "./CISC-Courses-data/catalog.json";
-import { PreReqs } from "./PreReqs";
 interface thisSemester {
     semester: Semester;
     plan: Plan;
@@ -82,9 +81,9 @@ export function DisplaySemester({
     //Modal for adding a course
     function chooseCourse(): JSX.Element {
         return (
-            <div className=".btn">
+            <div className=".app">
                 <Button
-                    className=".btn"
+                    className="btnadd"
                     data-bs-toggle="modal"
                     data-bs-target="#myModal"
                     type="button"
@@ -110,7 +109,8 @@ export function DisplaySemester({
                             placeholder="Enter Course ID"
                             htmlFor="courseID"
                         >
-                            CourseID:{" "}
+                            Please Enter The Course ID, Then Click on The Course
+                            From the Dropdown:
                         </Form.Label>
                         <Form.Control
                             list="courseIDs"
@@ -119,12 +119,20 @@ export function DisplaySemester({
                         />
                     </Form.Group>
                     <ModalFooter>
-                        <div className="modal-footer">
-                            <Button type="submit" onClick={addCourse}>
+                        <div>
+                            <Button
+                                className="btnadd"
+                                type="submit"
+                                onClick={addCourse}
+                            >
                                 Add Course
                             </Button>
 
-                            <Button type="button" onClick={toggleModal}>
+                            <Button
+                                className="btncancel"
+                                type="button"
+                                onClick={toggleModal}
+                            >
                                 Cancel
                             </Button>
                         </div>
@@ -140,7 +148,7 @@ export function DisplaySemester({
             name: name,
             credits: credits,
             courseId: courseIdentity,
-            preReq: preReq
+            preReq: ""
         };
         const newSem = plan.semesters.map(
             (sem: Semester): Semester =>
@@ -189,7 +197,7 @@ export function DisplaySemester({
                 {edit ? (
                     <div>
                         <Form.Group
-                            className="semesterName"
+                            className="dropdownWidth"
                             controlId="semName"
                         >
                             <Form.Label>Name of Semester: </Form.Label>
@@ -198,21 +206,25 @@ export function DisplaySemester({
                                 onChange={editSemName}
                             />
                         </Form.Group>
-                        <Button onClick={() => setEdit(false)} className="btn">
+                        <Button onClick={() => setEdit(false)}>
                             Stop Editing
                         </Button>
                     </div>
                 ) : (
                     <div>
-                        <h5>
+                        <h4>
                             {semester.name}{" "}
-                            <Button
+                            <button
+                                className="btntransparent"
                                 onClick={() => setEdit(true)}
-                                className="btn"
                             >
-                                Edit Semester Name
-                            </Button>
-                        </h5>
+                                <img
+                                    src="https://cdn-icons-png.flaticon.com/512/84/84380.png"
+                                    height="40"
+                                    width="40"
+                                />
+                            </button>
+                        </h4>
                     </div>
                 )}
                 <tr>
@@ -232,7 +244,10 @@ export function DisplaySemester({
                                 updatePlan={updatePlan}
                             ></DisplayCourse>
                             <td>
-                                <Button onClick={() => deleteCourse(course.id)}>
+                                <Button
+                                    className="btncancel"
+                                    onClick={() => deleteCourse(course.id)}
+                                >
                                     Remove Course
                                 </Button>
                             </td>
@@ -240,13 +255,12 @@ export function DisplaySemester({
                     );
                 })}
                 {chooseCourse()}
-                <Button onClick={() => removeAllCourses()}>
+                <Button
+                    className="btncancel"
+                    onClick={() => removeAllCourses()}
+                >
                     Remove All Courses
                 </Button>
-                <PreReqs
-                    allSemesters={plan.semesters}
-                    semester={semester}
-                ></PreReqs>
             </table>
         </>
     );

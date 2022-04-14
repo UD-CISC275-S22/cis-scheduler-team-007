@@ -287,7 +287,9 @@ export function DegreeRequirements_Section({
 
     return (
         <div className="App">
-            <button onClick={toggleModal}>Degree Requirements</button>
+            <button className="btn" onClick={toggleModal}>
+                Degree Requirements
+            </button>
             <Modal
                 isOpen={isOpen}
                 onRequestClose={toggleModal}
@@ -299,7 +301,7 @@ export function DegreeRequirements_Section({
                             {" "}
                             <u>University Requirements:</u>{" "}
                         </h5>
-                        <p>{totalCreditsInPlan}</p>
+                        <p>Total Credits in Plan: {totalCreditsInPlan}</p>
                         <div className="col text-left">
                             <p>
                                 ENGL 110: {display_requirement_state(engl110)}

@@ -4,6 +4,8 @@ import "./App.css";
 import { makeId } from "./createId";
 import { DegreePlan } from "./DegreePlan";
 import { Plan } from "./Planner-Interfaces/plan";
+declare module "*.png";
+import pic from "./udbanner.png";
 import DefaultPlans from "./Plans/DefaultPlans.json";
 
 //Loads default plans if no local saved data
@@ -56,15 +58,18 @@ function App(): JSX.Element {
         setDegreePlans(newDegreePlans);
         setSelectedPlan(-1);
     }
-    //Called every time App is refreshed. App refreshed when adding or deleting a semestes, when the save button
+    //Called every time App is refreshed. App refreshed when adding or deleting a semestes, when the save Button
     //In DegreePlan.tsx is pressed, or when changing plans. Will save the changes to plans in the case of the first two.
     //Will also save in case of the second one, but no changes will have been made
     saveData();
 
     return (
         <div className="App">
-            <header className="App-header">UD CISC Degree Planner</header>
-            <p>By: Eric Toreki, Maxwell Wang, Joshua Strassle</p>
+            <div className="image">
+                <img src={pic} width="100%" height="400px" alt="udbanner" />
+                <h2>UD CISC Degree Planner</h2>
+                <h5>Eric Toreki, Maxwell Wang, Joshua Strassle</h5>
+            </div>
             <div>
                 Hello CISC or INSY majors and minors
                 <br />
@@ -78,6 +83,7 @@ function App(): JSX.Element {
             <Form.Group controlId="userPlans">
                 <Form.Label>Select Degree Plan:</Form.Label>
                 <Form.Select
+                    className="dropdownWidth"
                     value={
                         selectedPlan === -1
                             ? "-No Plan Selected-"
@@ -93,7 +99,7 @@ function App(): JSX.Element {
                     ))}
                 </Form.Select>
             </Form.Group>
-            <Button onClick={addPlan} className="btn">
+            <Button onClick={addPlan} className="btnadd">
                 Add New Plan
             </Button>
             <Button onClick={deletePlan}>Delete Selected Plan</Button>
