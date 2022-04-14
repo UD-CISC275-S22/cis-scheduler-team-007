@@ -35,15 +35,6 @@ export function DisplayCourse({
         );
     }
 
-    function addCourse(aNewCourse: Course) {
-        const currentCourse = currCourse.find(
-            (course: Course): boolean => course.id === aNewCourse.id
-        );
-        if (currentCourse === undefined) {
-            setCurrCourse([...currCourse, aNewCourse]);
-        }
-    }
-
     return (
         <div>
             <h1>Greetings CISC/INSY majors and minors</h1>
@@ -52,7 +43,6 @@ export function DisplayCourse({
                 <Col>{existingCourse.name}</Col>
                 <Col>{existingCourse.credits}</Col>
             </Row>
-            <Button onClick={() => addCourse}>Add Course</Button>
             <Button onClick={() => editCourse}>Edit Course</Button>
             <Button onClick={() => deleteCourse}>Remove Course</Button>
         </div>

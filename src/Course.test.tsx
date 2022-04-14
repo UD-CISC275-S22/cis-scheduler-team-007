@@ -18,7 +18,7 @@ describe("Modify Course.test", () => {
     });
     test("There are three buttons", () => {
         const removeCourse = screen.getByRole("button", {
-            name: /Delete Course/i
+            name: /Remove Course/i
         });
         const changeCourse = screen.getByRole("button", {
             name: /Edit Course/i
