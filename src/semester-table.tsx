@@ -21,6 +21,7 @@ interface thisSemester {
     semList: Semester[];
     update: (semester: Semester[]) => void;
 }
+
 export function displaySemester({ courses }: thisSemester) {
     const [currCourse, setCurrCourse] = useState<Course[]>(compSciCourses);
     function addCourse(aNewCourse: Course) {
