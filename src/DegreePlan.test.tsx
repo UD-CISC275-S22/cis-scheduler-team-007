@@ -66,7 +66,7 @@ describe("DegreePlan Component Tests", () => {
             name: /Insert New Semester/i
         });
         insertButton.click();
-        expect(screen.getByText("Copy of")).toBeInTheDocument();
+        expect(screen.getByText("Copy of Fall")).toBeInTheDocument();
     });
     test("Delete button works", () => {
         const addButton = screen.getByRole("button", { name: /Add Semester/i });
