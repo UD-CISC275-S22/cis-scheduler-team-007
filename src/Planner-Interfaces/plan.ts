@@ -4,6 +4,6 @@ import { Course } from "./course";
 export interface Plan {
     id: string;
     name: string;
-    semsester: Semester[];
+    semester: Semester[];
     requiredCourses: Course[];
 }
