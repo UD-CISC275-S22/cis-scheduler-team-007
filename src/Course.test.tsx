@@ -31,12 +31,4 @@ describe("Modify Course.test", () => {
         //const deleted = screen.getByTestId("1");
         //expect(deleted).not.toBeInTheDocument();
     });
-
-    /*test("Clicking the button removes the course", () => {
-        const removed = screen.getByRole("button");
-        removed.click();
-        removed = screen.getByTestId("Remove Course");
-        expect(removed).toHaveLength(1);
-    });
-    */
 });
