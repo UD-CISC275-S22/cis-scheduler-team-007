@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./App.css";
 import { DegreePlan } from "./DegreePlan";
+import { Messaging } from "./Messaging";
 import { Plan } from "./Planner-Interfaces/plan";
 
 function App(): JSX.Element {
@@ -12,6 +13,7 @@ function App(): JSX.Element {
         <div className="App">
             <header className="App-header">UD CISC Degree Planner</header>
             <p>By: Eric Toreki, Maxwell Wang, Joshua Strassle</p>
+            <Messaging></Messaging>
             {degreePlans.map((plan: Plan) => (
                 <DegreePlan
                     key={plan.id}
