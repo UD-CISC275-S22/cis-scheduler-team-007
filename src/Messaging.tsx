@@ -13,9 +13,9 @@ export function Messaging(): JSX.Element {
             <Button onClick={changeHidden}>Display Message</Button>
             {visible && (
                 <div>
-                    Hello CISC/INSY majors and minors
+                    Hello CISC or INSY majors and minors
                     <br>
-                        In here you are choosing a plan for your cisc degree
+                        In here you are choosing a plan for your cisc degree.
                     </br>
                 </div>
             )}

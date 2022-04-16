@@ -7,31 +7,36 @@ describe("Modify Course.test", () => {
         render(
             <DisplayCourse
                 existingCourse={{
-                    id: "",
-                    name: "",
-                    credits: 0,
-                    courseId: 0,
+                    id: "1",
+                    name: "Comp Sci 1",
+                    credits: 3,
+                    courseId: "CISC-103",
                     prereq: ""
                 }}
             />
         );
     });
-    test("There are three buttons", () => {
+    test("There are two buttons", () => {
         const removeCourse = screen.getByRole("button", {
             name: /Remove Course/i
         });
         const changeCourse = screen.getByRole("button", {
             name: /Edit Course/i
         });
-        const addCourse = screen.getByRole("button", {
-            name: /Add Course/i
-        });
         expect(removeCourse).toBeInTheDocument;
         expect(changeCourse).toBeInTheDocument;
-        expect(addCourse).toBeInTheDocument;
     });
 
-    test("There is a message displayed on the webpage", () => {
-        expect("Greetings CISC/INSY majors and minors").toBeInTheDocument;
+    test("Clicking the button removes the course by its id", () => {
+        const deleted = screen.getByTestId("1");
+        expect(deleted).not.toBeInTheDocument();
     });
+
+    /*test("Clicking the button removes the course", () => {
+        const removed = screen.getByRole("button");
+        removed.click();
+        removed = screen.getByTestId("Remove Course");
+        expect(removed).toHaveLength(1);
+    });
+    */
 });

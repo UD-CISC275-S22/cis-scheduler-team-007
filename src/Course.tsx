@@ -37,7 +37,6 @@ export function DisplayCourse({
 
     return (
         <div>
-            <h1>Greetings CISC/INSY majors and minors</h1>
             <Row>
                 <Col>{existingCourse.courseId}</Col>
                 <Col>{existingCourse.name}</Col>
