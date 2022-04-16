@@ -14,9 +14,8 @@ export function Messaging(): JSX.Element {
             {visible && (
                 <div>
                     Hello CISC or INSY majors and minors
-                    <br>
-                        In here you are choosing a plan for your cisc degree.
-                    </br>
+                    <br />
+                    In here you are choosing a plan for your cisc degree.
                 </div>
             )}
         </div>
