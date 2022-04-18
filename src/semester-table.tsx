@@ -22,7 +22,7 @@ interface thisSemester {
     update: (semester: Semester[]) => void;
 }
 
-export function displaySemester({ courses }: thisSemester) {
+export function DisplaySemester({ courses }: thisSemester): JSX.Element {
     const [currCourse, setCurrCourse] = useState<Course[]>(compSciCourses);
     function addCourse(aNewCourse: Course) {
         const currentCourse = currCourse.find(
