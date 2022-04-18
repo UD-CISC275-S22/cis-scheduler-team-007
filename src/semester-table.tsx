@@ -24,6 +24,19 @@ interface thisSemester {
 
 export function DisplaySemester({ courses }: thisSemester): JSX.Element {
     const [currCourse, setCurrCourse] = useState<Course[]>(compSciCourses);
+    function deleteCourse(id: string): void {
+        setCurrCourse(
+            currCourse.filter((course: Course): boolean => course.id !== id)
+        );
+    }
+    function editCourse(id: string, aNewCourse: Course) {
+        setCurrCourse(
+            currCourse.map(
+                (newCourse: Course): Course =>
+                    newCourse.id === id ? aNewCourse : newCourse
+            )
+        );
+    }
     function addCourse(aNewCourse: Course) {
         const currentCourse = currCourse.find(
             (course: Course): boolean => course.id === aNewCourse.id
@@ -52,6 +65,8 @@ export function DisplaySemester({ courses }: thisSemester): JSX.Element {
                         );
                     })}
                     <Button onClick={() => addCourse}>Add Course</Button>
+                    <Button onClick={() => editCourse}>Edit Course</Button>
+                    <Button onClick={() => deleteCourse}>Remove Course</Button>
                 </tbody>
             </table>
         </div>
