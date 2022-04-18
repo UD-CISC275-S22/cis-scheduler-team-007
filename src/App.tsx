@@ -7,6 +7,12 @@ import { Plan } from "./Planner-Interfaces/plan";
 
 function App(): JSX.Element {
     const [degreePlans, setDegreePlans] = useState<Plan[]>([
+        {
+            id: "Special",
+            name: "No Plan Selected",
+            semester: [],
+            requiredCourses: []
+        },
         { id: "1", name: "Test1", semester: [], requiredCourses: [] },
         { id: "2", name: "Test2", semester: [], requiredCourses: [] }
     ]);
@@ -21,29 +27,26 @@ function App(): JSX.Element {
         );
     }
     function addPlan() {
-        setDegreePlans([
-            ...degreePlans,
-            {
-                id: makeId(),
-                name: "New Plan",
-                semester: [],
-                requiredCourses: []
-            }
-        ]);
+        const newPlan = {
+            id: makeId(),
+            name: "New Plan",
+            semester: [],
+            requiredCourses: []
+        };
+        setDegreePlans([...degreePlans, newPlan]);
+        setSelectedPlan(newPlan);
     }
     function deletePlan() {
+        if (selectedPlan.id === "Special") {
+            return;
+        }
         const newDegreePlans = [...degreePlans];
         newDegreePlans.splice(
             degreePlans.findIndex((plan: Plan) => plan.id === selectedPlan.id),
             1
         );
         setDegreePlans(newDegreePlans);
-        setSelectedPlan({
-            id: "",
-            name: "",
-            semester: [],
-            requiredCourses: []
-        });
+        setSelectedPlan(degreePlans[0]);
     }
     return (
         <div className="App">
@@ -55,7 +58,6 @@ function App(): JSX.Element {
                     value={selectedPlan?.id}
                     onChange={updateSelectedPlan}
                 >
-                    <option value="0">-No Plan-</option>
                     {degreePlans.map((plan: Plan) => (
                         <option key={plan.id} value={plan.id}>
                             {plan.name}
@@ -65,7 +67,7 @@ function App(): JSX.Element {
             </Form.Group>
             <Button onClick={addPlan}>Add new Plan</Button>
             <Button onClick={deletePlan}>Delete Selected Plan</Button>
-            {selectedPlan.id !== "" ? (
+            {selectedPlan.id !== "Special" ? (
                 <DegreePlan
                     key={selectedPlan.id}
                     degreePlans={degreePlans}
