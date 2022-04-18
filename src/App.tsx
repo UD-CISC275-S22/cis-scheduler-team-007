@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { Form } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
 import "./App.css";
+import { makeId } from "./createId";
 import { DegreePlan } from "./DegreePlan";
 import { Plan } from "./Planner-Interfaces/plan";
 
@@ -19,6 +20,31 @@ function App(): JSX.Element {
             ]
         );
     }
+    function addPlan() {
+        setDegreePlans([
+            ...degreePlans,
+            {
+                id: makeId(),
+                name: "New Plan",
+                semester: [],
+                requiredCourses: []
+            }
+        ]);
+    }
+    function deletePlan() {
+        const newDegreePlans = [...degreePlans];
+        newDegreePlans.splice(
+            degreePlans.findIndex((plan: Plan) => plan.id === selectedPlan.id),
+            1
+        );
+        setDegreePlans(newDegreePlans);
+        setSelectedPlan({
+            id: "",
+            name: "",
+            semester: [],
+            requiredCourses: []
+        });
+    }
     return (
         <div className="App">
             <header className="App-header">UD CISC Degree Planner</header>
@@ -29,6 +55,7 @@ function App(): JSX.Element {
                     value={selectedPlan?.id}
                     onChange={updateSelectedPlan}
                 >
+                    <option value="0">-No Plan-</option>
                     {degreePlans.map((plan: Plan) => (
                         <option key={plan.id} value={plan.id}>
                             {plan.name}
@@ -36,12 +63,18 @@ function App(): JSX.Element {
                     ))}
                 </Form.Select>
             </Form.Group>
-            <DegreePlan
-                key={selectedPlan.id}
-                degreePlans={degreePlans}
-                setDegreePlans={setDegreePlans}
-                currentPlan={selectedPlan}
-            ></DegreePlan>
+            <Button onClick={addPlan}>Add new Plan</Button>
+            <Button onClick={deletePlan}>Delete Selected Plan</Button>
+            {selectedPlan.id !== "" ? (
+                <DegreePlan
+                    key={selectedPlan.id}
+                    degreePlans={degreePlans}
+                    setDegreePlans={setDegreePlans}
+                    currentPlan={selectedPlan}
+                ></DegreePlan>
+            ) : (
+                <p>No Plan Selected</p>
+            )}
         </div>
     );
 }
