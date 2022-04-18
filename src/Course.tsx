@@ -1,49 +1,78 @@
 import React, { useState } from "react";
 import { Course } from "./Planner-Interfaces/course";
-import Courses from "./CISC-Courses-data/ciscCourses.json";
-import { Row, Col, Button } from "react-bootstrap";
-
-const compSciCourses = Courses.map(
-    (course): Course => ({
-        ...course,
-        id: course.id,
-        name: course.name,
-        courseId: course.courseId,
-        prereq: course.prereq
-    })
-);
+import { Row, Col, Form } from "react-bootstrap";
 
 export function DisplayCourse({
     existingCourse
 }: {
     existingCourse: Course;
 }): JSX.Element {
-    const [currCourse, setCurrCourse] = useState<Course[]>(compSciCourses);
-
-    function editCourse(id: string, aNewCourse: Course) {
-        setCurrCourse(
-            currCourse.map(
-                (newCourse: Course): Course =>
-                    newCourse.id === id ? aNewCourse : newCourse
-            )
-        );
+    const [isEditing, setIsEditing] = useState<boolean>(false);
+    const [courseIdentity, setCourseIdentity] = useState<string>("");
+    const [credits, setCredits] = useState<string>("1");
+    const [name, setName] = useState<string>("");
+    const otherCredits = parseInt(credits) - 1 || 0;
+    function updateEditing(event: React.ChangeEvent<HTMLInputElement>) {
+        setIsEditing(event.target.checked);
     }
 
-    function deleteCourse(id: string): void {
-        setCurrCourse(
-            currCourse.filter((course: Course): boolean => course.id !== id)
-        );
+    function updateCourseIdentity(event: React.ChangeEvent<HTMLInputElement>) {
+        setCourseIdentity(event.target.value);
+    }
+
+    function updateCourseName(event: React.ChangeEvent<HTMLInputElement>) {
+        setName(event.target.value);
     }
 
     return (
         <div>
-            <Row>
-                <Col>{existingCourse.courseId}</Col>
-                <Col>{existingCourse.name}</Col>
-                <Col>{existingCourse.credits}</Col>
-            </Row>
-            <Button onClick={() => editCourse}>Edit Course</Button>
-            <Button onClick={() => deleteCourse}>Remove Course</Button>
+            {isEditing ? (
+                <Row>
+                    <Col>
+                        <Form.Group className="mb-3" controlId="courseID">
+                            <Form.Label>CourseID</Form.Label>
+                            <Form.Control
+                                type={courseIdentity}
+                                onChange={updateCourseIdentity}
+                            />
+                        </Form.Group>
+                    </Col>
+                    <Col>
+                        <Form.Group className="mb-3" controlId="courseName">
+                            <Form.Label>CourseCredits</Form.Label>
+                            <Form.Control
+                                type="Credits"
+                                value={otherCredits}
+                                onChange={(
+                                    event: React.ChangeEvent<HTMLInputElement>
+                                ) => setCredits(event.target.value)}
+                            />
+                        </Form.Group>
+                    </Col>
+                    <Col>
+                        <Form.Group className="mb-3" controlId="courseCredits">
+                            <Form.Label>CourseName</Form.Label>
+                            <Form.Control
+                                type={name}
+                                onChange={updateCourseName}
+                            />
+                        </Form.Group>
+                    </Col>
+                </Row>
+            ) : (
+                <Row>
+                    <Col>{existingCourse.courseId}</Col>
+                    <Col>{existingCourse.credits}</Col>
+                    <Col>{existingCourse.name}</Col>
+                </Row>
+            )}
+            <Form.Check
+                type="checkbox"
+                id="is-happy-check"
+                label="Edit"
+                checked={isEditing}
+                onChange={updateEditing}
+            />
         </div>
     );
 }
