@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 import { Semester } from "./Planner-Interfaces/semester";
@@ -32,15 +33,26 @@ export function displaySemester({ courses }: thisSemester) {
             setCurrCourse([...currCourse, aNewCourse]);
         }
     }
+import React from "react";
+import { Course } from "./Planner-Interfaces/course";
+import { Semester } from "./Planner-Interfaces/semester";
+
+export function SemesterTable({
+    currentSemester
+}: {
+    currentSemester: Semester;
+}): JSX.Element {
     return (
         <div>
-            <table>
-                <thead>
+            <head></head>
+            <table className="Table-Header">
+                <tbody>
                     <tr>
-                        <th>Courses</th>
+                        <th>Course</th>
+                        <th>Title</th>
                         <th>Credits</th>
-                        <th>Edit Course</th>
                     </tr>
+
                 </thead>
                 <tbody>
                     {courses.map((course: Course) => {
@@ -49,6 +61,14 @@ export function displaySemester({ courses }: thisSemester) {
                                 existingCourse={course}
                                 key={course.courseId}
                             ></DisplayCourse>
+
+                    {currentSemester.courses.map((course: Course) => {
+                        return (
+                            <tr key={course.courseId}>
+                                <td>{course.courseId}</td>
+                                <td>{course.name}</td>
+                                <td>{course.credits}</td>
+                            </tr>
                         );
                     })}
                     <Button onClick={() => addCourse}>Add Course</Button>
