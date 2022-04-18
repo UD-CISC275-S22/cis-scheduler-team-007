@@ -24,6 +24,7 @@ interface thisSemester {
 
 export function DisplaySemester({ courses }: thisSemester): JSX.Element {
     const [currCourse, setCurrCourse] = useState<Course[]>(compSciCourses);
+    const [saved, setSaved] = useState<boolean>(false);
     function deleteCourse(id: string): void {
         setCurrCourse(
             currCourse.filter((course: Course): boolean => course.id !== id)
@@ -45,6 +46,9 @@ export function DisplaySemester({ courses }: thisSemester): JSX.Element {
             setCurrCourse([...currCourse, aNewCourse]);
         }
     }
+    function saveMe() {
+        setSaved(!saved);
+    }
     return (
         <div>
             <table>
@@ -64,6 +68,7 @@ export function DisplaySemester({ courses }: thisSemester): JSX.Element {
                             ></DisplayCourse>
                         );
                     })}
+                    <Button onClick={saveMe}>Save progress</Button>
                     <Button onClick={() => addCourse}>Add Course</Button>
                     <Button onClick={() => editCourse}>Edit Course</Button>
                     <Button onClick={() => deleteCourse}>Remove Course</Button>
