@@ -7,17 +7,18 @@ export function DisplayCourse({
 }: {
     existingCourse: Course;
 }): JSX.Element {
-    const [isEditing, setIsEditing] = useState<boolean>(false);
     const [courseIdentity, setCourseIdentity] = useState<string>("");
+    const [isEditing, setIsEditing] = useState<boolean>(false);
     const [credits, setCredits] = useState<string>("1");
     const [name, setName] = useState<string>("");
     const otherCredits = parseInt(credits) - 1 || 0;
-    function updateEditing(event: React.ChangeEvent<HTMLInputElement>) {
-        setIsEditing(event.target.checked);
-    }
 
     function updateCourseIdentity(event: React.ChangeEvent<HTMLInputElement>) {
         setCourseIdentity(event.target.value);
+    }
+
+    function updateEditing(event: React.ChangeEvent<HTMLInputElement>) {
+        setIsEditing(event.target.checked);
     }
 
     function updateCourseName(event: React.ChangeEvent<HTMLInputElement>) {
@@ -66,13 +67,6 @@ export function DisplayCourse({
                     <Col>{existingCourse.name}</Col>
                 </Row>
             )}
-            <Form.Check
-                type="checkbox"
-                id="is-happy-check"
-                label="Edit"
-                checked={isEditing}
-                onChange={updateEditing}
-            />
         </div>
     );
 }
