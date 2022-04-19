@@ -13,7 +13,29 @@ function App(): JSX.Element {
             semester: [],
             requiredCourses: []
         },
-        { id: "1", name: "Test1", semester: [], requiredCourses: [] },
+        {
+            id: "1",
+            name: "Test1",
+            semester: [
+                {
+                    id: makeId(),
+                    name: "Test Sem",
+                    year: 2020,
+                    courses: [
+                        {
+                            id: makeId(),
+                            name: "Test",
+                            credits: 0,
+                            courseId: "NEW",
+                            prereq: ""
+                        }
+                    ],
+                    season: "",
+                    credits: 0
+                }
+            ],
+            requiredCourses: []
+        },
         { id: "2", name: "Test2", semester: [], requiredCourses: [] }
     ]);
     const [selectedPlan, setSelectedPlan] = useState<Plan>(degreePlans[0]);

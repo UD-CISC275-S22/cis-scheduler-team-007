@@ -72,7 +72,7 @@ export function DegreePlan({
                 <div key={semester.id}>
                     <DisplaySemester
                         semester={semester}
-                        plan={currentPlan}
+                        plan={plan}
                         updatePlan={setPlan}
                     ></DisplaySemester>
                     <Button onClick={() => insertSemester(semester.id)}>

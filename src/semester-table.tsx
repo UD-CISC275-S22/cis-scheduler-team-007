@@ -1,5 +1,5 @@
 import React from "react";
-import { Button } from "react-bootstrap";
+import { Button, Col, Row } from "react-bootstrap";
 import { Semester } from "./Planner-Interfaces/semester";
 import { Course } from "./Planner-Interfaces/course";
 import { DisplayCourse } from "./Course";
@@ -30,49 +30,42 @@ export function DisplaySemester({
         updatePlan({ ...plan, semester: newSem });
     }
     function addCourse() {
-        const newCourse = {
+        const newCourses = semester.courses;
+        newCourses.push({
             id: makeId(),
             name: "New Course",
             credits: 0,
             courseId: "NEW",
             prereq: ""
-        };
+        });
         const newSem = plan.semester.map(
             (sem: Semester): Semester =>
                 sem.id === semester.id
-                    ? { ...sem, courses: [...sem.courses, newCourse] }
+                    ? { ...sem, courses: newCourses }
                     : { ...sem }
         );
         updatePlan({ ...plan, semester: newSem });
     }
     return (
         <div>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Course ID</th>
-                        <th>Course Name</th>
-                        <th>Credits</th>
-                        <th>Edit Course</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {semester.courses.map((course: Course) => {
-                        return (
-                            <>
-                                <DisplayCourse
-                                    existingCourse={course}
-                                    key={course.courseId}
-                                ></DisplayCourse>
-                                <Button onClick={() => deleteCourse(course.id)}>
-                                    Remove Course
-                                </Button>
-                            </>
-                        );
-                    })}
-                    <Button onClick={() => addCourse}>Add Course</Button>
-                </tbody>
-            </table>
+            <Row>
+                <Col>Course ID</Col>
+                <Col>Course Name</Col>
+                <Col>Credits</Col>
+                <Col>Edit Course</Col>
+            </Row>
+            {semester.courses.map((course: Course) => (
+                <>
+                    <DisplayCourse
+                        existingCourse={course}
+                        key={course.courseId}
+                    ></DisplayCourse>
+                    <Button onClick={() => deleteCourse(course.id)}>
+                        Remove Course
+                    </Button>
+                </>
+            ))}
+            <Button onClick={() => addCourse}>Add Course</Button>
         </div>
     );
 }
