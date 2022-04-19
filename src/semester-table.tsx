@@ -1,77 +1,76 @@
-import React, { useState } from "react";
+import React from "react";
 import { Button } from "react-bootstrap";
 import { Semester } from "./Planner-Interfaces/semester";
 import { Course } from "./Planner-Interfaces/course";
-import Courses from "./CISC-Courses-data/ciscCourses.json";
 import { DisplayCourse } from "./Course";
-
-const compSciCourses = Courses.map(
-    (course): Course => ({
-        ...course,
-        id: course.id,
-        name: course.name,
-        courseId: course.courseId,
-        prereq: course.prereq
-    })
-);
+import { Plan } from "./Planner-Interfaces/plan";
+import { makeId } from "./createId";
 
 interface thisSemester {
-    courses: Course[];
-    semesterId: number;
-    semList: Semester[];
-    update: (semester: Semester[]) => void;
+    semester: Semester;
+    plan: Plan;
+    updatePlan: (plan: Plan) => void;
 }
 
-export function DisplaySemester({ courses }: thisSemester): JSX.Element {
-    const [currCourse, setCurrCourse] = useState<Course[]>(compSciCourses);
-    const [saved, setSaved] = useState<boolean>(false);
+export function DisplaySemester({
+    semester,
+    plan,
+    updatePlan
+}: thisSemester): JSX.Element {
     function deleteCourse(id: string): void {
-        setCurrCourse(
-            currCourse.filter((course: Course): boolean => course.id !== id)
+        const newCourses = semester.courses.filter(
+            (course: Course): boolean => course.id !== id
         );
-    }
-    function editCourse(id: string, aNewCourse: Course) {
-        setCurrCourse(
-            currCourse.map(
-                (newCourse: Course): Course =>
-                    newCourse.id === id ? aNewCourse : newCourse
-            )
+        const newSem = plan.semester.map(
+            (sem: Semester): Semester =>
+                sem.id === semester.id
+                    ? { ...sem, courses: newCourses }
+                    : { ...sem }
         );
+        updatePlan({ ...plan, semester: newSem });
     }
-    function addCourse(aNewCourse: Course) {
-        const currentCourse = currCourse.find(
-            (course: Course): boolean => course.id === aNewCourse.id
+    function addCourse() {
+        const newCourse = {
+            id: makeId(),
+            name: "New Course",
+            credits: 0,
+            courseId: "NEW",
+            prereq: ""
+        };
+        const newSem = plan.semester.map(
+            (sem: Semester): Semester =>
+                sem.id === semester.id
+                    ? { ...sem, courses: [...sem.courses, newCourse] }
+                    : { ...sem }
         );
-        if (currentCourse === undefined) {
-            setCurrCourse([...currCourse, aNewCourse]);
-        }
-    }
-    function saveMe() {
-        setSaved(!saved);
+        updatePlan({ ...plan, semester: newSem });
     }
     return (
         <div>
             <table>
                 <thead>
                     <tr>
-                        <th>Courses</th>
+                        <th>Course ID</th>
+                        <th>Course Name</th>
                         <th>Credits</th>
                         <th>Edit Course</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {courses.map((course: Course) => {
+                    {semester.courses.map((course: Course) => {
                         return (
-                            <DisplayCourse
-                                existingCourse={course}
-                                key={course.courseId}
-                            ></DisplayCourse>
+                            <>
+                                <DisplayCourse
+                                    existingCourse={course}
+                                    key={course.courseId}
+                                ></DisplayCourse>
+                                <Button onClick={() => deleteCourse(course.id)}>
+                                    Remove Course
+                                </Button>
+                            </>
                         );
                     })}
-                    <Button onClick={saveMe}>Save progress</Button>
                     <Button onClick={() => addCourse}>Add Course</Button>
-                    <Button onClick={() => editCourse}>Edit Course</Button>
-                    <Button onClick={() => deleteCourse}>Remove Course</Button>
                 </tbody>
             </table>
         </div>

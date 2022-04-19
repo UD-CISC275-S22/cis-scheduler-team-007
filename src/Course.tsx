@@ -7,11 +7,12 @@ export function DisplayCourse({
 }: {
     existingCourse: Course;
 }): JSX.Element {
-    const [courseIdentity, setCourseIdentity] = useState<string>("");
+    const [courseIdentity, setCourseIdentity] = useState<string>(
+        existingCourse.courseId
+    );
     const [isEditing, setIsEditing] = useState<boolean>(false);
-    const [credits, setCredits] = useState<string>("1");
-    const [name, setName] = useState<string>("");
-    const otherCredits = parseInt(credits) - 1 || 0;
+    const [credits, setCredits] = useState<number>(existingCourse.credits);
+    const [name, setName] = useState<string>(existingCourse.name);
 
     function updateCourseIdentity(event: React.ChangeEvent<HTMLInputElement>) {
         setCourseIdentity(event.target.value);
@@ -24,6 +25,9 @@ export function DisplayCourse({
     function updateCourseName(event: React.ChangeEvent<HTMLInputElement>) {
         setName(event.target.value);
     }
+    function updateCredits(event: React.ChangeEvent<HTMLInputElement>) {
+        setCredits(parseInt(event.target.value));
+    }
 
     return (
         <div>
@@ -31,40 +35,54 @@ export function DisplayCourse({
                 <Row>
                     <Col>
                         <Form.Group className="mb-3" controlId="courseID">
-                            <Form.Label>CourseID</Form.Label>
+                            <Form.Label>CourseID: </Form.Label>
                             <Form.Control
-                                type={courseIdentity}
+                                value={courseIdentity}
                                 onChange={updateCourseIdentity}
                             />
                         </Form.Group>
                     </Col>
                     <Col>
                         <Form.Group className="mb-3" controlId="courseName">
-                            <Form.Label>CourseCredits</Form.Label>
+                            <Form.Label>Name of Course: </Form.Label>
                             <Form.Control
-                                type="Credits"
-                                value={otherCredits}
-                                onChange={(
-                                    event: React.ChangeEvent<HTMLInputElement>
-                                ) => setCredits(event.target.value)}
+                                value={name}
+                                onChange={updateCourseName}
                             />
                         </Form.Group>
                     </Col>
                     <Col>
                         <Form.Group className="mb-3" controlId="courseCredits">
-                            <Form.Label>CourseName</Form.Label>
+                            <Form.Label>Number of Credits: </Form.Label>
                             <Form.Control
-                                type={name}
-                                onChange={updateCourseName}
+                                type="number"
+                                value={credits}
+                                onChange={updateCredits}
                             />
                         </Form.Group>
+                    </Col>
+                    <Col>
+                        <Form.Check
+                            type="checkbox"
+                            id="is-editing-check"
+                            checked={isEditing}
+                            onChange={updateEditing}
+                        />
                     </Col>
                 </Row>
             ) : (
                 <Row>
-                    <Col>{existingCourse.courseId}</Col>
-                    <Col>{existingCourse.credits}</Col>
-                    <Col>{existingCourse.name}</Col>
+                    <Col>{courseIdentity}</Col>
+                    <Col>{name}</Col>
+                    <Col>{credits}</Col>
+                    <Col>
+                        <Form.Check
+                            type="checkbox"
+                            id="is-editing-check"
+                            checked={isEditing}
+                            onChange={updateEditing}
+                        />
+                    </Col>
                 </Row>
             )}
         </div>
