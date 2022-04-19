@@ -77,4 +77,15 @@ describe("DegreePlan Component Tests", () => {
         delButton.click();
         expect(screen.queryByText("New Semester")).not.toBeInTheDocument();
     });
+    test("Delete All Semesters button works", () => {
+        const addButton = screen.getByRole("button", { name: /Add Semester/i });
+        addButton.click();
+        addButton.click();
+        addButton.click();
+        const delSemButton = screen.getByRole("button", {
+            name: /Delete All Semesters/i
+        });
+        delSemButton.click();
+        expect(screen.queryByText("New Semester")).not.toBeInTheDocument();
+    });
 });

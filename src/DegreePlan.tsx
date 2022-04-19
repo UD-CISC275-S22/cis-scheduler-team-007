@@ -45,6 +45,9 @@ export function DegreePlan({
         newDegreePlans.splice(replaceIndex, 1, plan);
         setDegreePlans(newDegreePlans);
     }
+    function clearAllSemesters() {
+        setPlan({ ...plan, semester: [] });
+    }
     function addSemester() {
         setPlan({
             ...plan,
@@ -77,6 +80,9 @@ export function DegreePlan({
             ))}
             <Button onClick={() => addSemester()}>Add Semester</Button>
             <Button onClick={() => saveChanges()}>Save Plan Changes</Button>
+            <Button onClick={() => clearAllSemesters()}>
+                Delete All Semesters
+            </Button>
         </div>
     );
 }
