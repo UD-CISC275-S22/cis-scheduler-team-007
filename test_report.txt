@@ -3,16 +3,14 @@
 > react-scripts test "--coverage"
 
 PASS src/DegreePlan.test.tsx
-PASS src/ModifyCourse.test.tsx
 PASS src/App.test.tsx
 ------------------------|---------|----------|---------|---------|-------------------
 File                    | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
 ------------------------|---------|----------|---------|---------|-------------------
-All files               |   61.22 |        0 |   51.72 |   60.86 |                   
- src                    |   61.22 |        0 |   51.72 |   60.86 |                   
-  App.tsx               |     100 |      100 |     100 |     100 |                   
+All files               |   76.59 |       75 |   69.56 |   75.55 |                   
+ src                    |   76.59 |       75 |   69.56 |   75.55 |                   
+  App.tsx               |   81.25 |       75 |   71.42 |   81.25 | 21-24,41          
   DegreePlan.tsx        |   72.72 |      100 |   76.92 |   71.42 | 41-46,79          
-  ModifyCourse.tsx      |   26.66 |        0 |   18.18 |   28.57 | 20-37,43-45       
   createId.ts           |     100 |      100 |     100 |     100 |                   
   semester-table.tsx    |       0 |      100 |       0 |       0 | 41-53             
  src/Planner-Interfaces |       0 |        0 |       0 |       0 |                   
@@ -21,8 +19,8 @@ All files               |   61.22 |        0 |   51.72 |   60.86 |
   semester.ts           |       0 |        0 |       0 |       0 |                   
 ------------------------|---------|----------|---------|---------|-------------------
 
-Test Suites: 3 passed, 3 total
-Tests:       8 passed, 8 total
+Test Suites: 2 passed, 2 total
+Tests:       11 passed, 11 total
 Snapshots:   0 total
-Time:        2.992 s
+Time:        2.866 s
 Ran all test suites.
