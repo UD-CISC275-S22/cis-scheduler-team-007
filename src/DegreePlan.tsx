@@ -3,6 +3,7 @@ import { Button } from "react-bootstrap";
 import { makeId } from "./createId";
 import { Plan } from "./Planner-Interfaces/plan";
 import { Semester } from "./Planner-Interfaces/semester";
+import { DisplaySemester } from "./semester-table";
 
 export function DegreePlan({
     degreePlans,
@@ -69,7 +70,11 @@ export function DegreePlan({
             <h4>{plan.name}</h4>
             {plan.semester.map((semester: Semester) => (
                 <div key={semester.id}>
-                    <p>{semester.name}</p>
+                    <DisplaySemester
+                        semester={semester}
+                        plan={plan}
+                        updatePlan={setPlan}
+                    ></DisplaySemester>
                     <Button onClick={() => insertSemester(semester.id)}>
                         Insert New Semester
                     </Button>
