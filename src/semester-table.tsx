@@ -30,18 +30,17 @@ export function DisplaySemester({
         updatePlan({ ...plan, semester: newSem });
     }
     function addCourse() {
-        const newCourses = semester.courses;
-        newCourses.push({
+        const newCourse = {
             id: makeId(),
             name: "New Course",
             credits: 0,
             courseId: "NEW",
             prereq: ""
-        });
+        };
         const newSem = plan.semester.map(
             (sem: Semester): Semester =>
                 sem.id === semester.id
-                    ? { ...sem, courses: newCourses }
+                    ? { ...sem, courses: [...sem.courses, newCourse] }
                     : { ...sem }
         );
         updatePlan({ ...plan, semester: newSem });
@@ -65,7 +64,7 @@ export function DisplaySemester({
                     </Button>
                 </>
             ))}
-            <Button onClick={() => addCourse}>Add Course</Button>
+            <Button onClick={() => addCourse()}>Add Course</Button>
         </div>
     );
 }
