@@ -47,7 +47,7 @@ describe("DegreePlan Component Tests", () => {
     test("Add button creates a new semester", () => {
         const addButton = screen.getByRole("button", { name: /Add Semester/i });
         addButton.click();
-        expect(screen.getByText("New Semester")).toBeInTheDocument();
+        expect(screen.getByText("Fall")).toBeInTheDocument();
     });
     test("Semester has insert and delete buttons", () => {
         const addButton = screen.getByRole("button", { name: /Add Semester/i });
@@ -66,7 +66,7 @@ describe("DegreePlan Component Tests", () => {
             name: /Insert New Semester/i
         });
         insertButton.click();
-        expect(screen.getByText("Inserted Semester")).toBeInTheDocument();
+        expect(screen.getByText("Copy of Fall")).toBeInTheDocument();
     });
     test("Delete button works", () => {
         const addButton = screen.getByRole("button", { name: /Add Semester/i });
@@ -75,6 +75,17 @@ describe("DegreePlan Component Tests", () => {
             name: /Delete This Semester/i
         });
         delButton.click();
+        expect(screen.queryByText("New Semester")).not.toBeInTheDocument();
+    });
+    test("Delete All Semesters button works", () => {
+        const addButton = screen.getByRole("button", { name: /Add Semester/i });
+        addButton.click();
+        addButton.click();
+        addButton.click();
+        const delSemButton = screen.getByRole("button", {
+            name: /Delete All Semesters/i
+        });
+        delSemButton.click();
         expect(screen.queryByText("New Semester")).not.toBeInTheDocument();
     });
 });
