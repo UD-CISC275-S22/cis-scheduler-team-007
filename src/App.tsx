@@ -52,7 +52,7 @@ function App(): JSX.Element {
         <div className="App">
             <header className="App-header">UD CISC Degree Planner</header>
             <p>By: Eric Toreki, Maxwell Wang, Joshua Strassle</p>
-            <Form.Group controlId="userEmotions">
+            <Form.Group controlId="userPlans">
                 <Form.Label>Selected Degree Plan:</Form.Label>
                 <Form.Select
                     value={selectedPlan?.id}
@@ -65,7 +65,7 @@ function App(): JSX.Element {
                     ))}
                 </Form.Select>
             </Form.Group>
-            <Button onClick={addPlan}>Add new Plan</Button>
+            <Button onClick={addPlan}>Add New Plan</Button>
             <Button onClick={deletePlan}>Delete Selected Plan</Button>
             {selectedPlan.id !== "Special" ? (
                 <DegreePlan
@@ -75,7 +75,7 @@ function App(): JSX.Element {
                     currentPlan={selectedPlan}
                 ></DegreePlan>
             ) : (
-                <p>No Plan Selected</p>
+                <h4>No Plan Selected</h4>
             )}
         </div>
     );
