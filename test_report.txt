@@ -7,10 +7,10 @@ PASS src/App.test.tsx
 ------------------------|---------|----------|---------|---------|-------------------
 File                    | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
 ------------------------|---------|----------|---------|---------|-------------------
-All files               |   76.59 |       75 |   69.56 |   75.55 |                   
- src                    |   76.59 |       75 |   69.56 |   75.55 |                   
+All files               |   77.55 |       75 |      72 |   76.59 |                   
+ src                    |   77.55 |       75 |      72 |   76.59 |                   
   App.tsx               |   81.25 |       75 |   71.42 |   81.25 | 21-24,41          
-  DegreePlan.tsx        |   72.72 |      100 |   76.92 |   71.42 | 41-46,79          
+  DegreePlan.tsx        |      75 |      100 |      80 |   73.91 | 41-46,82          
   createId.ts           |     100 |      100 |     100 |     100 |                   
   semester-table.tsx    |       0 |      100 |       0 |       0 | 41-53             
  src/Planner-Interfaces |       0 |        0 |       0 |       0 |                   
@@ -20,7 +20,7 @@ All files               |   76.59 |       75 |   69.56 |   75.55 |
 ------------------------|---------|----------|---------|---------|-------------------
 
 Test Suites: 2 passed, 2 total
-Tests:       11 passed, 11 total
+Tests:       12 passed, 12 total
 Snapshots:   0 total
-Time:        2.866 s
+Time:        3.07 s
 Ran all test suites.
