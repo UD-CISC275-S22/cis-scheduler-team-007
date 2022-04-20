@@ -56,6 +56,13 @@
             "prereq":"CISC 220 and MATH 210"
         },
         {
+            "id": "CISC-304",
+            "name": "Logic for Programming",
+            "credits": 3,
+            "courseID": "304",
+            "prereq": "CISC 220"
+        },
+        {
             "id": "CISC-320",
             "name": "Introduction to Algorithims",
             "credits": 3,
