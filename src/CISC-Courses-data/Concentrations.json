@@ -1,0 +1,53 @@
+[
+    {
+        "name": "Artificial Intelligence and Robotics",
+        "Requirements":
+        [
+            {
+                "id": "CISC-304",
+                "name": "Logic for Programming",
+                "credits": 3,
+                "courseID": "304",
+                "prereq": "CISC-220 and MATH-210"
+            },
+            {
+                "id": "CISC-361",
+                "name": "Operating Systens",
+                "credits": 3,
+                "courseId": "361",
+                "prereq":"CISC 220 and CISC 260"
+            },
+            {
+                "id": "CISC-442",
+                "name": "Computer Vision",
+                "credits": 3,
+                "courseID": "442",
+                "prereq": "CISC-220"
+            },
+            {
+                "id": "CISC-481",
+                "name": "Artificial Intelligence",
+                "credits": 3,
+                "courseID": "481",
+                "prereq": "CISC-220 and CISC-304"
+            },
+            {
+                "id": "CISC-483",
+                "name": "Introduction to Data Mining",
+                "credits": 3,
+                "courseId": "361",
+                "prereq":"CISC-220 and MATH-205 or MATH-350"
+            },
+            {
+                "id": "CISC-484",
+                "name": "Introduction to Data Mining",
+                "credits": 3,
+                "courseId": "361",
+                "prereq":"CISC-220 and MATH-205 or MATH-350"
+            }
+            
+        ]
+        
+    }
+    
+]
