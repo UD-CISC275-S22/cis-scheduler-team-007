@@ -3,5 +3,5 @@ export interface Course {
     name: string;
     credits: number;
     courseId: string;
-    prereq: string;
+    preReq: string;
 }
