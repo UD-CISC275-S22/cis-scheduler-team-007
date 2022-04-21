@@ -56,8 +56,11 @@ export function DisplaySemester({
             {semester.courses.map((course: Course) => (
                 <>
                     <DisplayCourse
+                        key={course.id}
                         existingCourse={course}
-                        key={course.courseId}
+                        semester={semester}
+                        plan={plan}
+                        updatePlan={updatePlan}
                     ></DisplayCourse>
                     <Button onClick={() => deleteCourse(course.id)}>
                         Remove Course

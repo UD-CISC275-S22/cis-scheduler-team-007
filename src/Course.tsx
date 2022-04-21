@@ -1,11 +1,19 @@
 import React, { useState } from "react";
 import { Course } from "./Planner-Interfaces/course";
 import { Row, Col, Form } from "react-bootstrap";
+import { Plan } from "./Planner-Interfaces/plan";
+import { Semester } from "./Planner-Interfaces/semester";
 
 export function DisplayCourse({
-    existingCourse
+    existingCourse,
+    semester,
+    plan,
+    updatePlan
 }: {
     existingCourse: Course;
+    semester: Semester;
+    plan: Plan;
+    updatePlan: (plan: Plan) => void;
 }): JSX.Element {
     const [courseIdentity, setCourseIdentity] = useState<string>(
         existingCourse.courseId
@@ -14,12 +22,34 @@ export function DisplayCourse({
     const [credits, setCredits] = useState<number>(existingCourse.credits);
     const [name, setName] = useState<string>(existingCourse.name);
 
+    function editCourse(course: Course) {
+        const replace = semester.courses.findIndex(
+            (course2: Course) => course2.id === course.id
+        );
+        const newCourses = [...semester.courses];
+        newCourses.splice(replace, 1, course);
+        const newSem = plan.semester.map(
+            (sem: Semester): Semester =>
+                sem.id === semester.id
+                    ? { ...sem, courses: newCourses }
+                    : { ...sem }
+        );
+        updatePlan({ ...plan, semester: newSem });
+    }
+
     function updateCourseIdentity(event: React.ChangeEvent<HTMLInputElement>) {
         setCourseIdentity(event.target.value);
     }
 
     function updateEditing(event: React.ChangeEvent<HTMLInputElement>) {
         setIsEditing(event.target.checked);
+        editCourse({
+            id: existingCourse.id,
+            name: name,
+            credits: credits,
+            courseId: courseIdentity,
+            prereq: existingCourse.prereq
+        });
     }
 
     function updateCourseName(event: React.ChangeEvent<HTMLInputElement>) {
