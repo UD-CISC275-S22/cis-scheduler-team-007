@@ -27,7 +27,7 @@ function App(): JSX.Element {
                             name: "Test",
                             credits: 0,
                             courseId: "NEW",
-                            prereq: ""
+                            preReq: ""
                         }
                     ],
                     season: "",
