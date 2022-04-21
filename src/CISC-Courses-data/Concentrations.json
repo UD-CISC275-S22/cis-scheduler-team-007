@@ -86,14 +86,14 @@
                 "name": "Introduction to Cybersecurity",
                 "credits": 3,
                 "courseId": "465",
-                "prereq":"CISC-220"
+                "prereq":""
             },
             {
                 "id": "CPEG-494",
                 "name": "System Hardening and Protection",
                 "credits": 3,
-                "courseId": "361",
-                "prereq":"CISC-220 and MATH-205 or MATH-350"
+                "courseId": "494",
+                "prereq":""
             }
         ]
     }
