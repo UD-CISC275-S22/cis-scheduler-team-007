@@ -1,6 +1,13 @@
 import React, { useState } from "react";
 import { Course } from "./Planner-Interfaces/course";
+import Courses from "./CISC-Courses-data/ciscCourses.json";
 import { Row, Col, Form } from "react-bootstrap";
+
+const ciscCourses = Courses.map(
+    (course: Course): Course => ({
+        ...course
+    })
+);
 
 export function DisplayCourse({
     existingCourse
@@ -13,6 +20,9 @@ export function DisplayCourse({
     const [isEditing, setIsEditing] = useState<boolean>(false);
     const [credits, setCredits] = useState<number>(existingCourse.credits);
     const [name, setName] = useState<string>(existingCourse.name);
+    const [preReqCourse, setPreReqCourse] = useState<string>(
+        ciscCourses[0].preReq
+    );
 
     function updateCourseIdentity(event: React.ChangeEvent<HTMLInputElement>) {
         setCourseIdentity(event.target.value);
@@ -27,6 +37,9 @@ export function DisplayCourse({
     }
     function updateCredits(event: React.ChangeEvent<HTMLInputElement>) {
         setCredits(parseInt(event.target.value));
+    }
+    function updatePreReqCourse(event: React.ChangeEvent<HTMLInputElement>) {
+        setPreReqCourse(event.target.value);
     }
 
     return (
@@ -58,6 +71,15 @@ export function DisplayCourse({
                                 type="number"
                                 value={credits}
                                 onChange={updateCredits}
+                            />
+                        </Form.Group>
+                    </Col>
+                    <Col>
+                        <Form.Group className="mb-3" controlId="courseCredits">
+                            <Form.Label>Prerequsite: </Form.Label>
+                            <Form.Control
+                                value={preReqCourse}
+                                onChange={updatePreReqCourse}
                             />
                         </Form.Group>
                     </Col>
