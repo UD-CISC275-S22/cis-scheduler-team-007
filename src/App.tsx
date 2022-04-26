@@ -74,8 +74,17 @@ function App(): JSX.Element {
         <div className="App">
             <header className="App-header">UD CISC Degree Planner</header>
             <p>By: Eric Toreki, Maxwell Wang, Joshua Strassle</p>
+            <div>
+                Hello CISC or INSY majors and minors
+                <br />
+                Currently our advising department is unfortunaley busy but we
+                will do our best to help with choosing a great plan to fit your
+                scheldule so that you can graduate on time!
+                <br />
+                In here you can choose a plan for your cisc degree.
+            </div>
             <Form.Group controlId="userPlans">
-                <Form.Label>Selected Degree Plan:</Form.Label>
+                <Form.Label>Select Degree Plan:</Form.Label>
                 <Form.Select
                     value={selectedPlan?.id}
                     onChange={updateSelectedPlan}
