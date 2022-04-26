@@ -4,6 +4,7 @@ import { Semester } from "./Planner-Interfaces/semester";
 import { Course } from "./Planner-Interfaces/course";
 import { Plan } from "./Planner-Interfaces/plan";
 import { makeId } from "./createId";
+import { DisplayCourse } from "./Course";
 
 interface thisSemester {
     semester: Semester;
@@ -57,14 +58,18 @@ export function DisplaySemester({
                 <th>Course</th>
                 <th>Course Name</th>
                 <th>Credits</th>
+                <th>Edit Course</th>
                 <th>Delete Course</th>
             </tr>
             {semester.courses.map((course: Course) => {
                 return (
                     <tr key={course.id}>
-                        <td>{course.courseId}</td>
-                        <td>{course.name}</td>
-                        <td>{course.credits}</td>
+                        <DisplayCourse
+                            existingCourse={course}
+                            semester={semester}
+                            plan={plan}
+                            updatePlan={updatePlan}
+                        ></DisplayCourse>
                         <td>
                             <Button onClick={() => deleteCourse(course.id)}>
                                 Remove Course

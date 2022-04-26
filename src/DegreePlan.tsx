@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 import { makeId } from "./createId";
+import { DegreeRequirements_Section } from "./degree";
 import { Plan } from "./Planner-Interfaces/plan";
 import { Semester } from "./Planner-Interfaces/semester";
 import { DisplaySemester } from "./semester-table";
@@ -14,6 +15,7 @@ export function DegreePlan({
     setDegreePlans: (newDegreePlans: Plan[]) => void;
     currentPlan: Plan;
 }): JSX.Element {
+    const [DegreeReq_View_State, toggleDegreeReqView] = useState(false);
     const [plan, setPlan] = useState<Plan>(currentPlan);
     function insertSemester(id: string) {
         const newSemesters = plan.semester;
@@ -88,6 +90,12 @@ export function DegreePlan({
             <Button onClick={() => clearAllSemesters()}>
                 Delete All Semesters
             </Button>
+            <br></br>
+            <DegreeRequirements_Section
+                show={DegreeReq_View_State}
+                setShow={toggleDegreeReqView}
+                userSemesters={plan.semester}
+            ></DegreeRequirements_Section>
         </div>
     );
 }
