@@ -35,7 +35,7 @@ export function DisplaySemester({
             name: "New Course",
             credits: 0,
             courseId: "NEW",
-            prereq: ""
+            preReq: ""
         };
         const newSem = plan.semester.map(
             (sem: Semester): Semester =>
