@@ -10,8 +10,8 @@ describe("Modify Course.test", () => {
                     id: "1",
                     name: "Comp Sci 1",
                     credits: 3,
-                    courseId: "CISC-103",
-                    prereq: ""
+                    courseId: "CISC-103"
+                    //prereq: ""
                 }}
             />
         );

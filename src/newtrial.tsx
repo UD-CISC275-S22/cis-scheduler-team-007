@@ -1,20 +1,21 @@
 import React from "react";
-import { Button } from "react-bootstrap";
 import { Semester } from "./Planner-Interfaces/semester";
 import { Course } from "./Planner-Interfaces/course";
+import { Button } from "react-bootstrap";
 import { Plan } from "./Planner-Interfaces/plan";
-import { makeId } from "./createId";
 
 interface thisSemester {
     semester: Semester;
     plan: Plan;
     updatePlan: (plan: Plan) => void;
+    currentSemester: Semester;
 }
 
-export function DisplaySemester({
+export function SemesterTable({
+    currentSemester,
+    updatePlan,
     semester,
-    plan,
-    updatePlan
+    plan
 }: thisSemester): JSX.Element {
     function deleteCourse(id: string): void {
         const newCourses = semester.courses.filter(
@@ -28,29 +29,6 @@ export function DisplaySemester({
         );
         updatePlan({ ...plan, semester: newSem });
     }
-    function removeAllCourses() {
-        const newSem = plan.semester.map(
-            (sem: Semester): Semester =>
-                sem.id === semester.id ? { ...sem, courses: [] } : { ...sem }
-        );
-        updatePlan({ ...plan, semester: newSem });
-    }
-    function addCourse() {
-        const newCourses = {
-            id: makeId(),
-            name: "thing",
-            credits: 10,
-            courseId: "CISC 108"
-            //prereq: ""
-        };
-        const newSem = plan.semester.map(
-            (sem: Semester): Semester =>
-                sem.id === semester.id
-                    ? { ...sem, courses: [...sem.courses, newCourses] }
-                    : { ...sem }
-        );
-        updatePlan({ ...plan, semester: newSem });
-    }
     return (
         <table className="Table-Header">
             <tr>
@@ -59,10 +37,10 @@ export function DisplaySemester({
                 <th>Credits</th>
                 <th>Delete Course</th>
             </tr>
-            {semester.courses.map((course: Course) => {
+            {currentSemester.courses.map((course: Course) => {
                 return (
                     <tr key={course.id}>
-                        <td>{course.courseId}</td>
+                        <td>{course.id}</td>
                         <td>{course.name}</td>
                         <td>{course.credits}</td>
                         <td>
@@ -73,10 +51,6 @@ export function DisplaySemester({
                     </tr>
                 );
             })}
-            <Button onClick={() => addCourse()}> Add Course</Button>
-            <Button onClick={() => removeAllCourses()}>
-                Remove All Courses
-            </Button>
         </table>
     );
 }
