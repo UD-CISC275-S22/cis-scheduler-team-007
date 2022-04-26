@@ -37,3 +37,44 @@
         transform: rotate(360deg);
     }
 }
+.Table-Header {
+    border: solid 1px #DDEEEE;
+    border-collapse: collapse;
+    border-spacing: 0;
+    font: normal 13px Arial, sans-serif;
+    background-color: #DDEEEE;
+    position: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 1200px;
+    height: 400px;
+}
+
+.Table-Header th {
+    background-color: #DDEFEF;
+    border: solid 1px #DDEEEE;
+    color: #00539F;
+    padding: 10px;
+    text-align: center;
+    text-shadow: 1px 1px 1px #fff;
+}
+
+.Table-Header td {
+    border: solid 1px #fff;
+    color: #00539F;
+    padding: 10px;
+    text-shadow: 1px 1px 1px #fff;
+}
+
+.Table-Header tr:hover {
+    background-color: #CCE7E7;
+}
+.btn {
+    width: 180px;
+    height: 60px;
+    cursor: pointer;
+    background: black;
+    border: 1px solid #000000;
+    outline: none;
+    transition: 0.5s ease-in-out;
+  }

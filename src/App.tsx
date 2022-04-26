@@ -25,8 +25,8 @@ function App(): JSX.Element {
                         {
                             id: makeId(),
                             name: "Test",
-                            credits: 0,
-                            courseId: "NEW",
+                            credits: 125,
+                            courseId: "CISC 108",
                             preReq: ""
                         }
                     ],
@@ -36,9 +36,31 @@ function App(): JSX.Element {
             ],
             requiredCourses: []
         },
-        { id: "2", name: "Test2", semester: [], requiredCourses: [] }
+        {
+            id: "2",
+            name: "Test2",
+            semester: [
+                {
+                    id: makeId(),
+                    name: "Test Sem",
+                    year: 2020,
+                    courses: [
+                        {
+                            id: makeId(),
+                            name: "Test",
+                            credits: 123,
+                            courseId: "CISC 108",
+                            preReq: ""
+                        }
+                    ],
+                    season: "",
+                    credits: 0
+                }
+            ],
+            requiredCourses: []
+        }
     ]);
-    const [selectedPlan, setSelectedPlan] = useState<Plan>(degreePlans[0]);
+    const [selectedPlan, setSelectedPlan] = useState<Plan>(degreePlans[1]);
     function updateSelectedPlan(event: React.ChangeEvent<HTMLSelectElement>) {
         setSelectedPlan(
             degreePlans[
@@ -70,6 +92,7 @@ function App(): JSX.Element {
         setDegreePlans(newDegreePlans);
         setSelectedPlan(degreePlans[0]);
     }
+
     return (
         <div className="App">
             <header className="App-header">UD CISC Degree Planner</header>
@@ -96,7 +119,9 @@ function App(): JSX.Element {
                     ))}
                 </Form.Select>
             </Form.Group>
-            <Button onClick={addPlan}>Add New Plan</Button>
+            <Button onClick={addPlan} className="btn">
+                Add New Plan
+            </Button>
             <Button onClick={deletePlan}>Delete Selected Plan</Button>
             {selectedPlan.id !== "Special" ? (
                 <DegreePlan

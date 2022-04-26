@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Course } from "./Planner-Interfaces/course";
-import { Row, Col, Form } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 import { Plan } from "./Planner-Interfaces/plan";
 import { Semester } from "./Planner-Interfaces/semester";
 
@@ -60,10 +60,10 @@ export function DisplayCourse({
     }
 
     return (
-        <div>
+        <>
             {isEditing ? (
-                <Row>
-                    <Col>
+                <>
+                    <td>
                         <Form.Group className="mb-3" controlId="courseID">
                             <Form.Label>CourseID: </Form.Label>
                             <Form.Control
@@ -71,8 +71,8 @@ export function DisplayCourse({
                                 onChange={updateCourseIdentity}
                             />
                         </Form.Group>
-                    </Col>
-                    <Col>
+                    </td>
+                    <td>
                         <Form.Group className="mb-3" controlId="courseName">
                             <Form.Label>Name of Course: </Form.Label>
                             <Form.Control
@@ -80,8 +80,8 @@ export function DisplayCourse({
                                 onChange={updateCourseName}
                             />
                         </Form.Group>
-                    </Col>
-                    <Col>
+                    </td>
+                    <td>
                         <Form.Group className="mb-3" controlId="courseCredits">
                             <Form.Label>Number of Credits: </Form.Label>
                             <Form.Control
@@ -90,31 +90,31 @@ export function DisplayCourse({
                                 onChange={updateCredits}
                             />
                         </Form.Group>
-                    </Col>
-                    <Col>
+                    </td>
+                    <td>
                         <Form.Check
                             type="checkbox"
                             id="is-editing-check"
                             checked={isEditing}
                             onChange={updateEditing}
                         />
-                    </Col>
-                </Row>
+                    </td>
+                </>
             ) : (
-                <Row>
-                    <Col>{courseIdentity}</Col>
-                    <Col>{name}</Col>
-                    <Col>{credits}</Col>
-                    <Col>
+                <>
+                    <td>{courseIdentity}</td>
+                    <td>{name}</td>
+                    <td>{credits}</td>
+                    <td>
                         <Form.Check
                             type="checkbox"
                             id="is-editing-check"
                             checked={isEditing}
                             onChange={updateEditing}
                         />
-                    </Col>
-                </Row>
+                    </td>
+                </>
             )}
-        </div>
+        </>
     );
 }
