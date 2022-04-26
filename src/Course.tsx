@@ -1,37 +1,40 @@
-import React from "react";
+import React, { useState } from "react";
 import { Course } from "./Planner-Interfaces/course";
 import { Row, Col, Form } from "react-bootstrap";
+import { Plan } from "./Planner-Interfaces/plan";
+import { Semester } from "./Planner-Interfaces/semester";
 
 export function DisplayCourse({
-    credits,
-    setCredits,
-    name,
-    setName,
-    preReqCourse,
-    setPreReqCourse,
-    setIsEditing,
-    isEditing,
-    courseIdentity,
-    setCourseIdentity,
-    isPreReq,
-    setIsPreReq
+    existingCourse,
+    semester,
+    plan,
+    updatePlan
 }: {
     existingCourse: Course;
-    isEditing: boolean;
-    name: string;
-    courseIdentity: string;
-    credits: number;
-    preReqCourse: string;
-    isPreReq: boolean;
-    setCredits: (credits: number) => void;
-    setName: (name: string) => void;
-    setPreReqCourse: (preReq: string) => void;
-    setIsEditing: (editing: boolean) => void;
-    setCourseIdentity: (courseIdentity: string) => void;
-    setIsPreReq: (isPreReq: boolean) => void;
+    semester: Semester;
+    plan: Plan;
+    updatePlan: (plan: Plan) => void;
 }): JSX.Element {
-    function updatePreReqCourse(event: React.ChangeEvent<HTMLInputElement>) {
-        setPreReqCourse(event.target.value);
+    const [courseIdentity, setCourseIdentity] = useState<string>(
+        existingCourse.courseId
+    );
+    const [isEditing, setIsEditing] = useState<boolean>(false);
+    const [credits, setCredits] = useState<number>(existingCourse.credits);
+    const [name, setName] = useState<string>(existingCourse.name);
+
+    function editCourse(course: Course) {
+        const replace = semester.courses.findIndex(
+            (course2: Course) => course2.id === course.id
+        );
+        const newCourses = [...semester.courses];
+        newCourses.splice(replace, 1, course);
+        const newSem = plan.semester.map(
+            (sem: Semester): Semester =>
+                sem.id === semester.id
+                    ? { ...sem, courses: newCourses }
+                    : { ...sem }
+        );
+        updatePlan({ ...plan, semester: newSem });
     }
 
     function updateCourseIdentity(event: React.ChangeEvent<HTMLInputElement>) {
@@ -40,6 +43,13 @@ export function DisplayCourse({
 
     function updateEditing(event: React.ChangeEvent<HTMLInputElement>) {
         setIsEditing(event.target.checked);
+        editCourse({
+            id: existingCourse.id,
+            name: name,
+            credits: credits,
+            courseId: courseIdentity,
+            prereq: existingCourse.prereq
+        });
     }
 
     function updateCourseName(event: React.ChangeEvent<HTMLInputElement>) {
@@ -47,10 +57,6 @@ export function DisplayCourse({
     }
     function updateCredits(event: React.ChangeEvent<HTMLInputElement>) {
         setCredits(parseInt(event.target.value));
-    }
-
-    function updateIsPreReq(event: React.ChangeEvent<HTMLInputElement>) {
-        setIsPreReq(event.target.checked);
     }
 
     return (
@@ -86,20 +92,11 @@ export function DisplayCourse({
                         </Form.Group>
                     </Col>
                     <Col>
-                        <Form.Group className="mb-3" controlId="courseCredits">
-                            <Form.Label>Prerequsite: </Form.Label>
-                            <Form.Control
-                                value={preReqCourse}
-                                onChange={updatePreReqCourse}
-                            />
-                        </Form.Group>
-                    </Col>
-                    <Col>
                         <Form.Check
                             type="checkbox"
                             id="is-editing-check"
-                            checked={isPreReq}
-                            onChange={updateIsPreReq}
+                            checked={isEditing}
+                            onChange={updateEditing}
                         />
                     </Col>
                 </Row>
