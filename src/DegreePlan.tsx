@@ -65,6 +65,7 @@ export function DegreePlan({
             ]
         });
     }
+
     return (
         <div>
             <h4>{plan.name}</h4>
