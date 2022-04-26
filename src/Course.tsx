@@ -48,7 +48,7 @@ export function DisplayCourse({
             name: name,
             credits: credits,
             courseId: courseIdentity,
-            prereq: existingCourse.prereq
+            preReq: existingCourse.preReq
         });
     }
 
