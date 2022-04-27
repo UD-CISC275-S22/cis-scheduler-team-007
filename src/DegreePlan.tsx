@@ -9,12 +9,15 @@ import { DisplaySemester } from "./semester-table";
 export function DegreePlan({
     degreePlans,
     setDegreePlans,
-    currentPlan
+    currentPlan,
+    saveData
 }: {
     degreePlans: Plan[];
     setDegreePlans: (newDegreePlans: Plan[]) => void;
     currentPlan: Plan;
+    saveData: () => void;
 }): JSX.Element {
+    saveData();
     const [DegreeReq_View_State, toggleDegreeReqView] = useState(false);
     const [plan, setPlan] = useState<Plan>(currentPlan);
     function insertSemester(id: string) {
