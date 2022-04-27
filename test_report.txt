@@ -47,11 +47,11 @@ PASS src/Messaging.test.tsx
 ------------------------|---------|----------|---------|---------|-------------------
 File                    | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
 ------------------------|---------|----------|---------|---------|-------------------
-All files               |    1.07 |     1.38 |    3.57 |    1.08 |                   
- src                    |    1.07 |     1.38 |    3.57 |    1.08 |                   
-  App.tsx               |       0 |        0 |       0 |       0 | 9-116             
+All files               |    1.05 |     1.36 |     3.5 |    1.06 |                   
+ src                    |    1.05 |     1.36 |     3.5 |    1.06 |                   
+  App.tsx               |       0 |        0 |       0 |       0 | 8-128             
   Course.tsx            |       0 |        0 |       0 |       0 | 18-62             
-  DegreePlan.tsx        |       0 |      100 |       0 |       0 | 18-90             
+  DegreePlan.tsx        |       0 |      100 |       0 |       0 | 20-93             
   Messaging.tsx         |     100 |      100 |     100 |     100 |                   
   basicsem.ts           |       0 |      100 |     100 |       0 | 4                 
   createId.ts           |       0 |      100 |       0 |       0 | 2-11              
@@ -68,5 +68,5 @@ All files               |    1.07 |     1.38 |    3.57 |    1.08 |
 Test Suites: 2 failed, 1 passed, 3 total
 Tests:       2 passed, 2 total
 Snapshots:   0 total
-Time:        4.598 s
+Time:        4.637 s
 Ran all test suites.
