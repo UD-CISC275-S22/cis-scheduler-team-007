@@ -5,61 +5,70 @@ import { makeId } from "./createId";
 import { DegreePlan } from "./DegreePlan";
 import { Plan } from "./Planner-Interfaces/plan";
 
+let defaultPlans = [
+    {
+        id: "Special",
+        name: "No Plan Selected",
+        semester: [],
+        requiredCourses: []
+    },
+    {
+        id: "1",
+        name: "Test1",
+        semester: [
+            {
+                id: makeId(),
+                name: "Test Sem",
+                year: 2020,
+                courses: [
+                    {
+                        id: makeId(),
+                        name: "Test",
+                        credits: 125,
+                        courseId: "CISC 108",
+                        preReq: ""
+                    }
+                ],
+                season: "",
+                credits: 0
+            }
+        ],
+        requiredCourses: []
+    },
+    {
+        id: "2",
+        name: "Test2",
+        semester: [
+            {
+                id: makeId(),
+                name: "Test Sem",
+                year: 2020,
+                courses: [
+                    {
+                        id: makeId(),
+                        name: "Test",
+                        credits: 123,
+                        courseId: "CISC 108",
+                        preReq: ""
+                    }
+                ],
+                season: "",
+                credits: 0
+            }
+        ],
+        requiredCourses: []
+    }
+];
+const saveDataKey = "CISC-DEGREE-PLANNER-DATA";
+// Check if the user's data already exists
+const previousData = localStorage.getItem(saveDataKey);
+// If the data doesn't exist, `getItem` returns null
+if (previousData !== null) {
+    defaultPlans = JSON.parse(previousData);
+}
+
 function App(): JSX.Element {
-    const [degreePlans, setDegreePlans] = useState<Plan[]>([
-        {
-            id: "Special",
-            name: "No Plan Selected",
-            semester: [],
-            requiredCourses: []
-        },
-        {
-            id: "1",
-            name: "Test1",
-            semester: [
-                {
-                    id: makeId(),
-                    name: "Test Sem",
-                    year: 2020,
-                    courses: [
-                        {
-                            id: makeId(),
-                            name: "Test",
-                            credits: 125,
-                            courseId: "CISC 108",
-                            preReq: ""
-                        }
-                    ],
-                    season: "",
-                    credits: 0
-                }
-            ],
-            requiredCourses: []
-        },
-        {
-            id: "2",
-            name: "Test2",
-            semester: [
-                {
-                    id: makeId(),
-                    name: "Test Sem",
-                    year: 2020,
-                    courses: [
-                        {
-                            id: makeId(),
-                            name: "Test",
-                            credits: 123,
-                            courseId: "CISC 108",
-                            preReq: ""
-                        }
-                    ],
-                    season: "",
-                    credits: 0
-                }
-            ],
-            requiredCourses: []
-        }
-    ]);
+    const [degreePlans, setDegreePlans] = useState<Plan[]>(defaultPlans);
     const [selectedPlan, setSelectedPlan] = useState<Plan>(degreePlans[1]);
     function updateSelectedPlan(event: React.ChangeEvent<HTMLSelectElement>) {
         setSelectedPlan(
@@ -69,6 +78,9 @@ function App(): JSX.Element {
                 )
             ]
         );
+    }
+    function saveData() {
+        localStorage.setItem(saveDataKey, JSON.stringify(degreePlans));
     }
     function addPlan() {
         const newPlan = {
@@ -129,6 +141,7 @@ function App(): JSX.Element {
                     degreePlans={degreePlans}
                     setDegreePlans={setDegreePlans}
                     currentPlan={selectedPlan}
+                    saveData={saveData}
                 ></DegreePlan>
             ) : (
                 <h4>No Plan Selected</h4>

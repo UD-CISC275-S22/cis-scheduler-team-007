@@ -29,6 +29,9 @@ describe("DegreePlan Component Tests", () => {
                     semester: [],
                     requiredCourses: []
                 }}
+                saveData={function (): void {
+                    throw new Error("Function not implemented.");
+                }}
             />
         );
     });
