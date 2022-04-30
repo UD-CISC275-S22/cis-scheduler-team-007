@@ -28,13 +28,13 @@ export function DisplayCourse({
         );
         const newCourses = [...semester.courses];
         newCourses.splice(replace, 1, course);
-        const newSem = plan.semester.map(
+        const newSem = plan.semesters.map(
             (sem: Semester): Semester =>
                 sem.id === semester.id
                     ? { ...sem, courses: newCourses }
                     : { ...sem }
         );
-        updatePlan({ ...plan, semester: newSem });
+        updatePlan({ ...plan, semesters: newSem });
     }
 
     function updateCourseIdentity(event: React.ChangeEvent<HTMLInputElement>) {
