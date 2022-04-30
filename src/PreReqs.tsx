@@ -9,9 +9,11 @@ export function PreReqs({
     allSemesters: Semester[];
     semester: Semester;
 }): JSX.Element {
-    console.log(semester.courses);
     const failedPreReqs: string[] = [];
     function checkCoursePreReq(course: Course) {
+        if (course.preReq === "") {
+            return;
+        }
         let pastCurrentSem = false;
         let foundPreReq = false;
         allSemesters.forEach((sem: Semester) => {
@@ -19,20 +21,17 @@ export function PreReqs({
                 pastCurrentSem = true;
             }
             if (pastCurrentSem) {
-                if (!foundPreReq) {
-                    failedPreReqs.push(
-                        course.courseId + " requires " + course.preReq
-                    );
-                }
                 return;
             }
             sem.courses.forEach((prevCourse: Course) => {
-                if (course.preReq.includes(prevCourse.courseId)) {
+                if (course.preReq.search(prevCourse.courseId) !== -1) {
                     foundPreReq = true;
                 }
             });
         });
-        console.log(failedPreReqs);
+        if (!foundPreReq) {
+            failedPreReqs.push(course.courseId + " requires " + course.preReq);
+        }
     }
     semester.courses.forEach((curCourse: Course) =>
         checkCoursePreReq(curCourse)
@@ -40,7 +39,7 @@ export function PreReqs({
     return (
         <div>
             {failedPreReqs.map((missingReq: string) => (
-                <span key={missingReq}>{missingReq}</span>
+                <p key={missingReq}>{missingReq}</p>
             ))}
         </div>
     );
