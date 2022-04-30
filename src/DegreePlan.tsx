@@ -21,27 +21,27 @@ export function DegreePlan({
     const [DegreeReq_View_State, toggleDegreeReqView] = useState(false);
     const [plan, setPlan] = useState<Plan>(currentPlan);
     function insertSemester(id: string) {
-        const newSemesters = plan.semester;
+        const newSemesters = plan.semesters;
         const insertIndex =
             newSemesters.findIndex((semester: Semester) => semester.id === id) +
             1;
         newSemesters.splice(insertIndex, 0, {
             id: makeId(),
-            name: "Copy of " + plan.semester[insertIndex - 1].name,
-            year: plan.semester[insertIndex - 1].year,
+            name: "Copy of " + plan.semesters[insertIndex - 1].name,
+            year: plan.semesters[insertIndex - 1].year,
             courses: [],
             season: "",
             credits: 0
         });
-        setPlan({ ...plan, semester: newSemesters });
+        setPlan({ ...plan, semesters: newSemesters });
     }
     function deleteSemester(id: string) {
-        const newSemesters = plan.semester;
+        const newSemesters = plan.semesters;
         newSemesters.splice(
             newSemesters.findIndex((semester: Semester) => semester.id === id),
             1
         );
-        setPlan({ ...plan, semester: newSemesters });
+        setPlan({ ...plan, semesters: newSemesters });
     }
     function saveChanges() {
         const replaceIndex = degreePlans.findIndex(
@@ -52,13 +52,13 @@ export function DegreePlan({
         setDegreePlans(newDegreePlans);
     }
     function clearAllSemesters() {
-        setPlan({ ...plan, semester: [] });
+        setPlan({ ...plan, semesters: [] });
     }
     function addSemester() {
         setPlan({
             ...plan,
-            semester: [
-                ...plan.semester,
+            semesters: [
+                ...plan.semesters,
                 {
                     id: makeId(),
                     name: "Fall",
@@ -73,7 +73,7 @@ export function DegreePlan({
     return (
         <div>
             <h4>{plan.name}</h4>
-            {plan.semester.map((semester: Semester) => (
+            {plan.semesters.map((semester: Semester) => (
                 <div key={semester.id}>
                     <DisplaySemester
                         semester={semester}
@@ -97,7 +97,7 @@ export function DegreePlan({
             <DegreeRequirements_Section
                 show={DegreeReq_View_State}
                 setShow={toggleDegreeReqView}
-                userSemesters={plan.semester}
+                userSemesters={plan.semesters}
             ></DegreeRequirements_Section>
         </div>
     );
