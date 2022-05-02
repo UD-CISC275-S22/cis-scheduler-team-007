@@ -21,6 +21,7 @@ export function DisplayCourse({
     const [isEditing, setIsEditing] = useState<boolean>(false);
     const [credits, setCredits] = useState<number>(existingCourse.credits);
     const [name, setName] = useState<string>(existingCourse.name);
+    const [preReqs, setPreReqs] = useState<string>(existingCourse.preReq);
 
     function editCourse(course: Course) {
         const replace = semester.courses.findIndex(
@@ -28,17 +29,21 @@ export function DisplayCourse({
         );
         const newCourses = [...semester.courses];
         newCourses.splice(replace, 1, course);
-        const newSem = plan.semester.map(
+        const newSem = plan.semesters.map(
             (sem: Semester): Semester =>
                 sem.id === semester.id
                     ? { ...sem, courses: newCourses }
                     : { ...sem }
         );
-        updatePlan({ ...plan, semester: newSem });
+        updatePlan({ ...plan, semesters: newSem });
     }
 
     function updateCourseIdentity(event: React.ChangeEvent<HTMLInputElement>) {
         setCourseIdentity(event.target.value);
+    }
+
+    function updatePreReq(event: React.ChangeEvent<HTMLInputElement>) {
+        setPreReqs(event.target.value);
     }
 
     function updateEditing(event: React.ChangeEvent<HTMLInputElement>) {
@@ -48,7 +53,7 @@ export function DisplayCourse({
             name: name,
             credits: credits,
             courseId: courseIdentity,
-            preReq: existingCourse.preReq
+            preReq: preReqs
         });
     }
 
@@ -88,6 +93,15 @@ export function DisplayCourse({
                                 type="number"
                                 value={credits}
                                 onChange={updateCredits}
+                            />
+                        </Form.Group>
+                    </td>
+                    <td>
+                        <Form.Group className="mb-3" controlId="coursePreReqs">
+                            <Form.Label>PreReqs: </Form.Label>
+                            <Form.Control
+                                value={preReqs}
+                                onChange={updatePreReq}
                             />
                         </Form.Group>
                     </td>

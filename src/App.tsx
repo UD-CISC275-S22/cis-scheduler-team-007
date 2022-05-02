@@ -9,13 +9,13 @@ let defaultPlans = [
     {
         id: "Special",
         name: "No Plan Selected",
-        semester: [],
+        semesters: [],
         requiredCourses: []
     },
     {
         id: "1",
         name: "Test1",
-        semester: [
+        semesters: [
             {
                 id: makeId(),
                 name: "Test Sem",
@@ -26,7 +26,7 @@ let defaultPlans = [
                         name: "Test",
                         credits: 125,
                         courseId: "CISC 108",
-                        preReq: ""
+                        preReq: "THIS COURSE"
                     }
                 ],
                 season: "",
@@ -38,7 +38,7 @@ let defaultPlans = [
     {
         id: "2",
         name: "Test2",
-        semester: [
+        semesters: [
             {
                 id: makeId(),
                 name: "Test Sem",
@@ -69,7 +69,7 @@ if (previousData !== null) {
 
 function App(): JSX.Element {
     const [degreePlans, setDegreePlans] = useState<Plan[]>(defaultPlans);
-    const [selectedPlan, setSelectedPlan] = useState<Plan>(degreePlans[1]);
+    const [selectedPlan, setSelectedPlan] = useState<Plan>(degreePlans[0]);
     function updateSelectedPlan(event: React.ChangeEvent<HTMLSelectElement>) {
         setSelectedPlan(
             degreePlans[
@@ -86,7 +86,7 @@ function App(): JSX.Element {
         const newPlan = {
             id: makeId(),
             name: "New Plan",
-            semester: [],
+            semesters: [],
             requiredCourses: []
         };
         setDegreePlans([...degreePlans, newPlan]);

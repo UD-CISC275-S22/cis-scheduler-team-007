@@ -10,13 +10,13 @@ describe("DegreePlan Component Tests", () => {
                     {
                         id: "1",
                         name: "Test1",
-                        semester: [],
+                        semesters: [],
                         requiredCourses: []
                     },
                     {
                         id: "2",
                         name: "Test2",
-                        semester: [],
+                        semesters: [],
                         requiredCourses: []
                     }
                 ]}
@@ -26,7 +26,7 @@ describe("DegreePlan Component Tests", () => {
                 currentPlan={{
                     id: "1",
                     name: "Test1",
-                    semester: [],
+                    semesters: [],
                     requiredCourses: []
                 }}
                 saveData={function (): void {
