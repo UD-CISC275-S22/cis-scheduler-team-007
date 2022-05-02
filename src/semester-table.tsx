@@ -55,6 +55,7 @@ export function DisplaySemester({
     }
     return (
         <table className="Table-Header">
+            <h4>{semester.name}</h4>
             <tr>
                 <th>Course</th>
                 <th>Course Name</th>

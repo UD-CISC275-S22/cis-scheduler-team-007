@@ -72,7 +72,7 @@ export function DegreePlan({
     }
     return (
         <div>
-            <h4>{plan.name}</h4>
+            <h1>{plan.name}</h1>
             {plan.semesters.map((semester: Semester) => (
                 <div key={semester.id}>
                     <DisplaySemester

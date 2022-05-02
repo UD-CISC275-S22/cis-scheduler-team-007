@@ -30,7 +30,7 @@ describe("DegreePlan Component Tests", () => {
                     requiredCourses: []
                 }}
                 saveData={function (): void {
-                    throw new Error("Function not implemented.");
+                    return;
                 }}
             />
         );
