@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
 import { makeId } from "./createId";
 import { DegreeRequirements_Section } from "./degree";
 import { Plan } from "./Planner-Interfaces/plan";
@@ -18,6 +18,7 @@ export function DegreePlan({
     saveData: () => void;
 }): JSX.Element {
     saveData();
+    const [edit, setEdit] = useState<boolean>(false);
     const [DegreeReq_View_State, toggleDegreeReqView] = useState(false);
     const [plan, setPlan] = useState<Plan>(currentPlan);
     function insertSemester(id: string) {
@@ -70,9 +71,25 @@ export function DegreePlan({
             ]
         });
     }
+    function editPlanName(event: React.ChangeEvent<HTMLInputElement>) {
+        setPlan({ ...plan, name: event.target.value });
+    }
     return (
         <div>
-            <h1>{plan.name}</h1>
+            {edit ? (
+                <Form.Group className="degreeName" controlId="planName">
+                    <Form.Label>Name of Plan: </Form.Label>
+                    <Form.Control value={plan.name} onChange={editPlanName} />
+                </Form.Group>
+            ) : (
+                <h1>{plan.name}</h1>
+            )}
+            <Form.Check
+                type="checkbox"
+                id="is-editing-plan"
+                checked={edit}
+                onChange={() => setEdit(!edit)}
+            />
             {plan.semesters.map((semester: Semester) => (
                 <div key={semester.id}>
                     <DisplaySemester
