@@ -3,6 +3,17 @@ import { Course } from "./Planner-Interfaces/course";
 import { Form } from "react-bootstrap";
 import { Plan } from "./Planner-Interfaces/plan";
 import { Semester } from "./Planner-Interfaces/semester";
+import classesExamples from "./CISC-Courses-data/catalog.json";
+
+const courseList = classesExamples.map(
+    (course): Course => ({
+        id: course.id,
+        name: course.name,
+        credits: parseInt(course.credits),
+        courseId: course.id,
+        preReq: course.prereqs
+    })
+);
 
 export function DisplayCourse({
     existingCourse,
@@ -39,11 +50,13 @@ export function DisplayCourse({
     }
 
     function updateCourseIdentity(event: React.ChangeEvent<HTMLInputElement>) {
+        const newCourse = courseList.findIndex(
+            (course: Course) => course.id === event.target.value
+        );
         setCourseIdentity(event.target.value);
-    }
-
-    function updatePreReq(event: React.ChangeEvent<HTMLInputElement>) {
-        setPreReqs(event.target.value);
+        setCredits(courseList[newCourse].credits);
+        setName(courseList[newCourse].name);
+        setPreReqs(courseList[newCourse].preReq);
     }
 
     function updateEditing(event: React.ChangeEvent<HTMLInputElement>) {
@@ -63,15 +76,32 @@ export function DisplayCourse({
     function updateCredits(event: React.ChangeEvent<HTMLInputElement>) {
         setCredits(parseInt(event.target.value));
     }
+    function updatePreReqs(event: React.ChangeEvent<HTMLInputElement>) {
+        setPreReqs(event.target.value);
+    }
 
     return (
         <>
             {isEditing ? (
                 <>
                     <td>
-                        <Form.Group className="mb-3" controlId="courseID">
-                            <Form.Label>CourseID: </Form.Label>
+                        <Form.Group className="mb-3" id="courseID">
+                            <datalist id="courseIDs">
+                                {courseList.map(
+                                    (
+                                        course: Course //will need to change to course.courseID
+                                    ) => (
+                                        <option key={course.id}>
+                                            {course.id}
+                                        </option>
+                                    )
+                                )}
+                            </datalist>
+                            <Form.Label htmlFor="courseID">
+                                CourseID:{" "}
+                            </Form.Label>
                             <Form.Control
+                                list="courseIDs"
                                 value={courseIdentity}
                                 onChange={updateCourseIdentity}
                             />
@@ -101,7 +131,7 @@ export function DisplayCourse({
                             <Form.Label>PreReqs: </Form.Label>
                             <Form.Control
                                 value={preReqs}
-                                onChange={updatePreReq}
+                                onChange={updatePreReqs}
                             />
                         </Form.Group>
                     </td>
