@@ -7,6 +7,7 @@ import { makeId } from "./createId";
 import { Form } from "react-bootstrap";
 import { DisplayCourse } from "./Course";
 import classesExamples from "./CISC-Courses-data/catalog.json";
+import { PreReqs } from "./PreReqs";
 interface thisSemester {
     semester: Semester;
     plan: Plan;
@@ -198,6 +199,10 @@ export function DisplaySemester({
                 <Button onClick={() => removeAllCourses()}>
                     Remove All Courses
                 </Button>
+                <PreReqs
+                    allSemesters={plan.semesters}
+                    semester={semester}
+                ></PreReqs>
             </table>
         </>
     );
