@@ -1,7 +1,8 @@
 import { DisplayCourse } from "./Course";
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import { keyboard } from "@testing-library/user-event/dist/keyboard";
 
 describe("Display Course Test", () => {
     beforeEach(() => {
@@ -64,5 +65,17 @@ describe("Display Course Test", () => {
         changed.click();
         /*const nameBox = screen.getByRole("textbox");
         userEvent.type(nameBox, "courseName");*/
+    });
+    test("Unchecking the textbox renders the new edits of the course", () => {
+        const results = screen.getByRole("checkbox");
+        results.click();
+        const courseIdentity = screen.getAllByRole("textbox");
+        expect(courseIdentity).toHaveLength(2);
+        fireEvent.change(courseIdentity[0], {
+            target: { value: "CISC 108 - Introduction to Computer Science I" }
+        });
+        fireEvent.change(courseIdentity[1], {
+            target: { value: "4" }
+        });
     });
 });
