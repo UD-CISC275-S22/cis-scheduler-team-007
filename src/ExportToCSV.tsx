@@ -6,14 +6,14 @@ import { Button } from "react-bootstrap";
 import { CSVLink } from "react-csv";
 
 export function ExportToCSV({ degreePlan }: { degreePlan: Plan }): JSX.Element {
-    const [planContent, setPlanContent] = useState<Plan>(degreePlan);
+    const [planContent] = useState<Plan>(degreePlan);
     function mapOutCourses() {
         const theCourses = planContent.semesters.map(
             (semester: Semester): string => {
                 return semester.courses
                     .map(
                         (course: Course): string =>
-                            `${course.id} ${course.courseId} ${course.credits} ${course.name} ${course.preReq}`
+                            `${course.id}, ${course.courseId}, ${course.credits}, ${course.name}, ${course.preReq}`
                     )
                     .join("$");
             }
@@ -22,31 +22,39 @@ export function ExportToCSV({ degreePlan }: { degreePlan: Plan }): JSX.Element {
     }
 
     /*`"${course.id}, ${course.name}, ${course.credits}, ${course.courseId}, ${course.preReq}"`*/
-    const exclusiveContent = planContent.semesters.map(
-        (semesters): string =>
-            `${semesters.id},
-            ${semesters.name},
-            ${semesters.year},
-            ${mapOutCourses()},
-            ${semesters.season},
-            ${semesters.credits}`
-    );
 
-    function download({ DegreePlan: Plan }, exclusiveContent, Plan) {
-        const blobbed = new Blob([degreePlan], { type: Plan });
+    function download() {
+        const exclusiveContent = planContent.semesters
+            .map(
+                (semesters): string =>
+                    `${semesters.id},
+                ${semesters.name},
+                ${semesters.year},
+                ${mapOutCourses()},
+                ${semesters.season},
+                ${semesters.credits}`
+            )
+            .join("\n");
+        const blobbed = new Blob([exclusiveContent], {
+            type: "text/csv;charset=utf-8;"
+        });
         const url = URL.createObjectURL(blobbed);
-
-        let linkUp = document.createElement("a");
-        linkUp = url;
+        const linkUp = document.createElement("a");
+        linkUp.setAttribute("href", url);
         linkUp.setAttribute("download", exclusiveContent);
         linkUp.click();
     }
-
-    const theCSV = exclusiveContent.join("\n");
+    function mapNDownload() {
+        download();
+    }
     return (
         <div>
-            <Button onClick={() => mapOutCourses()}>Export to CSV</Button>
-
+            <Button onClick={mapNDownload}>Export to CSV</Button>
+            <CSVLink
+                data={mapNDownload}
+                fileName="ClassData.csv"
+                className="hidden"
+            />
         </div>
     );
 }
