@@ -21,20 +21,20 @@ export function DisplaySemester({
         const newCourses = semester.courses.filter(
             (course: Course): boolean => course.id !== id
         );
-        const newSem = plan.semester.map(
+        const newSem = plan.semesters.map(
             (sem: Semester): Semester =>
                 sem.id === semester.id
                     ? { ...sem, courses: newCourses }
                     : { ...sem }
         );
-        updatePlan({ ...plan, semester: newSem });
+        updatePlan({ ...plan, semesters: newSem });
     }
     function removeAllCourses() {
-        const newSem = plan.semester.map(
+        const newSem = plan.semesters.map(
             (sem: Semester): Semester =>
                 sem.id === semester.id ? { ...sem, courses: [] } : { ...sem }
         );
-        updatePlan({ ...plan, semester: newSem });
+        updatePlan({ ...plan, semesters: newSem });
     }
     function addCourse() {
         const newCourses = {
@@ -44,13 +44,13 @@ export function DisplaySemester({
             courseId: "NEW",
             preReq: ""
         };
-        const newSem = plan.semester.map(
+        const newSem = plan.semesters.map(
             (sem: Semester): Semester =>
                 sem.id === semester.id
                     ? { ...sem, courses: [...sem.courses, newCourses] }
                     : { ...sem }
         );
-        updatePlan({ ...plan, semester: newSem });
+        updatePlan({ ...plan, semesters: newSem });
     }
     return (
         <table className="Table-Header">
