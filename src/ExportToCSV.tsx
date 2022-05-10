@@ -3,7 +3,7 @@ import { Plan } from "./Planner-Interfaces/plan";
 import { Course } from "./Planner-Interfaces/course";
 import { Semester } from "./Planner-Interfaces/semester";
 import { Button } from "react-bootstrap";
-import { CSVLink } from "react-csv";
+//import { CSVLink } from "react-csv";
 
 export function ExportToCSV({ degreePlan }: { degreePlan: Plan }): JSX.Element {
     const [planContent] = useState<Plan>(degreePlan);
@@ -50,11 +50,6 @@ export function ExportToCSV({ degreePlan }: { degreePlan: Plan }): JSX.Element {
     return (
         <div>
             <Button onClick={mapNDownload}>Export to CSV</Button>
-            <CSVLink
-                data={mapNDownload}
-                fileName="ClassData.csv"
-                className="hidden"
-            />
         </div>
     );
 }
