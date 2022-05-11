@@ -4,71 +4,21 @@ import "./App.css";
 import { makeId } from "./createId";
 import { DegreePlan } from "./DegreePlan";
 import { Plan } from "./Planner-Interfaces/plan";
+import DefaultPlans from "./Plans/DefaultPlans.json";
 
-let defaultPlans = [
-    {
-        id: "Special",
-        name: "No Plan Selected",
-        semester: [],
-        requiredCourses: []
-    },
-    {
-        id: "1",
-        name: "Test1",
-        semester: [
-            {
-                id: makeId(),
-                name: "Test Sem",
-                year: 2020,
-                courses: [
-                    {
-                        id: makeId(),
-                        name: "Test",
-                        credits: 125,
-                        courseId: "CISC 108",
-                        preReq: ""
-                    }
-                ],
-                season: "",
-                credits: 0
-            }
-        ],
-        requiredCourses: []
-    },
-    {
-        id: "2",
-        name: "Test2",
-        semester: [
-            {
-                id: makeId(),
-                name: "Test Sem",
-                year: 2020,
-                courses: [
-                    {
-                        id: makeId(),
-                        name: "Test",
-                        credits: 123,
-                        courseId: "CISC 108",
-                        preReq: ""
-                    }
-                ],
-                season: "",
-                credits: 0
-            }
-        ],
-        requiredCourses: []
-    }
-];
+let defaulted = DefaultPlans.defaultPlans.map(
+    (plan: Plan): Plan => ({ ...plan, id: makeId() })
+);
 const saveDataKey = "CISC-DEGREE-PLANNER-DATA";
 // Check if the user's data already exists
 const previousData = localStorage.getItem(saveDataKey);
 // If the data doesn't exist, `getItem` returns null
 if (previousData !== null) {
-    defaultPlans = JSON.parse(previousData);
+    defaulted = JSON.parse(previousData);
 }
 
 function App(): JSX.Element {
-    const [degreePlans, setDegreePlans] = useState<Plan[]>(defaultPlans);
+    const [degreePlans, setDegreePlans] = useState<Plan[]>(defaulted);
     const [selectedPlan, setSelectedPlan] = useState<Plan>(degreePlans[1]);
     function updateSelectedPlan(event: React.ChangeEvent<HTMLSelectElement>) {
         setSelectedPlan(
@@ -86,7 +36,7 @@ function App(): JSX.Element {
         const newPlan = {
             id: makeId(),
             name: "New Plan",
-            semester: [],
+            semesters: [],
             requiredCourses: []
         };
         setDegreePlans([...degreePlans, newPlan]);
