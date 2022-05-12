@@ -1,12 +1,6 @@
 {
     "defaultPlans":[
         {
-            "id": "Special",
-            "name": "No Plan Selected",
-            "semesters": [],
-            "requiredCourses": []
-        },
-        {
             "id": "1",
             "name": "Test1",
             "semesters": [

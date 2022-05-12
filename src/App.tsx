@@ -41,9 +41,6 @@ function App(): JSX.Element {
         setSelectedPlan(degreePlans.length - 1);
     }
     function deletePlan() {
-        if (degreePlans[selectedPlan].id === "Special") {
-            return;
-        }
         const newDegreePlans = [...degreePlans];
         newDegreePlans.splice(
             degreePlans.findIndex(
@@ -52,7 +49,7 @@ function App(): JSX.Element {
             1
         );
         setDegreePlans(newDegreePlans);
-        setSelectedPlan(0);
+        setSelectedPlan(-1);
     }
 
     return (
@@ -71,9 +68,14 @@ function App(): JSX.Element {
             <Form.Group controlId="userPlans">
                 <Form.Label>Select Degree Plan:</Form.Label>
                 <Form.Select
-                    value={degreePlans[selectedPlan].id}
+                    value={
+                        selectedPlan === -1
+                            ? "-No Plan Selected-"
+                            : degreePlans[selectedPlan].id
+                    }
                     onChange={updateSelectedPlan}
                 >
+                    <option value={"Special"}>-No Plan Selected-</option>
                     {degreePlans.map((plan: Plan) => (
                         <option key={plan.id} value={plan.id}>
                             {plan.name}
@@ -85,7 +87,7 @@ function App(): JSX.Element {
                 Add New Plan
             </Button>
             <Button onClick={deletePlan}>Delete Selected Plan</Button>
-            {degreePlans[selectedPlan].id !== "Special" ? (
+            {selectedPlan !== -1 ? (
                 <DegreePlan
                     key={degreePlans[selectedPlan].id}
                     degreePlans={degreePlans}
