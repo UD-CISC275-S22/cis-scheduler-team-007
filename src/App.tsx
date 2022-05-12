@@ -19,14 +19,12 @@ if (previousData !== null) {
 
 function App(): JSX.Element {
     const [degreePlans, setDegreePlans] = useState<Plan[]>(defaulted);
-    const [selectedPlan, setSelectedPlan] = useState<Plan>(degreePlans[1]);
+    const [selectedPlan, setSelectedPlan] = useState<number>(1);
     function updateSelectedPlan(event: React.ChangeEvent<HTMLSelectElement>) {
         setSelectedPlan(
-            degreePlans[
-                degreePlans.findIndex(
-                    (plan: Plan) => plan.id === event.target.value
-                )
-            ]
+            degreePlans.findIndex(
+                (plan: Plan) => plan.id === event.target.value
+            )
         );
     }
     function saveData() {
@@ -40,19 +38,21 @@ function App(): JSX.Element {
             requiredCourses: []
         };
         setDegreePlans([...degreePlans, newPlan]);
-        setSelectedPlan(newPlan);
+        setSelectedPlan(degreePlans.length - 1);
     }
     function deletePlan() {
-        if (selectedPlan.id === "Special") {
+        if (degreePlans[selectedPlan].id === "Special") {
             return;
         }
         const newDegreePlans = [...degreePlans];
         newDegreePlans.splice(
-            degreePlans.findIndex((plan: Plan) => plan.id === selectedPlan.id),
+            degreePlans.findIndex(
+                (plan: Plan) => plan.id === degreePlans[selectedPlan].id
+            ),
             1
         );
         setDegreePlans(newDegreePlans);
-        setSelectedPlan(degreePlans[0]);
+        setSelectedPlan(0);
     }
 
     return (
@@ -71,7 +71,7 @@ function App(): JSX.Element {
             <Form.Group controlId="userPlans">
                 <Form.Label>Select Degree Plan:</Form.Label>
                 <Form.Select
-                    value={selectedPlan?.id}
+                    value={degreePlans[selectedPlan].id}
                     onChange={updateSelectedPlan}
                 >
                     {degreePlans.map((plan: Plan) => (
@@ -85,12 +85,12 @@ function App(): JSX.Element {
                 Add New Plan
             </Button>
             <Button onClick={deletePlan}>Delete Selected Plan</Button>
-            {selectedPlan.id !== "Special" ? (
+            {degreePlans[selectedPlan].id !== "Special" ? (
                 <DegreePlan
-                    key={selectedPlan.id}
+                    key={degreePlans[selectedPlan].id}
                     degreePlans={degreePlans}
                     setDegreePlans={setDegreePlans}
-                    currentPlan={selectedPlan}
+                    currentPlan={degreePlans[selectedPlan]}
                     saveData={saveData}
                 ></DegreePlan>
             ) : (
