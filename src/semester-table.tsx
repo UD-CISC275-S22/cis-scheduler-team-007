@@ -171,7 +171,6 @@ export function DisplaySemester({
                     <th>Credits</th>
                     <th>Edit Course</th>
                     <th>Delete Course</th>
-                    <th>Reset Course</th>
                 </tr>
                 {semester.courses.map((course: Course) => {
                     return (
@@ -185,11 +184,6 @@ export function DisplaySemester({
                             <td>
                                 <Button onClick={() => deleteCourse(course.id)}>
                                     Remove Course
-                                </Button>
-                            </td>
-                            <td>
-                                <Button onClick={() => updateCourseIdentity}>
-                                    Reset Course
                                 </Button>
                             </td>
                         </tr>

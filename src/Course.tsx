@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Course } from "./Planner-Interfaces/course";
-import { Form } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
 import { Plan } from "./Planner-Interfaces/plan";
 import { Semester } from "./Planner-Interfaces/semester";
 import classesExamples from "./CISC-Courses-data/catalog.json";
@@ -59,8 +59,8 @@ export function DisplayCourse({
         setPreReqs(courseList[newCourse].preReq);
     }
 
-    function updateEditing(event: React.ChangeEvent<HTMLInputElement>) {
-        setIsEditing(event.target.checked);
+    function updateEditing() {
+        setIsEditing(false);
         editCourse({
             id: existingCourse.id,
             name: name,
@@ -68,6 +68,14 @@ export function DisplayCourse({
             courseId: courseIdentity,
             preReq: preReqs
         });
+    }
+
+    function cancelEdit() {
+        setIsEditing(false);
+        setCourseIdentity(existingCourse.courseId);
+        setCredits(existingCourse.credits);
+        setName(existingCourse.name);
+        setPreReqs(existingCourse.preReq);
     }
 
     function updateCourseName(event: React.ChangeEvent<HTMLInputElement>) {
@@ -136,12 +144,13 @@ export function DisplayCourse({
                         </Form.Group>
                     </td>
                     <td>
-                        <Form.Check
-                            type="checkbox"
-                            id="is-editing-check"
-                            checked={isEditing}
-                            onChange={updateEditing}
-                        />
+                        <Button onClick={updateEditing} className="btn">
+                            Save Changes
+                        </Button>
+                        <br></br>
+                        <Button onClick={cancelEdit} className="btn">
+                            Cancel
+                        </Button>
                     </td>
                 </>
             ) : (
@@ -150,12 +159,12 @@ export function DisplayCourse({
                     <td>{name}</td>
                     <td>{credits}</td>
                     <td>
-                        <Form.Check
-                            type="checkbox"
-                            id="is-editing-check"
-                            checked={isEditing}
-                            onChange={updateEditing}
-                        />
+                        <Button
+                            onClick={() => setIsEditing(true)}
+                            className="btn"
+                        >
+                            Edit Course
+                        </Button>
                     </td>
                 </>
             )}
