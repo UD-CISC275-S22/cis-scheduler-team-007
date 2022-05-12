@@ -69,9 +69,9 @@ FAIL src/DegreePlan.test.tsx
     [36m<body>[39m
       [36m<div>[39m
         [36m<div>[39m
-          [36m<h1>[39m
+          [36m<h4>[39m
             [0mTest1[0m
-          [36m</h1>[39m
+          [36m</h4>[39m
           [36m<div>[39m
             [36m<div>[39m
               [36m<select>[39m
@@ -317,31 +317,1384 @@ FAIL src/DegreePlan.test.tsx
       at getByText (node_modules/@testing-library/dom/dist/query-helpers.js:111:19)
       at Object.<anonymous> (src/DegreePlan.test.tsx:72:23)
 
-PASS src/App.test.tsx
-PASS src/Messaging.test.tsx
-------------------------|---------|----------|---------|---------|--------------------------------------------------
-File                    | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s                                
-------------------------|---------|----------|---------|---------|--------------------------------------------------
-All files               |   42.43 |    16.02 |   47.29 |   42.08 |                                                  
- src                    |   42.43 |    16.02 |   47.29 |   42.08 |                                                  
-  App.tsx               |   81.81 |    66.66 |      75 |   81.81 | 67,74-77,97                                      
-  Course.tsx            |    6.06 |        0 |    7.14 |    6.06 | 29-163                                           
-  DegreePlan.tsx        |   76.92 |      100 |      80 |      76 | 47-52,92                                         
-  Messaging.tsx         |     100 |      100 |     100 |     100 |                                                  
-  PreReqs.tsx           |     100 |      100 |     100 |     100 |                                                  
-  createId.ts           |     100 |      100 |     100 |     100 |                                                  
-  degree.tsx            |      32 |     7.14 |      60 |      32 | 76,89,96-260,265,268-270,274,276,278,280,282,285 
-  degreeCourses.tsx     |     100 |      100 |     100 |     100 |                                                  
-  newtrial.tsx          |       0 |        0 |       0 |       0 | 21-47                                            
-  semester-table.tsx    |   27.77 |        0 |   23.52 |   27.77 | 33,41-67,127-144,176-193                         
- src/Planner-Interfaces |       0 |        0 |       0 |       0 |                                                  
-  course.ts             |       0 |        0 |       0 |       0 |                                                  
-  plan.ts               |       0 |        0 |       0 |       0 |                                                  
-  semester.ts           |       0 |        0 |       0 |       0 |                                                  
-------------------------|---------|----------|---------|---------|--------------------------------------------------
+FAIL src/Course.test.tsx
+  ● Console
 
-Test Suites: 1 failed, 3 passed, 4 total
-Tests:       1 failed, 19 passed, 20 total
+    console.error
+      Warning: validateDOMNesting(...): <td> cannot appear as a child of <div>.
+          at td
+          at DisplayCourse (/home/runner/work/cis-scheduler-team-007/cis-scheduler-team-007/src/Course.tsx:19:5)
+
+      at printWarning (node_modules/react-dom/cjs/react-dom.development.js:67:30)
+      at error (node_modules/react-dom/cjs/react-dom.development.js:43:5)
+      at validateDOMNesting (node_modules/react-dom/cjs/react-dom.development.js:10081:7)
+      at createInstance (node_modules/react-dom/cjs/react-dom.development.js:10181:5)
+      at completeWork (node_modules/react-dom/cjs/react-dom.development.js:19464:28)
+      at completeUnitOfWork (node_modules/react-dom/cjs/react-dom.development.js:22812:16)
+      at performUnitOfWork (node_modules/react-dom/cjs/react-dom.development.js:22787:5)
+      at workLoopSync (node_modules/react-dom/cjs/react-dom.development.js:22707:5)
+
+  ● Display Course Test › Checkbox is not checked initially
+
+    TestingLibraryElementError: Unable to find an accessible element with the role "checkbox"
+
+    Here are the accessible roles:
+
+      cell:
+
+      Name "108":
+      [36m<td />[39m
+
+      Name "Introduction to Computer Science I":
+      [36m<td />[39m
+
+      Name "3":
+      [36m<td />[39m
+
+      Name "Edit Course":
+      [36m<td />[39m
+
+      --------------------------------------------------
+      button:
+
+      Name "Edit Course":
+      [36m<button[39m
+        [33mclass[39m=[32m"btn btn btn-primary"[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m/>[39m
+
+      --------------------------------------------------
+
+    Ignored nodes: comments, <script />, <style />
+    [36m<body>[39m
+      [36m<div>[39m
+        [36m<td>[39m
+          [0m108[0m
+        [36m</td>[39m
+        [36m<td>[39m
+          [0mIntroduction to Computer Science I[0m
+        [36m</td>[39m
+        [36m<td>[39m
+          [0m3[0m
+        [36m</td>[39m
+        [36m<td>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"btn btn btn-primary"[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [0mEdit Course[0m
+          [36m</button>[39m
+        [36m</td>[39m
+      [36m</div>[39m
+    [36m</body>[39m
+
+      43 |     });
+      44 |     test("Checkbox is not checked initially", () => {
+    > 45 |         console.log(screen.getByRole("checkbox"));
+         |                            ^
+      46 |         expect(screen.getByRole("checkbox")).toBeInTheDocument();
+      47 |         /*expect(screen.getByRole("checkbox").toBeEqual(false));*/
+      48 |     });
+
+      at Object.getElementError (node_modules/@testing-library/dom/dist/config.js:38:19)
+      at node_modules/@testing-library/dom/dist/query-helpers.js:90:38
+      at node_modules/@testing-library/dom/dist/query-helpers.js:62:17
+      at getByRole (node_modules/@testing-library/dom/dist/query-helpers.js:111:19)
+      at Object.<anonymous> (src/Course.test.tsx:45:28)
+
+  ● Display Course Test › Can switch into edit mode
+
+    TestingLibraryElementError: Unable to find an accessible element with the role "checkbox"
+
+    Here are the accessible roles:
+
+      cell:
+
+      Name "108":
+      [36m<td />[39m
+
+      Name "Introduction to Computer Science I":
+      [36m<td />[39m
+
+      Name "3":
+      [36m<td />[39m
+
+      Name "Edit Course":
+      [36m<td />[39m
+
+      --------------------------------------------------
+      button:
+
+      Name "Edit Course":
+      [36m<button[39m
+        [33mclass[39m=[32m"btn btn btn-primary"[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m/>[39m
+
+      --------------------------------------------------
+
+    Ignored nodes: comments, <script />, <style />
+    [36m<body>[39m
+      [36m<div>[39m
+        [36m<td>[39m
+          [0m108[0m
+        [36m</td>[39m
+        [36m<td>[39m
+          [0mIntroduction to Computer Science I[0m
+        [36m</td>[39m
+        [36m<td>[39m
+          [0m3[0m
+        [36m</td>[39m
+        [36m<td>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"btn btn btn-primary"[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [0mEdit Course[0m
+          [36m</button>[39m
+        [36m</td>[39m
+      [36m</div>[39m
+    [36m</body>[39m
+
+      50 |     test("Can switch into edit mode", () => {
+      51 |         /*expect(screen.getAllByRole("textbox")).toHaveLength(2);*/
+    > 52 |         expect(screen.getAllByRole("checkbox")).toHaveLength(1);
+         |                       ^
+      53 |     });
+      54 |
+      55 |     test("Edit the courses changes the course id", () => {
+
+      at Object.getElementError (node_modules/@testing-library/dom/dist/config.js:38:19)
+      at node_modules/@testing-library/dom/dist/query-helpers.js:90:38
+      at getAllByRole (node_modules/@testing-library/dom/dist/query-helpers.js:130:15)
+      at Object.<anonymous> (src/Course.test.tsx:52:23)
+
+  ● Display Course Test › Edit the courses changes the course id
+
+    TestingLibraryElementError: Unable to find an accessible element with the role "checkbox"
+
+    Here are the accessible roles:
+
+      cell:
+
+      Name "108":
+      [36m<td />[39m
+
+      Name "Introduction to Computer Science I":
+      [36m<td />[39m
+
+      Name "3":
+      [36m<td />[39m
+
+      Name "Edit Course":
+      [36m<td />[39m
+
+      --------------------------------------------------
+      button:
+
+      Name "Edit Course":
+      [36m<button[39m
+        [33mclass[39m=[32m"btn btn btn-primary"[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m/>[39m
+
+      --------------------------------------------------
+
+    Ignored nodes: comments, <script />, <style />
+    [36m<body>[39m
+      [36m<div>[39m
+        [36m<td>[39m
+          [0m108[0m
+        [36m</td>[39m
+        [36m<td>[39m
+          [0mIntroduction to Computer Science I[0m
+        [36m</td>[39m
+        [36m<td>[39m
+          [0m3[0m
+        [36m</td>[39m
+        [36m<td>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"btn btn btn-primary"[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [0mEdit Course[0m
+          [36m</button>[39m
+        [36m</td>[39m
+      [36m</div>[39m
+    [36m</body>[39m
+
+      54 |
+      55 |     test("Edit the courses changes the course id", () => {
+    > 56 |         const switching = screen.getByRole("checkbox");
+         |                                  ^
+      57 |         switching.click();
+      58 |         /*const nameBox = screen.getByTestId("courseID");
+      59 |         userEvent.type(nameBox, "CISC-108");*/
+
+      at Object.getElementError (node_modules/@testing-library/dom/dist/config.js:38:19)
+      at node_modules/@testing-library/dom/dist/query-helpers.js:90:38
+      at node_modules/@testing-library/dom/dist/query-helpers.js:62:17
+      at getByRole (node_modules/@testing-library/dom/dist/query-helpers.js:111:19)
+      at Object.<anonymous> (src/Course.test.tsx:56:34)
+
+  ● Display Course Test › Edit courses changes the course name
+
+    TestingLibraryElementError: Unable to find an accessible element with the role "checkbox"
+
+    Here are the accessible roles:
+
+      cell:
+
+      Name "108":
+      [36m<td />[39m
+
+      Name "Introduction to Computer Science I":
+      [36m<td />[39m
+
+      Name "3":
+      [36m<td />[39m
+
+      Name "Edit Course":
+      [36m<td />[39m
+
+      --------------------------------------------------
+      button:
+
+      Name "Edit Course":
+      [36m<button[39m
+        [33mclass[39m=[32m"btn btn btn-primary"[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m/>[39m
+
+      --------------------------------------------------
+
+    Ignored nodes: comments, <script />, <style />
+    [36m<body>[39m
+      [36m<div>[39m
+        [36m<td>[39m
+          [0m108[0m
+        [36m</td>[39m
+        [36m<td>[39m
+          [0mIntroduction to Computer Science I[0m
+        [36m</td>[39m
+        [36m<td>[39m
+          [0m3[0m
+        [36m</td>[39m
+        [36m<td>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"btn btn btn-primary"[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [0mEdit Course[0m
+          [36m</button>[39m
+        [36m</td>[39m
+      [36m</div>[39m
+    [36m</body>[39m
+
+      60 |     });
+      61 |     test("Edit courses changes the course name", () => {
+    > 62 |         const changed = screen.getByRole("checkbox");
+         |                                ^
+      63 |         changed.click();
+      64 |         /*const nameBox = screen.getByRole("textbox");
+      65 |         userEvent.type(nameBox, "courseName");*/
+
+      at Object.getElementError (node_modules/@testing-library/dom/dist/config.js:38:19)
+      at node_modules/@testing-library/dom/dist/query-helpers.js:90:38
+      at node_modules/@testing-library/dom/dist/query-helpers.js:62:17
+      at getByRole (node_modules/@testing-library/dom/dist/query-helpers.js:111:19)
+      at Object.<anonymous> (src/Course.test.tsx:62:32)
+
+  ● Display Course Test › Unchecking the textbox renders the new edits of the course
+
+    TestingLibraryElementError: Unable to find an accessible element with the role "checkbox"
+
+    Here are the accessible roles:
+
+      cell:
+
+      Name "108":
+      [36m<td />[39m
+
+      Name "Introduction to Computer Science I":
+      [36m<td />[39m
+
+      Name "3":
+      [36m<td />[39m
+
+      Name "Edit Course":
+      [36m<td />[39m
+
+      --------------------------------------------------
+      button:
+
+      Name "Edit Course":
+      [36m<button[39m
+        [33mclass[39m=[32m"btn btn btn-primary"[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m/>[39m
+
+      --------------------------------------------------
+
+    Ignored nodes: comments, <script />, <style />
+    [36m<body>[39m
+      [36m<div>[39m
+        [36m<td>[39m
+          [0m108[0m
+        [36m</td>[39m
+        [36m<td>[39m
+          [0mIntroduction to Computer Science I[0m
+        [36m</td>[39m
+        [36m<td>[39m
+          [0m3[0m
+        [36m</td>[39m
+        [36m<td>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"btn btn btn-primary"[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [0mEdit Course[0m
+          [36m</button>[39m
+        [36m</td>[39m
+      [36m</div>[39m
+    [36m</body>[39m
+
+      66 |     });
+      67 |     test("Unchecking the textbox renders the new edits of the course", () => {
+    > 68 |         const results = screen.getByRole("checkbox");
+         |                                ^
+      69 |         results.click();
+      70 |         const courseIdentity = screen.getAllByRole("textbox");
+      71 |         expect(courseIdentity).toHaveLength(2);
+
+      at Object.getElementError (node_modules/@testing-library/dom/dist/config.js:38:19)
+      at node_modules/@testing-library/dom/dist/query-helpers.js:90:38
+      at node_modules/@testing-library/dom/dist/query-helpers.js:62:17
+      at getByRole (node_modules/@testing-library/dom/dist/query-helpers.js:111:19)
+      at Object.<anonymous> (src/Course.test.tsx:68:32)
+
+FAIL src/App.test.tsx
+  ● Console
+
+    console.error
+      Warning: validateDOMNesting(...): <tr> cannot appear as a child of <table>. Add a <tbody>, <thead> or <tfoot> to your code to match the DOM tree generated by the browser.
+          at tr
+          at table
+          at DisplaySemester (/home/runner/work/cis-scheduler-team-007/cis-scheduler-team-007/src/semester-table.tsx:26:5)
+          at div
+          at div
+          at DegreePlan (/home/runner/work/cis-scheduler-team-007/cis-scheduler-team-007/src/DegreePlan.tsx:10:5)
+          at div
+          at App (/home/runner/work/cis-scheduler-team-007/cis-scheduler-team-007/src/App.tsx:21:43)
+
+      at printWarning (node_modules/react-dom/cjs/react-dom.development.js:67:30)
+      at error (node_modules/react-dom/cjs/react-dom.development.js:43:5)
+      at validateDOMNesting (node_modules/react-dom/cjs/react-dom.development.js:10081:7)
+      at createInstance (node_modules/react-dom/cjs/react-dom.development.js:10181:5)
+      at completeWork (node_modules/react-dom/cjs/react-dom.development.js:19464:28)
+      at completeUnitOfWork (node_modules/react-dom/cjs/react-dom.development.js:22812:16)
+      at performUnitOfWork (node_modules/react-dom/cjs/react-dom.development.js:22787:5)
+      at workLoopSync (node_modules/react-dom/cjs/react-dom.development.js:22707:5)
+
+    console.error
+      Warning: validateDOMNesting(...): <div> cannot appear as a child of <table>.
+          at div
+          at table
+          at DisplaySemester (/home/runner/work/cis-scheduler-team-007/cis-scheduler-team-007/src/semester-table.tsx:26:5)
+          at div
+          at div
+          at DegreePlan (/home/runner/work/cis-scheduler-team-007/cis-scheduler-team-007/src/DegreePlan.tsx:10:5)
+          at div
+          at App (/home/runner/work/cis-scheduler-team-007/cis-scheduler-team-007/src/App.tsx:21:43)
+
+      at printWarning (node_modules/react-dom/cjs/react-dom.development.js:67:30)
+      at error (node_modules/react-dom/cjs/react-dom.development.js:43:5)
+      at validateDOMNesting (node_modules/react-dom/cjs/react-dom.development.js:10081:7)
+      at createInstance (node_modules/react-dom/cjs/react-dom.development.js:10181:5)
+      at completeWork (node_modules/react-dom/cjs/react-dom.development.js:19464:28)
+      at completeUnitOfWork (node_modules/react-dom/cjs/react-dom.development.js:22812:16)
+      at performUnitOfWork (node_modules/react-dom/cjs/react-dom.development.js:22787:5)
+      at workLoopSync (node_modules/react-dom/cjs/react-dom.development.js:22707:5)
+
+    console.error
+      Warning: validateDOMNesting(...): <button> cannot appear as a child of <table>.
+          at button
+          at /home/runner/work/cis-scheduler-team-007/cis-scheduler-team-007/node_modules/react-bootstrap/cjs/Button.js:28:3
+          at table
+          at DisplaySemester (/home/runner/work/cis-scheduler-team-007/cis-scheduler-team-007/src/semester-table.tsx:26:5)
+          at div
+          at div
+          at DegreePlan (/home/runner/work/cis-scheduler-team-007/cis-scheduler-team-007/src/DegreePlan.tsx:10:5)
+          at div
+          at App (/home/runner/work/cis-scheduler-team-007/cis-scheduler-team-007/src/App.tsx:21:43)
+
+      at printWarning (node_modules/react-dom/cjs/react-dom.development.js:67:30)
+      at error (node_modules/react-dom/cjs/react-dom.development.js:43:5)
+      at validateDOMNesting (node_modules/react-dom/cjs/react-dom.development.js:10081:7)
+      at createInstance (node_modules/react-dom/cjs/react-dom.development.js:10181:5)
+      at completeWork (node_modules/react-dom/cjs/react-dom.development.js:19464:28)
+      at completeUnitOfWork (node_modules/react-dom/cjs/react-dom.development.js:22812:16)
+      at performUnitOfWork (node_modules/react-dom/cjs/react-dom.development.js:22787:5)
+      at workLoopSync (node_modules/react-dom/cjs/react-dom.development.js:22707:5)
+
+  ● App Component Tests › No Plan Seleccted by default
+
+    TestingLibraryElementError: Unable to find an accessible element with the role "heading" and name `/No Plan Selected/i`
+
+    Here are the accessible roles:
+
+      banner:
+
+      Name "":
+      [36m<header[39m
+        [33mclass[39m=[32m"App-header"[39m
+      [36m/>[39m
+
+      --------------------------------------------------
+      combobox:
+
+      Name "Select Degree Plan:":
+      [36m<select[39m
+        [33mclass[39m=[32m"form-select"[39m
+        [33mid[39m=[32m"userPlans"[39m
+      [36m/>[39m
+
+      Name "":
+      [36m<select />[39m
+
+      Name "":
+      [36m<select />[39m
+
+      --------------------------------------------------
+      option:
+
+      Name "-No Plan Selected-":
+      [36m<option[39m
+        [33mvalue[39m=[32m"Special"[39m
+      [36m/>[39m
+
+      Name "Test1":
+      [36m<option[39m
+        [33mvalue[39m=[32m"gWm1BdkL"[39m
+      [36m/>[39m
+
+      Name "Test2":
+      [36m<option[39m
+        [33mvalue[39m=[32m"4tyAPQ6j"[39m
+      [36m/>[39m
+
+      Name "Summer":
+      [36m<option />[39m
+
+      Name "Fall":
+      [36m<option />[39m
+
+      Name "Winter":
+      [36m<option />[39m
+
+      Name "Spring":
+      [36m<option />[39m
+
+      Name "2020":
+      [36m<option />[39m
+
+      Name "2021":
+      [36m<option />[39m
+
+      Name "2022":
+      [36m<option />[39m
+
+      Name "2023":
+      [36m<option />[39m
+
+      Name "2024":
+      [36m<option />[39m
+
+      Name "2025":
+      [36m<option />[39m
+
+      Name "2026":
+      [36m<option />[39m
+
+      Name "2027":
+      [36m<option />[39m
+
+      Name "2028":
+      [36m<option />[39m
+
+      --------------------------------------------------
+      button:
+
+      Name "Add New Plan":
+      [36m<button[39m
+        [33mclass[39m=[32m"btn btn btn-primary"[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m/>[39m
+
+      Name "Delete Selected Plan":
+      [36m<button[39m
+        [33mclass[39m=[32m"btn btn-primary"[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m/>[39m
+
+      Name "Edit Course":
+      [36m<button[39m
+        [33mclass[39m=[32m"btn btn btn-primary"[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m/>[39m
+
+      Name "Remove Course":
+      [36m<button[39m
+        [33mclass[39m=[32m"btn btn-primary"[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m/>[39m
+
+      Name "Add Course":
+      [36m<button[39m
+        [33mclass[39m=[32m".btn btn btn-primary"[39m
+        [33mdata-bs-target[39m=[32m"#myModal"[39m
+        [33mdata-bs-toggle[39m=[32m"modal"[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m/>[39m
+
+      Name "Remove All Courses":
+      [36m<button[39m
+        [33mclass[39m=[32m"btn btn-primary"[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m/>[39m
+
+      Name "Insert New Semester":
+      [36m<button[39m
+        [33mclass[39m=[32m"btn btn-primary"[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m/>[39m
+
+      Name "Delete This Semester":
+      [36m<button[39m
+        [33mclass[39m=[32m"btn btn-primary"[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m/>[39m
+
+      Name "Add Semester":
+      [36m<button[39m
+        [33mclass[39m=[32m"btn btn-primary"[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m/>[39m
+
+      Name "Save Plan Changes":
+      [36m<button[39m
+        [33mclass[39m=[32m"btn btn-primary"[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m/>[39m
+
+      Name "Delete All Semesters":
+      [36m<button[39m
+        [33mclass[39m=[32m"btn btn-primary"[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m/>[39m
+
+      Name "Degree Requirements":
+      [36m<button />[39m
+
+      --------------------------------------------------
+      heading:
+
+      Name "Test2":
+      [36m<h4 />[39m
+
+      --------------------------------------------------
+      table:
+
+      Name "":
+      [36m<table[39m
+        [33mclass[39m=[32m"Table-Header"[39m
+      [36m/>[39m
+
+      --------------------------------------------------
+      row:
+
+      Name "Course Course Name Credits Edit Course Delete Course":
+      [36m<tr />[39m
+
+      Name "CISC 108 Test 123 Edit Course Remove Course":
+      [36m<tr />[39m
+
+      --------------------------------------------------
+      columnheader:
+
+      Name "Course":
+      [36m<th />[39m
+
+      Name "Course Name":
+      [36m<th />[39m
+
+      Name "Credits":
+      [36m<th />[39m
+
+      Name "Edit Course":
+      [36m<th />[39m
+
+      Name "Delete Course":
+      [36m<th />[39m
+
+      --------------------------------------------------
+      cell:
+
+      Name "CISC 108":
+      [36m<td />[39m
+
+      Name "Test":
+      [36m<td />[39m
+
+      Name "123":
+      [36m<td />[39m
+
+      Name "Edit Course":
+      [36m<td />[39m
+
+      Name "Remove Course":
+      [36m<td />[39m
+
+      --------------------------------------------------
+
+    Ignored nodes: comments, <script />, <style />
+    [36m<body>[39m
+      [36m<div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"App"[39m
+        [36m>[39m
+          [36m<header[39m
+            [33mclass[39m=[32m"App-header"[39m
+          [36m>[39m
+            [0mUD CISC Degree Planner[0m
+          [36m</header>[39m
+          [36m<p>[39m
+            [0mBy: Eric Toreki, Maxwell Wang, Joshua Strassle[0m
+          [36m</p>[39m
+          [36m<div>[39m
+            [0mHello CISC or INSY majors and minors[0m
+            [36m<br />[39m
+            [0mCurrently our advising department is unfortunaley busy but we will do our best to help with choosing a great plan to fit your scheldule so that you can graduate on time![0m
+            [36m<br />[39m
+            [0mIn here you can choose a plan for your cisc degree.[0m
+          [36m</div>[39m
+          [36m<div>[39m
+            [36m<label[39m
+              [33mclass[39m=[32m"form-label"[39m
+              [33mfor[39m=[32m"userPlans"[39m
+            [36m>[39m
+              [0mSelect Degree Plan:[0m
+            [36m</label>[39m
+            [36m<select[39m
+              [33mclass[39m=[32m"form-select"[39m
+              [33mid[39m=[32m"userPlans"[39m
+            [36m>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"Special"[39m
+              [36m>[39m
+                [0m-No Plan Selected-[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"gWm1BdkL"[39m
+              [36m>[39m
+                [0mTest1[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"4tyAPQ6j"[39m
+              [36m>[39m
+                [0mTest2[0m
+              [36m</option>[39m
+            [36m</select>[39m
+          [36m</div>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"btn btn btn-primary"[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [0mAdd New Plan[0m
+          [36m</button>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"btn btn-primary"[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [0mDelete Selected Plan[0m
+          [36m</button>[39m
+          [36m<div>[39m
+            [36m<h4>[39m
+              [0mTest2[0m
+            [36m</h4>[39m
+            [36m<div>[39m
+              [36m<div>[39m
+                [36m<select>[39m
+                  [36m<option>[39m
+                    [0mSummer[0m
+                  [36m</option>[39m
+                  [36m<option>[39m
+                    [0mFall[0m
+                  [36m</option>[39m
+                  [36m<option>[39m
+                    [0mWinter[0m
+                  [36m</option>[39m
+                  [36m<option>[39m
+                    [0mSpring[0m
+                  [36m</option>[39m
+                [36m</select>[39m
+                [36m<select>[39m
+                  [36m<option>[39m
+                    [0m2020[0m
+                  [36m</option>[39m
+                  [36m<option>[39m
+                    [0m2021[0m
+                  [36m</option>[39m
+                  [36m<option>[39m
+                    [0m2022[0m
+                  [36m</option>[39m
+                  [36m<option>[39m
+                    [0m2023[0m
+                  [36m</option>[39m
+                  [36m<option>[39m
+                    [0m2024[0m
+                  [36m</option>[39m
+                  [36m<option>[39m
+                    [0m2025[0m
+                  [36m</option>[39m
+                  [36m<option>[39m
+                    [0m2026[0m
+                  [36m</option>[39m
+                  [36m<option>[39m
+                    [0m2027[0m
+                  [36m</option>[39m
+                  [36m<option>[39m
+                    [0m2028[0m
+                  [36m</option>[39m
+                [36m</select>[39m
+              [36m</div>[39m
+              [36m<table[39m
+                [33mclass[39m=[32m"Table-Header"[39m
+              [36m>[39m
+                [36m<tr>[39m
+                  [36m<th>[39m
+                    [0mCourse[0m
+                  [36m</th>[39m
+                  [36m<th>[39m
+                    [0mCourse Name[0m
+                  [36m</th>[39m
+                  [36m<th>[39m
+                    [0mCredits[0m
+                  [36m</th>[39m
+                  [36m<th>[39m
+                    [0mEdit Course[0m
+                  [36m</th>[39m
+                  [36m<th>[39m
+                    [0mDelete Course[0m
+                  [36m</th>[39m
+                [36m</tr>[39m
+                [36m<tr>[39m
+                  [36m<td>[39m
+                    [0mCISC 108[0m
+                  [36m</td>[39m
+                  [36m<td>[39m
+                    [0mTest[0m
+                  [36m</td>[39m
+                  [36m<td>[39m
+                    [0m123[0m
+                  [36m</td>[39m
+                  [36m<td>[39m
+                    [36m<button[39m
+                      [33mclass[39m=[32m"btn btn btn-primary"[39m
+                      [33mtype[39m=[32m"button"[39m
+                    [36m>[39m
+                      [0mEdit Course[0m
+                    [36m</button>[39m
+                  [36m</td>[39m
+                  [36m<td>[39m
+                    [36m<button[39m
+                      [33mclass[39m=[32m"btn btn-primary"[39m
+                      [33mtype[39m=[32m"button"[39m
+                    [36m>[39m
+                      [0mRemove Course[0m
+                    [36m</button>[39m
+                  [36m</td>[39m
+                [36m</tr>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m".btn"[39m
+                [36m>[39m
+                  [36m<button[39m
+                    [33mclass[39m=[32m".btn btn btn-primary"[39m
+                    [33mdata-bs-target[39m=[32m"#myModal"[39m
+                    [33mdata-bs-toggle[39m=[32m"modal"[39m
+                    [33mtype[39m=[32m"button"[39m
+                  [36m>[39m
+                    [0mAdd Course[0m
+                  [36m</button>[39m
+                [36m</div>[39m
+                [36m<button[39m
+                  [33mclass[39m=[32m"btn btn-primary"[39m
+                  [33mtype[39m=[32m"button"[39m
+                [36m>[39m
+                  [0mRemove All Courses[0m
+                [36m</button>[39m
+                [36m<div />[39m
+              [36m</table>[39m
+              [36m<button[39m
+                [33mclass[39m=[32m"btn btn-primary"[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m>[39m
+                [0mInsert New Semester[0m
+              [36m</button>[39m
+              [36m<button[39m
+                [33mclass[39m=[32m"btn btn-primary"[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m>[39m
+                [0mDelete This Semester[0m
+              [36m</button>[39m
+            [36m</div>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"btn btn-primary"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [0mAdd Semester[0m
+            [36m</button>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"btn btn-primary"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [0mSave Plan Changes[0m
+            [36m</button>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"btn btn-primary"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [0mDelete All Semesters[0m
+            [36m</button>[39m
+            [36m<br />[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"App"[39m
+            [36m>[39m
+              [36m<button>[39m
+                [0mDegree Requirements[0m
+              [36m</button>[39m
+            [36m</div>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"ReactModalPortal"[39m
+      [36m/>[39m
+    [36m</body>[39m
+
+      15 |     test("No Plan Seleccted by default", () => {
+      16 |         expect(
+    > 17 |             screen.getByRole("heading", { name: /No Plan Selected/i })
+         |                    ^
+      18 |         ).toBeInTheDocument();
+      19 |     });
+      20 |     test("Delete and Add Plan button exist", () => {
+
+      at Object.getElementError (node_modules/@testing-library/dom/dist/config.js:38:19)
+      at node_modules/@testing-library/dom/dist/query-helpers.js:90:38
+      at node_modules/@testing-library/dom/dist/query-helpers.js:62:17
+      at getByRole (node_modules/@testing-library/dom/dist/query-helpers.js:111:19)
+      at Object.<anonymous> (src/App.test.tsx:17:20)
+      at TestScheduler.scheduleTests (node_modules/@jest/core/build/TestScheduler.js:333:13)
+      at runJest (node_modules/@jest/core/build/runJest.js:404:19)
+      at _run10000 (node_modules/@jest/core/build/cli/index.js:320:7)
+      at runCLI (node_modules/@jest/core/build/cli/index.js:173:3)
+
+  ● App Component Tests › Add Plan adds plan and switches to new plan
+
+    TestingLibraryElementError: Unable to find an accessible element with the role "heading" and name `/New Plan/i`
+
+    Here are the accessible roles:
+
+      banner:
+
+      Name "":
+      [36m<header[39m
+        [33mclass[39m=[32m"App-header"[39m
+      [36m/>[39m
+
+      --------------------------------------------------
+      combobox:
+
+      Name "Select Degree Plan:":
+      [36m<select[39m
+        [33mclass[39m=[32m"form-select"[39m
+        [33mid[39m=[32m"userPlans"[39m
+      [36m/>[39m
+
+      Name "":
+      [36m<select />[39m
+
+      Name "":
+      [36m<select />[39m
+
+      --------------------------------------------------
+      option:
+
+      Name "-No Plan Selected-":
+      [36m<option[39m
+        [33mvalue[39m=[32m"Special"[39m
+      [36m/>[39m
+
+      Name "Test1":
+      [36m<option[39m
+        [33mvalue[39m=[32m"gWm1BdkL"[39m
+      [36m/>[39m
+
+      Name "Test2":
+      [36m<option[39m
+        [33mvalue[39m=[32m"4tyAPQ6j"[39m
+      [36m/>[39m
+
+      Name "New Plan":
+      [36m<option[39m
+        [33mvalue[39m=[32m"B71z1b9k"[39m
+      [36m/>[39m
+
+      Name "Summer":
+      [36m<option />[39m
+
+      Name "Fall":
+      [36m<option />[39m
+
+      Name "Winter":
+      [36m<option />[39m
+
+      Name "Spring":
+      [36m<option />[39m
+
+      Name "2020":
+      [36m<option />[39m
+
+      Name "2021":
+      [36m<option />[39m
+
+      Name "2022":
+      [36m<option />[39m
+
+      Name "2023":
+      [36m<option />[39m
+
+      Name "2024":
+      [36m<option />[39m
+
+      Name "2025":
+      [36m<option />[39m
+
+      Name "2026":
+      [36m<option />[39m
+
+      Name "2027":
+      [36m<option />[39m
+
+      Name "2028":
+      [36m<option />[39m
+
+      --------------------------------------------------
+      button:
+
+      Name "Add New Plan":
+      [36m<button[39m
+        [33mclass[39m=[32m"btn btn btn-primary"[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m/>[39m
+
+      Name "Delete Selected Plan":
+      [36m<button[39m
+        [33mclass[39m=[32m"btn btn-primary"[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m/>[39m
+
+      Name "Edit Course":
+      [36m<button[39m
+        [33mclass[39m=[32m"btn btn btn-primary"[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m/>[39m
+
+      Name "Remove Course":
+      [36m<button[39m
+        [33mclass[39m=[32m"btn btn-primary"[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m/>[39m
+
+      Name "Add Course":
+      [36m<button[39m
+        [33mclass[39m=[32m".btn btn btn-primary"[39m
+        [33mdata-bs-target[39m=[32m"#myModal"[39m
+        [33mdata-bs-toggle[39m=[32m"modal"[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m/>[39m
+
+      Name "Remove All Courses":
+      [36m<button[39m
+        [33mclass[39m=[32m"btn btn-primary"[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m/>[39m
+
+      Name "Insert New Semester":
+      [36m<button[39m
+        [33mclass[39m=[32m"btn btn-primary"[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m/>[39m
+
+      Name "Delete This Semester":
+      [36m<button[39m
+        [33mclass[39m=[32m"btn btn-primary"[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m/>[39m
+
+      Name "Add Semester":
+      [36m<button[39m
+        [33mclass[39m=[32m"btn btn-primary"[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m/>[39m
+
+      Name "Save Plan Changes":
+      [36m<button[39m
+        [33mclass[39m=[32m"btn btn-primary"[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m/>[39m
+
+      Name "Delete All Semesters":
+      [36m<button[39m
+        [33mclass[39m=[32m"btn btn-primary"[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m/>[39m
+
+      Name "Degree Requirements":
+      [36m<button />[39m
+
+      --------------------------------------------------
+      heading:
+
+      Name "Test2":
+      [36m<h4 />[39m
+
+      --------------------------------------------------
+      table:
+
+      Name "":
+      [36m<table[39m
+        [33mclass[39m=[32m"Table-Header"[39m
+      [36m/>[39m
+
+      --------------------------------------------------
+      row:
+
+      Name "Course Course Name Credits Edit Course Delete Course":
+      [36m<tr />[39m
+
+      Name "CISC 108 Test 123 Edit Course Remove Course":
+      [36m<tr />[39m
+
+      --------------------------------------------------
+      columnheader:
+
+      Name "Course":
+      [36m<th />[39m
+
+      Name "Course Name":
+      [36m<th />[39m
+
+      Name "Credits":
+      [36m<th />[39m
+
+      Name "Edit Course":
+      [36m<th />[39m
+
+      Name "Delete Course":
+      [36m<th />[39m
+
+      --------------------------------------------------
+      cell:
+
+      Name "CISC 108":
+      [36m<td />[39m
+
+      Name "Test":
+      [36m<td />[39m
+
+      Name "123":
+      [36m<td />[39m
+
+      Name "Edit Course":
+      [36m<td />[39m
+
+      Name "Remove Course":
+      [36m<td />[39m
+
+      --------------------------------------------------
+
+    Ignored nodes: comments, <script />, <style />
+    [36m<body>[39m
+      [36m<div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"App"[39m
+        [36m>[39m
+          [36m<header[39m
+            [33mclass[39m=[32m"App-header"[39m
+          [36m>[39m
+            [0mUD CISC Degree Planner[0m
+          [36m</header>[39m
+          [36m<p>[39m
+            [0mBy: Eric Toreki, Maxwell Wang, Joshua Strassle[0m
+          [36m</p>[39m
+          [36m<div>[39m
+            [0mHello CISC or INSY majors and minors[0m
+            [36m<br />[39m
+            [0mCurrently our advising department is unfortunaley busy but we will do our best to help with choosing a great plan to fit your scheldule so that you can graduate on time![0m
+            [36m<br />[39m
+            [0mIn here you can choose a plan for your cisc degree.[0m
+          [36m</div>[39m
+          [36m<div>[39m
+            [36m<label[39m
+              [33mclass[39m=[32m"form-label"[39m
+              [33mfor[39m=[32m"userPlans"[39m
+            [36m>[39m
+              [0mSelect Degree Plan:[0m
+            [36m</label>[39m
+            [36m<select[39m
+              [33mclass[39m=[32m"form-select"[39m
+              [33mid[39m=[32m"userPlans"[39m
+            [36m>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"Special"[39m
+              [36m>[39m
+                [0m-No Plan Selected-[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"gWm1BdkL"[39m
+              [36m>[39m
+                [0mTest1[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"4tyAPQ6j"[39m
+              [36m>[39m
+                [0mTest2[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"B71z1b9k"[39m
+              [36m>[39m
+                [0mNew Plan[0m
+              [36m</option>[39m
+            [36m</select>[39m
+          [36m</div>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"btn btn btn-primary"[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [0mAdd New Plan[0m
+          [36m</button>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"btn btn-primary"[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [0mDelete Selected Plan[0m
+          [36m</button>[39m
+          [36m<div>[39m
+            [36m<h4>[39m
+              [0mTest2[0m
+            [36m</h4>[39m
+            [36m<div>[39m
+              [36m<div>[39m
+                [36m<select>[39m
+                  [36m<option>[39m
+                    [0mSummer[0m
+                  [36m</option>[39m
+                  [36m<option>[39m
+                    [0mFall[0m
+                  [36m</option>[39m
+                  [36m<option>[39m
+                    [0mWinter[0m
+                  [36m</option>[39m
+                  [36m<option>[39m
+                    [0mSpring[0m
+                  [36m</option>[39m
+                [36m</select>[39m
+                [36m<select>[39m
+                  [36m<option>[39m
+                    [0m2020[0m
+                  [36m</option>[39m
+                  [36m<option>[39m
+                    [0m2021[0m
+                  [36m</option>[39m
+                  [36m<option>[39m
+                    [0m2022[0m
+                  [36m</option>[39m
+                  [36m<option>[39m
+                    [0m2023[0m
+                  [36m</option>[39m
+                  [36m<option>[39m
+                    [0m2024[0m
+                  [36m</option>[39m
+                  [36m<option>[39m
+                    [0m2025[0m
+                  [36m</option>[39m
+                  [36m<option>[39m
+                    [0m2026[0m
+                  [36m</option>[39m
+                  [36m<option>[39m
+                    [0m2027[0m
+                  [36m</option>[39m
+                  [36m<option>[39m
+                    [0m2028[0m
+                  [36m</option>[39m
+                [36m</select>[39m
+              [36m</div>[39m
+              [36m<table[39m
+                [33mclass[39m=[32m"Table-Header"[39m
+              [36m>[39m
+                [36m<tr>[39m
+                  [36m<th>[39m
+                    [0mCourse[0m
+                  [36m</th>[39m
+                  [36m<th>[39m
+                    [0mCourse Name[0m
+                  [36m</th>[39m
+                  [36m<th>[39m
+                    [0mCredits[0m
+                  [36m</th>[39m
+                  [36m<th>[39m
+                    [0mEdit Course[0m
+                  [36m</th>[39m
+                  [36m<th>[39m
+                    [0mDelete Course[0m
+                  [36m</th>[39m
+                [36m</tr>[39m
+                [36m<tr>[39m
+                  [36m<td>[39m
+                    [0mCISC 108[0m
+                  [36m</td>[39m
+                  [36m<td>[39m
+                    [0mTest[0m
+                  [36m</td>[39m
+                  [36m<td>[39m
+                    [0m123[0m
+                  [36m</td>[39m
+                  [36m<td>[39m
+                    [36m<button[39m
+                      [33mclass[39m=[32m"btn btn btn-primary"[39m
+                      [33mtype[39m=[32m"button"[39m
+                    [36m>[39m
+                      [0mEdit Course[0m
+                    [36m</button>[39m
+                  [36m</td>[39m
+                  [36m<td>[39m
+                    [36m<button[39m
+                      [33mclass[39m=[32m"btn btn-primary"[39m
+                      [33mtype[39m=[32m"button"[39m
+                    [36m>[39m
+                      [0mRemove Course[0m
+                    [36m</button>[39m
+                  [36m</td>[39m
+                [36m</tr>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m".btn"[39m
+                [36m>[39m
+                  [36m<button[39m
+                    [33mclass[39m=[32m".btn btn btn-primary"[39m
+                    [33mdata-bs-target[39m=[32m"#myModal"[39m
+                    [33mdata-bs-toggle[39m=[32m"modal"[39m
+                    [33mtype[39m=[32m"button"[39m
+                  [36m>[39m
+                    [0mAdd Course[0m
+                  [36m</button>[39m
+                [36m</div>[39m
+                [36m<button[39m
+                  [33mclass[39m=[32m"btn btn-primary"[39m
+                  [33mtype[39m=[32m"button"[39m
+                [36m>[39m
+                  [0mRemove All Courses[0m
+                [36m</button>[39m
+                [36m<div />[39m
+              [36m</table>[39m
+              [36m<button[39m
+                [33mclass[39m=[32m"btn btn-primary"[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m>[39m
+                [0mInsert New Semester[0m
+              [36m</button>[39m
+              [36m<button[39m
+                [33mclass[39m=[32m"btn btn-primary"[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m>[39m
+                [0mDelete This Semester[0m
+              [36m</button>[39m
+            [36m</div>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"btn btn-primary"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [0mAdd Semester[0m
+            [36m</button>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"btn btn-primary"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [0mSave Plan Changes[0m
+            [36m</button>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"btn btn-primary"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [0mDelete All Semesters[0m
+            [36m</button>[39m
+            [36m<br />[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"App"[39m
+            [36m>[39m
+              [36m<button>[39m
+                [0mDegree Requirements[0m
+              [36m</button>[39m
+            [36m</div>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"ReactModalPortal"[39m
+      [36m/>[39m
+    [36m</body>[39m
+
+      30 |         addButton.click();
+      31 |         expect(
+    > 32 |             screen.getByRole("heading", { name: /New Plan/i })
+         |                    ^
+      33 |         ).toBeInTheDocument();
+      34 |     });
+      35 |     test("Delete Plan removes current plan and switches to no plan", () => {
+
+      at Object.getElementError (node_modules/@testing-library/dom/dist/config.js:38:19)
+      at node_modules/@testing-library/dom/dist/query-helpers.js:90:38
+      at node_modules/@testing-library/dom/dist/query-helpers.js:62:17
+      at getByRole (node_modules/@testing-library/dom/dist/query-helpers.js:111:19)
+      at Object.<anonymous> (src/App.test.tsx:32:20)
+      at TestScheduler.scheduleTests (node_modules/@jest/core/build/TestScheduler.js:333:13)
+      at runJest (node_modules/@jest/core/build/runJest.js:404:19)
+      at _run10000 (node_modules/@jest/core/build/cli/index.js:320:7)
+      at runCLI (node_modules/@jest/core/build/cli/index.js:173:3)
+
+------------------------|---------|----------|---------|---------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+File                    | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s                                                                                                                                                                                                                             
+------------------------|---------|----------|---------|---------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+All files               |   56.32 |    49.35 |   46.25 |   56.06 |                                                                                                                                                                                                                                               
+ src                    |   56.32 |    49.35 |   46.25 |   56.06 |                                                                                                                                                                                                                                               
+  App.tsx               |   85.71 |    83.33 |   77.77 |   85.71 | 17,24-26                                                                                                                                                                                                                                      
+  Course.tsx            |   24.24 |       25 |   14.28 |   24.24 | 38-88,102-163                                                                                                                                                                                                                                 
+  DegreePlan.tsx        |   76.92 |      100 |      80 |      76 | 47-52,92                                                                                                                                                                                                                                      
+  ExportToCSV.tsx       |       0 |      100 |       0 |       0 | 9-50                                                                                                                                                                                                                                          
+  PreReqs.tsx           |     100 |      100 |     100 |     100 |                                                                                                                                                                                                                                               
+  createId.ts           |     100 |      100 |     100 |     100 |                                                                                                                                                                                                                                               
+  degree.tsx            |      60 |    47.61 |      80 |      60 | 76,99,102,105,108-110,113-117,120-124,130,133,139,142,145,148,151,154,157,160,163,166,169,172,175,178-181,184-187,190-193,196-199,202,205,208,211,214,217,220,223,226,229,232,235-236,239,242,248,254,260,265,268-270,274,276,278,280,282,285 
+  degreeCourses.tsx     |     100 |      100 |     100 |     100 |                                                                                                                                                                                                                                               
+  newtrial.tsx          |       0 |        0 |       0 |       0 | 21-47                                                                                                                                                                                                                                         
+  semester-table.tsx    |   30.55 |        0 |   29.41 |   30.55 | 33,41-67,127-144,185-193                                                                                                                                                                                                                      
+ src/Planner-Interfaces |       0 |        0 |       0 |       0 |                                                                                                                                                                                                                                               
+  course.ts             |       0 |        0 |       0 |       0 |                                                                                                                                                                                                                                               
+  plan.ts               |       0 |        0 |       0 |       0 |                                                                                                                                                                                                                                               
+  semester.ts           |       0 |        0 |       0 |       0 |                                                                                                                                                                                                                                               
+------------------------|---------|----------|---------|---------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Test Suites: 3 failed, 1 passed, 4 total
+Tests:       8 failed, 16 passed, 24 total
 Snapshots:   0 total
-Time:        5.289 s
+Time:        6.249 s
 Ran all test suites.
