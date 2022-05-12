@@ -49,7 +49,14 @@ export function ExportToCSV({ degreePlan }: { degreePlan: Plan }): JSX.Element {
     }
     return (
         <div>
-            <CSVLink data={[degreePlan]}></CSVLink>
+            <CSVLink
+                data={[degreePlan]}
+                filename={"My-CSV-file.csv"}
+                className="btn btn-primary"
+                target="_blank"
+            >
+                Download this plan as well
+            </CSVLink>
             <Button onClick={mapNDownload}>Export to CSV</Button>
         </div>
     );
