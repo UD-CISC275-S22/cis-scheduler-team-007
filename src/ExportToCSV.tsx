@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Plan } from "./Planner-Interfaces/plan";
 import { Course } from "./Planner-Interfaces/course";
 import { Semester } from "./Planner-Interfaces/semester";
-import { Button } from "react-bootstrap";
 import { CSVLink } from "react-csv";
 
 export function ExportToCSV({ degreePlan }: { degreePlan: Plan }): JSX.Element {
@@ -51,13 +50,13 @@ export function ExportToCSV({ degreePlan }: { degreePlan: Plan }): JSX.Element {
         <div>
             <CSVLink
                 data={[degreePlan]}
-                filename={"My-CSV-file.csv"}
+                filename={degreePlan.name + ".csv"}
                 className="btn btn-primary"
                 target="_blank"
+                onClick={mapNDownload}
             >
                 Download this plan as well
             </CSVLink>
-            <Button onClick={mapNDownload}>Export to CSV</Button>
         </div>
     );
 }
