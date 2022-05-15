@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 import { makeId } from "./createId";
 import { DegreeRequirements_Section } from "./degree";
+import { ExportToCSV } from "./ExportToCSV";
 import { Plan } from "./Planner-Interfaces/plan";
 import { Semester } from "./Planner-Interfaces/semester";
 import { DisplaySemester } from "./semester-table";
@@ -88,6 +89,7 @@ export function DegreePlan({
                     </Button>
                 </div>
             ))}
+            <ExportToCSV degreePlan={plan}></ExportToCSV>
             <Button onClick={() => addSemester()}>Add Semester</Button>
             <Button onClick={() => saveChanges()}>Save Plan Changes</Button>
             <Button onClick={() => clearAllSemesters()}>
