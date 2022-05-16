@@ -4,79 +4,27 @@ import "./App.css";
 import { makeId } from "./createId";
 import { DegreePlan } from "./DegreePlan";
 import { Plan } from "./Planner-Interfaces/plan";
+import DefaultPlans from "./Plans/DefaultPlans.json";
 
-let defaultPlans = [
-    {
-        id: "Special",
-        name: "No Plan Selected",
-        semesters: [],
-        requiredCourses: []
-    },
-    {
-        id: "1",
-        name: "Test1",
-        semesters: [
-            {
-                id: makeId(),
-                name: "Test Sem",
-                year: 2020,
-                courses: [
-                    {
-                        id: makeId(),
-                        name: "Test",
-                        credits: 125,
-                        courseId: "CISC 108",
-                        preReq: "THIS COURSE"
-                    }
-                ],
-                season: "",
-                credits: 0
-            }
-        ],
-        requiredCourses: []
-    },
-    {
-        id: "2",
-        name: "Test2",
-        semesters: [
-            {
-                id: makeId(),
-                name: "Test Sem",
-                year: 2020,
-                courses: [
-                    {
-                        id: makeId(),
-                        name: "Test",
-                        credits: 123,
-                        courseId: "CISC 108",
-                        preReq: ""
-                    }
-                ],
-                season: "",
-                credits: 0
-            }
-        ],
-        requiredCourses: []
-    }
-];
-const saveDataKey = "CISC-DEGREE-PLANNER-DATA";
+let defaulted = DefaultPlans.defaultPlans.map(
+    (plan: Plan): Plan => ({ ...plan, id: makeId() })
+);
+const saveDataKey = "CISC-DEGREE-PLANNER-DATAv2";
 // Check if the user's data already exists
 const previousData = localStorage.getItem(saveDataKey);
 // If the data doesn't exist, `getItem` returns null
 if (previousData !== null) {
-    defaultPlans = JSON.parse(previousData);
+    defaulted = JSON.parse(previousData);
 }
 
 function App(): JSX.Element {
-    const [degreePlans, setDegreePlans] = useState<Plan[]>(defaultPlans);
-    const [selectedPlan, setSelectedPlan] = useState<Plan>(degreePlans[0]);
+    const [degreePlans, setDegreePlans] = useState<Plan[]>(defaulted);
+    const [selectedPlan, setSelectedPlan] = useState<number>(-1);
     function updateSelectedPlan(event: React.ChangeEvent<HTMLSelectElement>) {
         setSelectedPlan(
-            degreePlans[
-                degreePlans.findIndex(
-                    (plan: Plan) => plan.id === event.target.value
-                )
-            ]
+            degreePlans.findIndex(
+                (plan: Plan) => plan.id === event.target.value
+            )
         );
     }
     function saveData() {
@@ -90,20 +38,23 @@ function App(): JSX.Element {
             requiredCourses: []
         };
         setDegreePlans([...degreePlans, newPlan]);
-        setSelectedPlan(newPlan);
+        setSelectedPlan(degreePlans.length);
     }
     function deletePlan() {
-        if (selectedPlan.id === "Special") {
-            return;
-        }
         const newDegreePlans = [...degreePlans];
         newDegreePlans.splice(
-            degreePlans.findIndex((plan: Plan) => plan.id === selectedPlan.id),
+            degreePlans.findIndex(
+                (plan: Plan) => plan.id === degreePlans[selectedPlan].id
+            ),
             1
         );
         setDegreePlans(newDegreePlans);
-        setSelectedPlan(degreePlans[0]);
+        setSelectedPlan(-1);
     }
+    //Called every time App is refreshed. App refreshed when adding or deleting a semestes, when the save button
+    //In DegreePlan.tsx is pressed, or when changing plans. Will save the changes to plans in the case of the first two.
+    //Will also save in case of the second one, but no changes will have been made
+    saveData();
 
     return (
         <div className="App">
@@ -121,9 +72,14 @@ function App(): JSX.Element {
             <Form.Group controlId="userPlans">
                 <Form.Label>Select Degree Plan:</Form.Label>
                 <Form.Select
-                    value={selectedPlan?.id}
+                    value={
+                        selectedPlan === -1
+                            ? "-No Plan Selected-"
+                            : degreePlans[selectedPlan].id
+                    }
                     onChange={updateSelectedPlan}
                 >
+                    <option value={"Special"}>-No Plan Selected-</option>
                     {degreePlans.map((plan: Plan) => (
                         <option key={plan.id} value={plan.id}>
                             {plan.name}
@@ -135,13 +91,12 @@ function App(): JSX.Element {
                 Add New Plan
             </Button>
             <Button onClick={deletePlan}>Delete Selected Plan</Button>
-            {selectedPlan.id !== "Special" ? (
+            {selectedPlan !== -1 ? (
                 <DegreePlan
-                    key={selectedPlan.id}
+                    key={degreePlans[selectedPlan].id}
                     degreePlans={degreePlans}
                     setDegreePlans={setDegreePlans}
-                    currentPlan={selectedPlan}
-                    saveData={saveData}
+                    currentPlan={degreePlans[selectedPlan]}
                 ></DegreePlan>
             ) : (
                 <h4>No Plan Selected</h4>

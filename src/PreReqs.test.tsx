@@ -34,8 +34,7 @@ describe("DegreePlan Component Tests", () => {
                                 preReq: ""
                             }
                         ],
-                        season: "Fall",
-                        credits: 0
+                        season: "Fall"
                     },
                     {
                         id: "2",
@@ -64,8 +63,7 @@ describe("DegreePlan Component Tests", () => {
                                 preReq: "MISSING"
                             }
                         ],
-                        season: "Spring",
-                        credits: 0
+                        season: "Spring"
                     }
                 ]}
                 semester={{
@@ -95,8 +93,7 @@ describe("DegreePlan Component Tests", () => {
                             preReq: ""
                         }
                     ],
-                    season: "Fall",
-                    credits: 0
+                    season: "Fall"
                 }}
             ></PreReqs>
         );
@@ -141,8 +138,7 @@ describe("DegreePlan Component Tests", () => {
                                 preReq: ""
                             }
                         ],
-                        season: "Fall",
-                        credits: 0
+                        season: "Fall"
                     },
                     {
                         id: "2",
@@ -178,8 +174,7 @@ describe("DegreePlan Component Tests", () => {
                                 preReq: "REQS2"
                             }
                         ],
-                        season: "Spring",
-                        credits: 0
+                        season: "Spring"
                     },
                     {
                         id: "3",
@@ -194,8 +189,7 @@ describe("DegreePlan Component Tests", () => {
                                 preReq: ""
                             }
                         ],
-                        season: "Fall",
-                        credits: 0
+                        season: "Fall"
                     }
                 ]}
                 semester={{
@@ -232,8 +226,7 @@ describe("DegreePlan Component Tests", () => {
                             preReq: "REQS2"
                         }
                     ],
-                    season: "Spring",
-                    credits: 0
+                    season: "Spring"
                 }}
             ></PreReqs>
         );
