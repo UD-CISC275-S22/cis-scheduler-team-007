@@ -9,7 +9,7 @@ import DefaultPlans from "./Plans/DefaultPlans.json";
 let defaulted = DefaultPlans.defaultPlans.map(
     (plan: Plan): Plan => ({ ...plan, id: makeId() })
 );
-const saveDataKey = "CISC-DEGREE-PLANNER-DATA";
+const saveDataKey = "CISC-DEGREE-PLANNER-DATAv2";
 // Check if the user's data already exists
 const previousData = localStorage.getItem(saveDataKey);
 // If the data doesn't exist, `getItem` returns null
@@ -19,7 +19,7 @@ if (previousData !== null) {
 
 function App(): JSX.Element {
     const [degreePlans, setDegreePlans] = useState<Plan[]>(defaulted);
-    const [selectedPlan, setSelectedPlan] = useState<number>(1);
+    const [selectedPlan, setSelectedPlan] = useState<number>(-1);
     function updateSelectedPlan(event: React.ChangeEvent<HTMLSelectElement>) {
         setSelectedPlan(
             degreePlans.findIndex(
@@ -38,7 +38,7 @@ function App(): JSX.Element {
             requiredCourses: []
         };
         setDegreePlans([...degreePlans, newPlan]);
-        setSelectedPlan(degreePlans.length - 1);
+        setSelectedPlan(degreePlans.length);
     }
     function deletePlan() {
         const newDegreePlans = [...degreePlans];
@@ -51,6 +51,10 @@ function App(): JSX.Element {
         setDegreePlans(newDegreePlans);
         setSelectedPlan(-1);
     }
+    //Called every time App is refreshed. App refreshed when adding or deleting a semestes, when the save button
+    //In DegreePlan.tsx is pressed, or when changing plans. Will save the changes to plans in the case of the first two.
+    //Will also save in case of the second one, but no changes will have been made
+    saveData();
 
     return (
         <div className="App">
@@ -93,7 +97,6 @@ function App(): JSX.Element {
                     degreePlans={degreePlans}
                     setDegreePlans={setDegreePlans}
                     currentPlan={degreePlans[selectedPlan]}
-                    saveData={saveData}
                 ></DegreePlan>
             ) : (
                 <h4>No Plan Selected</h4>
