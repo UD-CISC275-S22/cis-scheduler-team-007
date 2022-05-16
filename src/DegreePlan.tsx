@@ -72,19 +72,28 @@ export function DegreePlan({
     return (
         <div>
             {edit ? (
-                <Form.Group className="degreeName" controlId="planName">
-                    <Form.Label>Name of Plan: </Form.Label>
-                    <Form.Control value={plan.name} onChange={editPlanName} />
-                </Form.Group>
+                <div>
+                    <Form.Group className="degreeName" controlId="planName">
+                        <Form.Label>Name of Plan: </Form.Label>
+                        <Form.Control
+                            value={plan.name}
+                            onChange={editPlanName}
+                        />
+                    </Form.Group>
+                    <Button onClick={() => setEdit(false)} className="btn">
+                        Stop Editing
+                    </Button>
+                </div>
             ) : (
-                <h1>{plan.name}</h1>
+                <div>
+                    <h1>
+                        {plan.name}{" "}
+                        <Button onClick={() => setEdit(true)} className="btn">
+                            Edit Name
+                        </Button>
+                    </h1>
+                </div>
             )}
-            <Form.Check
-                type="checkbox"
-                id="is-editing-plan"
-                checked={edit}
-                onChange={() => setEdit(!edit)}
-            />
             {plan.semesters.map((semester: Semester) => (
                 <div key={semester.id}>
                     <DisplaySemester
