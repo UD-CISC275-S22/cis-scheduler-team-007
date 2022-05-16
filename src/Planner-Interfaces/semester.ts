@@ -5,5 +5,4 @@ export interface Semester {
     year: number;
     courses: Course[];
     season: string;
-    credits: number;
 }

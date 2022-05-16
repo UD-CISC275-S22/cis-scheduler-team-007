@@ -18,14 +18,12 @@ describe("Display Course Test", () => {
                     name: "",
                     year: 2021,
                     courses: [],
-                    season: "Fall",
-                    credits: 0
+                    season: "Fall"
                 }}
                 plan={{
                     id: "1",
                     name: "Test1",
-                    semesters: [],
-                    requiredCourses: []
+                    semesters: []
                 }}
                 updatePlan={function (): void {
                     return;

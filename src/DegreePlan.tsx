@@ -27,8 +27,7 @@ export function DegreePlan({
             name: "Copy of " + plan.semesters[insertIndex - 1].name,
             year: plan.semesters[insertIndex - 1].year,
             courses: [],
-            season: "",
-            credits: 0
+            season: ""
         });
         setPlan({ ...plan, semesters: newSemesters });
     }
@@ -61,8 +60,7 @@ export function DegreePlan({
                     name: "Fall",
                     year: 2022,
                     courses: [],
-                    season: "",
-                    credits: 0
+                    season: ""
                 }
             ]
         });
