@@ -69,9 +69,18 @@ FAIL src/DegreePlan.test.tsx
     [36m<body>[39m
       [36m<div>[39m
         [36m<div>[39m
-          [36m<h4>[39m
-            [0mTest1[0m
-          [36m</h4>[39m
+          [36m<div>[39m
+            [36m<h1>[39m
+              [0mTest1[0m
+              [0m [0m
+              [36m<button[39m
+                [33mclass[39m=[32m"btn btn btn-primary"[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m>[39m
+                [0mEdit Name[0m
+              [36m</button>[39m
+            [36m</h1>[39m
+          [36m</div>[39m
           [36m<div>[39m
             [36m<div>[39m
               [36m<select>[39m
@@ -677,11 +686,11 @@ PASS src/App.test.tsx
 ------------------------|---------|----------|---------|---------|--------------------------------------------------
 File                    | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s                                
 ------------------------|---------|----------|---------|---------|--------------------------------------------------
-All files               |   41.95 |    16.23 |   43.75 |   41.61 |                                                  
- src                    |   41.95 |    16.23 |   43.75 |   41.61 |                                                  
+All files               |   41.76 |    16.66 |   42.16 |   41.42 |                                                  
+ src                    |   41.76 |    16.66 |   42.16 |   41.42 |                                                  
   App.tsx               |   86.36 |    83.33 |   77.77 |   86.36 | 17,24-26                                         
   Course.tsx            |   24.24 |       25 |   14.28 |   24.24 | 38-88,102-163                                    
-  DegreePlan.tsx        |      76 |      100 |      80 |      75 | 43-48,87                                         
+  DegreePlan.tsx        |   68.96 |       50 |   66.66 |   67.85 | 44-49,70,83-91,113                               
   ExportToCSV.tsx       |       0 |      100 |       0 |       0 | 9-49                                             
   PreReqs.tsx           |     100 |      100 |     100 |     100 |                                                  
   createId.ts           |     100 |      100 |     100 |     100 |                                                  
@@ -698,5 +707,5 @@ All files               |   41.95 |    16.23 |   43.75 |   41.61 |
 Test Suites: 2 failed, 2 passed, 4 total
 Tests:       6 failed, 18 passed, 24 total
 Snapshots:   0 total
-Time:        6.303 s
+Time:        6.803 s
 Ran all test suites.
