@@ -1,8 +1,6 @@
 import { DisplayCourse } from "./Course";
 import React from "react";
 import { fireEvent, render, screen } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
-import { keyboard } from "@testing-library/user-event/dist/keyboard";
 
 describe("Display Course Test", () => {
     beforeEach(() => {
