@@ -1,6 +1,7 @@
 import { DegreeRequirements_Section } from "./degree";
-import React from "react";
-import { render } from "@testing-library/react";
+import React, {useEffect} from "react";
+import { render, screen } from "@testing-library/react";
+import { Modal } from "react-bootstrap";
 
 describe("Degree_Requirements_Section test", () => {
     beforeEach(() => {
@@ -14,7 +15,17 @@ describe("Degree_Requirements_Section test", () => {
             ></DegreeRequirements_Section>
         );
         test("Modal shows up", () => {
-            const aModal = document.createElement("div");
+            const button = screen.getByText("button");
+            expect(button).toBeInTheDocument();
+            button.click();
+        });
+        test("University Requirements are shown", ()=>{
+            expect(screen.getByText("University Requirements"));
+        });
+        test("Modal closes when closed", ()=>{
+            const handleClose = jest.fn();
+            const {getByText} = render(<Modal onClose={handleClose}>Degree Requirements</Modal>)
+            expect(handleClose).toHaveBeenCalledTimes(1);
         });
     });
 });
