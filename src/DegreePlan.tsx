@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
 import { makeId } from "./createId";
 import { DegreeRequirements_Section } from "./degree";
 import { Plan } from "./Planner-Interfaces/plan";
@@ -16,7 +16,8 @@ export function DegreePlan({
     currentPlan: Plan;
 }): JSX.Element {
     const [degreeReqView, toggleDegreeReqView] = useState(false);
-    const [plan, setPlan] = useState<Plan>(currentPlan);
+    const [plan, setPlan] = useState<Plan>({ ...currentPlan });
+    const [edit, setEdit] = useState<boolean>(false);
     function insertSemester(id: string) {
         const newSemesters = plan.semesters;
         const insertIndex =
@@ -65,9 +66,34 @@ export function DegreePlan({
             ]
         });
     }
+    function editPlanName(event: React.ChangeEvent<HTMLInputElement>) {
+        setPlan({ ...plan, name: event.target.value });
+    }
     return (
         <div>
-            <h4>{plan.name}</h4>
+            {edit ? (
+                <div>
+                    <Form.Group className="degreeName" controlId="planName">
+                        <Form.Label>Name of Plan: </Form.Label>
+                        <Form.Control
+                            value={plan.name}
+                            onChange={editPlanName}
+                        />
+                    </Form.Group>
+                    <Button onClick={() => setEdit(false)} className="btn">
+                        Stop Editing
+                    </Button>
+                </div>
+            ) : (
+                <div>
+                    <h1>
+                        {plan.name}{" "}
+                        <Button onClick={() => setEdit(true)} className="btn">
+                            Edit Name
+                        </Button>
+                    </h1>
+                </div>
+            )}
             {plan.semesters.map((semester: Semester) => (
                 <div key={semester.id}>
                     <DisplaySemester
