@@ -1,13 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import { Plan } from "./Planner-Interfaces/plan";
 import { Course } from "./Planner-Interfaces/course";
 import { Semester } from "./Planner-Interfaces/semester";
 import { CSVLink } from "react-csv";
 
 export function ExportToCSV({ degreePlan }: { degreePlan: Plan }): JSX.Element {
-    const [planContent] = useState<Plan>(degreePlan);
     function mapOutCourses() {
-        const theCourses = planContent.semesters.map(
+        const theCourses = degreePlan.semesters.map(
             (semester: Semester): string => {
                 return semester.courses
                     .map(
@@ -19,11 +18,12 @@ export function ExportToCSV({ degreePlan }: { degreePlan: Plan }): JSX.Element {
         );
         return theCourses;
     }
+    const planToAString = mapOutCourses();
 
     /*`"${course.id}, ${course.name}, ${course.credits}, ${course.courseId}, ${course.preReq}"`*/
 
     function download() {
-        const exclusiveContent = planContent.semesters
+        const exclusiveContent = degreePlan.semesters
             .map(
                 (semesters): string =>
                     `${semesters.id},
@@ -49,7 +49,7 @@ export function ExportToCSV({ degreePlan }: { degreePlan: Plan }): JSX.Element {
     return (
         <div>
             <CSVLink
-                data={[degreePlan]}
+                data={planToAString[0]}
                 filename={degreePlan.name + ".csv"}
                 className="btn btn-primary"
                 target="_blank"
