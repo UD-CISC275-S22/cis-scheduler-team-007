@@ -9,16 +9,13 @@ import { DisplaySemester } from "./semester-table";
 export function DegreePlan({
     degreePlans,
     setDegreePlans,
-    currentPlan,
-    saveData
+    currentPlan
 }: {
     degreePlans: Plan[];
     setDegreePlans: (newDegreePlans: Plan[]) => void;
     currentPlan: Plan;
-    saveData: () => void;
 }): JSX.Element {
-    saveData();
-    const [DegreeReq_View_State, toggleDegreeReqView] = useState(false);
+    const [degreeReqView, toggleDegreeReqView] = useState(false);
     const [plan, setPlan] = useState<Plan>(currentPlan);
     function insertSemester(id: string) {
         const newSemesters = plan.semesters;
@@ -95,7 +92,7 @@ export function DegreePlan({
             </Button>
             <br></br>
             <DegreeRequirements_Section
-                show={DegreeReq_View_State}
+                show={degreeReqView}
                 setShow={toggleDegreeReqView}
                 userSemesters={plan.semesters}
             ></DegreeRequirements_Section>

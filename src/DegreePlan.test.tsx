@@ -29,9 +29,6 @@ describe("DegreePlan Component Tests", () => {
                     semesters: [],
                     requiredCourses: []
                 }}
-                saveData={function (): void {
-                    return;
-                }}
             />
         );
     });
