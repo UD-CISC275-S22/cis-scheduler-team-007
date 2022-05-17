@@ -3,6 +3,8 @@ import { Plan } from "./Planner-Interfaces/plan";
 import { Course } from "./Planner-Interfaces/course";
 import { Semester } from "./Planner-Interfaces/semester";
 import { CSVLink } from "react-csv";
+/*Was able to follow a basic csv fucntion from the tasks, the tome and stack overflow but had a
+really hard time getting it to download the file right and keep downloading a refrence instead*/
 
 export function ExportToCSV({ degreePlan }: { degreePlan: Plan }): JSX.Element {
     function mapOutCourses() {
