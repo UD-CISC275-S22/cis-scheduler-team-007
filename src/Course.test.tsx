@@ -18,8 +18,7 @@ describe("Display Course Test", () => {
                     name: "",
                     year: 2021,
                     courses: [],
-                    season: "Fall",
-                    credits: 0
+                    season: "Fall"
                 }}
                 plan={{
                     id: "1",
