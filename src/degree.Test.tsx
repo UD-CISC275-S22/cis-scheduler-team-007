@@ -8,7 +8,7 @@ describe("Degree_Requirements_Section test", () => {
         render(
             <DegreeRequirements_Section
                 show={true}
-                setShow={function (b: boolean): void {
+                setShow={function (b: false): void {
                     throw new Error("Function not implemented.");
                 }}
                 userSemesters={[
@@ -57,8 +57,22 @@ describe("Degree_Requirements_Section test", () => {
                             {
                                 name: "Introduction to Computer Science II",
                                 credits: 3,
-                                courseId: "CISC-181",
-                                preReq: "CISC-108 or CISC-106",
+                                courseId: "CISC 181",
+                                preReq: "CISC 108 or CISC 106",
+                                id: ""
+                            },
+                            {
+                                name: "Introduction to Systems Programming",
+                                credits: 3,
+                                courseId: "CISC 210",
+                                preReq: "CISC 108 or CISC 106",
+                                id: ""
+                            },
+                            {
+                                name: "MATH 242",
+                                credits: 3,
+                                courseId: "MATH 242",
+                                preReq: "MATH 241",
                                 id: ""
                             }
                         ]
