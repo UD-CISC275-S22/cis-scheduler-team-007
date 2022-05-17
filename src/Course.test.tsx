@@ -39,7 +39,7 @@ describe("Display Course Test", () => {
         expect(screen.getByText("3")).toBeInTheDocument();
         expect(screen.getByText("108")).toBeInTheDocument();
     });
-    test("Checkbox is not checked initially", () => {
+    test("Edit button exists", () => {
         console.log(screen.getByRole("checkbox"));
         expect(screen.getByRole("checkbox")).toBeInTheDocument();
         /*expect(screen.getByRole("checkbox").toBeEqual(false));*/

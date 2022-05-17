@@ -58,7 +58,7 @@ export function DegreePlan({
                 ...plan.semesters,
                 {
                     id: makeId(),
-                    name: "Fall",
+                    name: "New Semester",
                     year: 2022,
                     courses: [],
                     season: ""
