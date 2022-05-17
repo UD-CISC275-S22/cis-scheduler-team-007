@@ -63,7 +63,7 @@
 .Table-Header tr:hover {
     background-color: #CCE7E7;
 }
-
+/* button for things that aren't a save or delete */
 .btn {
     width: 180px;
     height: 60px;
@@ -75,7 +75,7 @@
     margin-top: 3px;
     margin-bottom: 3px;
   }
-
+/* button for things that are for a delete */
 .btncancel {
     width: 180px;
     height: 60px;
@@ -87,6 +87,8 @@
     margin-top: 3px;
     margin-bottom: 3px;
   }
+
+  /* button for things that are for an image */
 .btntransparent{
     background-color: transparent;
     background-repeat: no-repeat;
@@ -94,6 +96,8 @@
     cursor: pointer;
     overflow: hidden;
 }
+
+/* button for things that are for a save */
 .btnadd {
     width: 180px;
     height: 60px;
@@ -106,6 +110,7 @@
     margin-bottom: 3px;
   }
 
+/* All stuff under this are for the header banner and for the text that is on it */ 
 .image { 
     position: relative; 
     width: 100%; /* for IE 6 */
