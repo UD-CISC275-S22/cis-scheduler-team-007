@@ -1,16 +1,17 @@
 import { DisplayCourse } from "./Course";
 import React from "react";
-import { fireEvent, render, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 
 describe("Display Course Test", () => {
     beforeEach(() => {
         render(
             <DisplayCourse
                 existingCourse={{
-                    id: "CISC-108",
+                    id: "13",
                     name: "Introduction to Computer Science I",
                     credits: 3,
-                    courseId: "108",
+                    courseId: "CISC 108",
                     preReq: ""
                 }}
                 semester={{
@@ -37,41 +38,46 @@ describe("Display Course Test", () => {
             screen.getByText("Introduction to Computer Science I")
         ).toBeInTheDocument();
         expect(screen.getByText("3")).toBeInTheDocument();
-        expect(screen.getByText("108")).toBeInTheDocument();
+        expect(screen.getByText("CISC 108")).toBeInTheDocument();
     });
     test("Edit button exists", () => {
-        console.log(screen.getByRole("checkbox"));
-        expect(screen.getByRole("checkbox")).toBeInTheDocument();
-        /*expect(screen.getByRole("checkbox").toBeEqual(false));*/
+        expect(
+            screen.getByRole("button", { name: /Edit Course/i })
+        ).toBeInTheDocument();
     });
-
-    test("Can switch into edit mode", () => {
-        /*expect(screen.getAllByRole("textbox")).toHaveLength(2);*/
-        expect(screen.getAllByRole("checkbox")).toHaveLength(1);
+    test("Edit button clicks pulls up edit screen", () => {
+        const editBut = screen.getByRole("button", { name: /Edit Course/i });
+        editBut.click();
+        expect(
+            screen.getByRole("button", { name: /Save Changes/i })
+        ).toBeInTheDocument();
+        expect(
+            screen.getByRole("button", { name: /Cancel/i })
+        ).toBeInTheDocument();
+        expect(screen.getAllByRole("textbox")).toHaveLength(2);
+        expect(screen.getByRole("spinbutton")).toBeInTheDocument();
+        expect(screen.getByText("CourseID:")).toBeInTheDocument();
+        expect(screen.getByText("Name of Course:")).toBeInTheDocument();
+        expect(screen.getByText("Number of Credits:")).toBeInTheDocument();
+        expect(screen.getByText("PreReqs:")).toBeInTheDocument();
     });
-
-    test("Edit the courses changes the course id", () => {
-        const switching = screen.getByRole("checkbox");
-        switching.click();
-        /*const nameBox = screen.getByTestId("courseID");
-        userEvent.type(nameBox, "CISC-108");*/
-    });
-    test("Edit courses changes the course name", () => {
-        const changed = screen.getByRole("checkbox");
-        changed.click();
-        /*const nameBox = screen.getByRole("textbox");
-        userEvent.type(nameBox, "courseName");*/
-    });
-    test("Unchecking the textbox renders the new edits of the course", () => {
-        const results = screen.getByRole("checkbox");
-        results.click();
-        const courseIdentity = screen.getAllByRole("textbox");
-        expect(courseIdentity).toHaveLength(2);
-        fireEvent.change(courseIdentity[0], {
-            target: { value: "CISC 108 - Introduction to Computer Science I" }
-        });
-        fireEvent.change(courseIdentity[1], {
-            target: { value: "4" }
-        });
+    test("Editing field and clicking cancel, displays old info", () => {
+        const editBut = screen.getByRole("button", { name: /Edit Course/i });
+        editBut.click();
+        const cancelBut = screen.getByRole("button", { name: /Cancel/i });
+        const creditsText = screen.getByRole("spinbutton");
+        userEvent.type(creditsText, "10");
+        const courseNameText = screen.getAllByRole("textbox")[0];
+        const coursePreReqText = screen.getAllByRole("textbox")[1];
+        userEvent.type(courseNameText, "New Name");
+        userEvent.type(coursePreReqText, "New PreReq");
+        cancelBut.click();
+        expect(screen.getByText("3")).toBeInTheDocument();
+        expect(screen.queryByText("10")).not.toBeInTheDocument();
+        expect(
+            screen.getByText("Introduction to Computer Science I")
+        ).toBeInTheDocument();
+        expect(screen.queryByText("New Name")).not.toBeInTheDocument();
+        expect(screen.queryByText("New PreReq")).not.toBeInTheDocument();
     });
 });

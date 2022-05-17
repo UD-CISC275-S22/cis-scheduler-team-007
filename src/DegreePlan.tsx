@@ -4,7 +4,7 @@ import { makeId } from "./createId";
 import { DegreeRequirements_Section } from "./degree";
 import { Plan } from "./Planner-Interfaces/plan";
 import { Semester } from "./Planner-Interfaces/semester";
-import { DisplaySemester } from "./semester-table";
+import { DisplaySemester } from "./SemesterTable";
 
 export function DegreePlan({
     degreePlans,
