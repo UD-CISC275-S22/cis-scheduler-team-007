@@ -43,4 +43,7 @@ describe("App Component Tests", () => {
             screen.getByRole("heading", { name: /No Plan Selected/i })
         ).toBeInTheDocument();
     });
+    test("Drop Down exists", () => {
+        expect(screen.getByLabelText(/Select Degree Plan:/i));
+    });
 });

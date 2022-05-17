@@ -97,9 +97,18 @@ describe("DegreePlan Component Tests", () => {
         delButton.click();
         expect(screen.queryByText("New Semester")).not.toBeInTheDocument();
     });
+    test("Delete all Semesters button exists", () => {
+        expect(
+            screen.getByRole("button", { name: /Delete All Semesters/i })
+        ).toBeInTheDocument();
+    });
     test("Delete All Semesters button works", () => {
         const addButton = screen.getByRole("button", { name: /Add Semester/i });
         addButton.click();
+        const insertButton = screen.getByRole("button", {
+            name: /Insert New Semester/i
+        });
+        insertButton.click();
         addButton.click();
         addButton.click();
         const delSemButton = screen.getByRole("button", {
@@ -107,5 +116,8 @@ describe("DegreePlan Component Tests", () => {
         });
         delSemButton.click();
         expect(screen.queryByText("New Semester")).not.toBeInTheDocument();
+        expect(
+            screen.queryByText("Copy of New Semester")
+        ).not.toBeInTheDocument();
     });
 });
