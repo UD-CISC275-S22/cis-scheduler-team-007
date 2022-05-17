@@ -32,7 +32,7 @@ export function DisplaySemester({
     function toggleModal() {
         setIsOpen(!isOpen);
     }
-
+    const [edit, setEdit] = useState<boolean>(false);
     const [courseIdentity, setCourseIdentity] = useState<string>("");
     const [credits, setCredits] = useState<number>(0);
     const [name, setName] = useState<string>("");
@@ -143,6 +143,15 @@ export function DisplaySemester({
         setCredits(0);
         setName("");
     }
+    function editSemName(event: React.ChangeEvent<HTMLInputElement>) {
+        const newSem = plan.semesters.map(
+            (sem: Semester): Semester =>
+                sem.id === semester.id
+                    ? { ...sem, name: event.target.value }
+                    : { ...sem }
+        );
+        updatePlan({ ...plan, semesters: newSem });
+    }
     return (
         <>
             <div>
@@ -165,6 +174,35 @@ export function DisplaySemester({
                 </select>
             </div>
             <table className="Table-Header">
+                {edit ? (
+                    <div>
+                        <Form.Group
+                            className="semesterName"
+                            controlId="semName"
+                        >
+                            <Form.Label>Name of Semester: </Form.Label>
+                            <Form.Control
+                                value={semester.name}
+                                onChange={editSemName}
+                            />
+                        </Form.Group>
+                        <Button onClick={() => setEdit(false)} className="btn">
+                            Stop Editing
+                        </Button>
+                    </div>
+                ) : (
+                    <div>
+                        <h5>
+                            {semester.name}{" "}
+                            <Button
+                                onClick={() => setEdit(true)}
+                                className="btn"
+                            >
+                                Edit Semester Name
+                            </Button>
+                        </h5>
+                    </div>
+                )}
                 <tr>
                     <th>Course</th>
                     <th>Course Name</th>

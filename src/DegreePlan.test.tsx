@@ -1,6 +1,7 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import { DegreePlan } from "./DegreePlan";
+import userEvent from "@testing-library/user-event";
 
 describe("DegreePlan Component Tests", () => {
     beforeEach(() => {
@@ -33,18 +34,40 @@ describe("DegreePlan Component Tests", () => {
         expect(screen.getByText("Test1")).toBeInTheDocument();
         expect(screen.queryByText("Test2")).not.toBeInTheDocument();
     });
-    test("Save, and Add buttons exist", () => {
+    test("Save, Edit, and Add buttons exist", () => {
         expect(
             screen.getByRole("button", { name: /Add Semester/i })
         ).toBeInTheDocument();
         expect(
             screen.getByRole("button", { name: /Save Plan Changes/i })
         ).toBeInTheDocument();
+        expect(
+            screen.getByRole("button", { name: /Edit Name/i })
+        ).toBeInTheDocument();
+    });
+    test("Edit button opens up a text box, and Stop Editing button", () => {
+        const editButton = screen.getByRole("button", { name: /Edit Name/i });
+        editButton.click();
+        expect(
+            screen.getByRole("button", { name: /Stop Editing/i })
+        ).toBeInTheDocument();
+        expect(screen.getByRole("textbox")).toBeInTheDocument();
+    });
+    test("Editing title actually updates title", () => {
+        const editButton = screen.getByRole("button", { name: /Edit Name/i });
+        editButton.click();
+        const stopEditButton = screen.getByRole("button", {
+            name: /Stop Editing/i
+        });
+        const editText = screen.getByRole("textbox");
+        userEvent.type(editText, "New Plan Name");
+        stopEditButton.click();
+        expect(screen.getByText(/New Plan Name/i)).toBeInTheDocument();
     });
     test("Add button creates a new semester", () => {
         const addButton = screen.getByRole("button", { name: /Add Semester/i });
         addButton.click();
-        expect(screen.getByText("Fall")).toBeInTheDocument();
+        expect(screen.getByText("New Semester")).toBeInTheDocument();
     });
     test("Semester has insert and delete buttons", () => {
         const addButton = screen.getByRole("button", { name: /Add Semester/i });
@@ -63,7 +86,7 @@ describe("DegreePlan Component Tests", () => {
             name: /Insert New Semester/i
         });
         insertButton.click();
-        expect(screen.getByText("Copy of Fall")).toBeInTheDocument();
+        expect(screen.getByText("Copy of New Semester")).toBeInTheDocument();
     });
     test("Delete button works", () => {
         const addButton = screen.getByRole("button", { name: /Add Semester/i });
