@@ -6,6 +6,7 @@ import { DegreePlan } from "./DegreePlan";
 import { Plan } from "./Planner-Interfaces/plan";
 import DefaultPlans from "./Plans/DefaultPlans.json";
 
+//Loads default plans if no local saved data
 let defaulted = DefaultPlans.defaultPlans.map(
     (plan: Plan): Plan => ({ ...plan, id: makeId() })
 );
@@ -18,8 +19,9 @@ if (previousData !== null) {
 }
 
 function App(): JSX.Element {
-    const [degreePlans, setDegreePlans] = useState<Plan[]>(defaulted);
-    const [selectedPlan, setSelectedPlan] = useState<number>(-1);
+    const [degreePlans, setDegreePlans] = useState<Plan[]>(defaulted); //List of all plans made
+    const [selectedPlan, setSelectedPlan] = useState<number>(-1); //Selected plan, -1 if no plan selected
+    //Updates selected plan called from the drop down menu
     function updateSelectedPlan(event: React.ChangeEvent<HTMLSelectElement>) {
         setSelectedPlan(
             degreePlans.findIndex(
@@ -27,9 +29,11 @@ function App(): JSX.Element {
             )
         );
     }
+    //Will save to local storage
     function saveData() {
         localStorage.setItem(saveDataKey, JSON.stringify(degreePlans));
     }
+    //Adds a new plan to the end of the list then switches to that plan
     function addPlan() {
         const newPlan = {
             id: makeId(),
@@ -40,6 +44,7 @@ function App(): JSX.Element {
         setDegreePlans([...degreePlans, newPlan]);
         setSelectedPlan(degreePlans.length);
     }
+    //Deletes the selected plan
     function deletePlan() {
         const newDegreePlans = [...degreePlans];
         newDegreePlans.splice(
@@ -69,6 +74,7 @@ function App(): JSX.Element {
                 <br />
                 In here you can choose a plan for your cisc degree.
             </div>
+            {/*Dropdown for selecting the plan, maps through the plans and displays them as an option, in addition no plan selected is provided as an option*/}
             <Form.Group controlId="userPlans">
                 <Form.Label>Select Degree Plan:</Form.Label>
                 <Form.Select
@@ -91,7 +97,7 @@ function App(): JSX.Element {
                 Add New Plan
             </Button>
             <Button onClick={deletePlan}>Delete Selected Plan</Button>
-            {selectedPlan !== -1 ? (
+            {selectedPlan !== -1 ? ( //Checks to see if an actual plan is selected if so call DegreePlan to display it
                 <DegreePlan
                     key={degreePlans[selectedPlan].id}
                     degreePlans={degreePlans}

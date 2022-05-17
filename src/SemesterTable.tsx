@@ -13,6 +13,7 @@ interface thisSemester {
     plan: Plan;
     updatePlan: (plan: Plan) => void;
 }
+//Pool of available autofilled courses
 const courseList = classesExamples.map(
     (course): Course => ({
         id: course.id,
@@ -27,16 +28,17 @@ export function DisplaySemester({
     plan,
     updatePlan
 }: thisSemester): JSX.Element {
+    //For the modal for adding courses
     const [isOpen, setIsOpen] = useState(false);
-
     function toggleModal() {
         setIsOpen(!isOpen);
     }
-    const [edit, setEdit] = useState<boolean>(false);
-    const [courseIdentity, setCourseIdentity] = useState<string>("");
-    const [credits, setCredits] = useState<number>(0);
-    const [name, setName] = useState<string>("");
-    const [preReq, setPreReq] = useState<string>("");
+    const [edit, setEdit] = useState<boolean>(false); //For editing semester name
+    const [courseIdentity, setCourseIdentity] = useState<string>(""); //For adding coruses
+    const [credits, setCredits] = useState<number>(0); //For adding courses
+    const [name, setName] = useState<string>(""); //For adding courses
+    const [preReq, setPreReq] = useState<string>(""); //For adding courses
+    //Deletes course with given id, and updates plan with deletion
     function deleteCourse(id: string): void {
         const newCourses = semester.courses.filter(
             (course: Course): boolean => course.id !== id
@@ -50,6 +52,7 @@ export function DisplaySemester({
         updatePlan({ ...plan, semesters: newSem });
     }
 
+    //Deletes all courses in a semester by setting courses to an empty list in the correct semseter
     function removeAllCourses() {
         const newSem = plan.semesters.map(
             (sem: Semester): Semester =>
@@ -57,15 +60,26 @@ export function DisplaySemester({
         );
         updatePlan({ ...plan, semesters: newSem });
     }
+    //Updates the states for the course to be added
     function updateCourseIdentity(event: React.ChangeEvent<HTMLInputElement>) {
         const newCourse = courseList.findIndex(
             (course: Course) => course.id === event.target.value
         );
-        setCourseIdentity(event.target.value);
-        setCredits(courseList[newCourse].credits);
-        setName(courseList[newCourse].name);
-        setPreReq(courseList[newCourse].preReq);
+        if (newCourse === -1) {
+            //If not in the pool of courses use null values for other info
+            setCourseIdentity(event.target.value);
+            setCredits(0);
+            setName("");
+            setPreReq("");
+        } else {
+            //If found in pool of courses use values found
+            setCourseIdentity(event.target.value);
+            setCredits(courseList[newCourse].credits);
+            setName(courseList[newCourse].name);
+            setPreReq(courseList[newCourse].preReq);
+        }
     }
+    //Modal for adding a course
     function chooseCourse(): JSX.Element {
         return (
             <div className=".btn">
@@ -87,13 +101,9 @@ export function DisplaySemester({
                 >
                     <Form.Group className="mb-3" id="courseID">
                         <datalist id="courseIDs">
-                            {courseList.map(
-                                (
-                                    course: Course //will need to change to course.courseID
-                                ) => (
-                                    <option key={course.id}>{course.id}</option>
-                                )
-                            )}
+                            {courseList.map((course: Course) => (
+                                <option key={course.id}>{course.id}</option>
+                            ))}
                             ;
                         </datalist>
                         <Form.Label
@@ -123,6 +133,7 @@ export function DisplaySemester({
             </div>
         );
     }
+    //Adds the course to the end of the semester with the current states
     function addCourse() {
         const newCourse = {
             id: makeId(),
@@ -143,6 +154,7 @@ export function DisplaySemester({
         setCredits(0);
         setName("");
     }
+    //Edits the name of the semester
     function editSemName(event: React.ChangeEvent<HTMLInputElement>) {
         const newSem = plan.semesters.map(
             (sem: Semester): Semester =>
