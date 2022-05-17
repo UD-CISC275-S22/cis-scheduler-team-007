@@ -5,6 +5,7 @@ import { Plan } from "./Planner-Interfaces/plan";
 import { Semester } from "./Planner-Interfaces/semester";
 import classesExamples from "./CISC-Courses-data/catalog.json";
 
+//All the courses that can be used to autofill
 const courseList = classesExamples.map(
     (course): Course => ({
         id: course.id,
@@ -26,14 +27,16 @@ export function DisplayCourse({
     plan: Plan;
     updatePlan: (plan: Plan) => void;
 }): JSX.Element {
+    //for editing courseID
     const [courseIdentity, setCourseIdentity] = useState<string>(
         existingCourse.courseId
     );
-    const [isEditing, setIsEditing] = useState<boolean>(false);
-    const [credits, setCredits] = useState<number>(existingCourse.credits);
-    const [name, setName] = useState<string>(existingCourse.name);
-    const [preReqs, setPreReqs] = useState<string>(existingCourse.preReq);
+    const [isEditing, setIsEditing] = useState<boolean>(false); //If editing course info or not
+    const [credits, setCredits] = useState<number>(existingCourse.credits); //Credit editing
+    const [name, setName] = useState<string>(existingCourse.name); //name editing
+    const [preReqs, setPreReqs] = useState<string>(existingCourse.preReq); //PreReq editing
 
+    //Saves changes made to course all the way to Plan
     function editCourse(course: Course) {
         const replace = semester.courses.findIndex(
             (course2: Course) => course2.id === course.id
@@ -49,6 +52,7 @@ export function DisplayCourse({
         updatePlan({ ...plan, semesters: newSem });
     }
 
+    //Updates info based on autofill choice
     function updateCourseIdentity(event: React.ChangeEvent<HTMLInputElement>) {
         const newCourse = courseList.findIndex(
             (course: Course) => course.id === event.target.value
@@ -59,6 +63,7 @@ export function DisplayCourse({
         setPreReqs(courseList[newCourse].preReq);
     }
 
+    //Called if save changes selected when editing (will save changes)
     function updateEditing() {
         setIsEditing(false);
         editCourse({
@@ -70,6 +75,7 @@ export function DisplayCourse({
         });
     }
 
+    //Called if cancel clicked when editing (won't save changes)
     function cancelEdit() {
         setIsEditing(false);
         setCourseIdentity(existingCourse.courseId);
@@ -90,20 +96,14 @@ export function DisplayCourse({
 
     return (
         <>
-            {isEditing ? (
+            {isEditing ? ( //If editing displays textboxes and 2 buttons to allow for edits to the course to be made
                 <>
                     <td>
                         <Form.Group className="mb-3" id="courseID">
                             <datalist id="courseIDs">
-                                {courseList.map(
-                                    (
-                                        course: Course //will need to change to course.courseID
-                                    ) => (
-                                        <option key={course.id}>
-                                            {course.id}
-                                        </option>
-                                    )
-                                )}
+                                {courseList.map((course: Course) => (
+                                    <option key={course.id}>{course.id}</option>
+                                ))}
                             </datalist>
                             <Form.Label htmlFor="courseID">
                                 CourseID:{" "}
