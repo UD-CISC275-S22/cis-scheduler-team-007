@@ -224,7 +224,7 @@ export function DisplaySemester({
                     <div>
                         <h4>
                             {semester.name}{" "}
-                            <button
+                            <Button
                                 className="btntransparent"
                                 onClick={() => setEdit(true)}
                             >
@@ -233,7 +233,8 @@ export function DisplaySemester({
                                     height="40"
                                     width="40"
                                 />
-                            </button>
+                                Edit Semester Name
+                            </Button>
                         </h4>
                     </div>
                 )}

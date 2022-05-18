@@ -8,7 +8,7 @@ declare module "*.png";
 import pic from "./udbanner.png";
 import DefaultPlans from "./Plans/DefaultPlans.json";
 import Modal from "react-modal";
-import ModalHeader from "react-bootstrap/esm/ModalHeader";
+//import ModalHeader from "react-bootstrap/esm/ModalHeader";
 
 //Loads default plans if no local saved data
 let defaulted = DefaultPlans.defaultPlans.map(
@@ -86,9 +86,7 @@ function App(): JSX.Element {
                     onRequestClose={toggleModal}
                     contentLabel="My dialog"
                 >
-                    <ModalHeader>
-                        <p>Hello CISC or INSY Majors and Minors</p>
-                    </ModalHeader>
+                    <p>Hello CISC or INSY Majors and Minors</p>
                     <ModalBody>
                         <p>
                             To get started, you should click <b>Add New Plan</b>{" "}

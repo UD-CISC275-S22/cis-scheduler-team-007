@@ -94,7 +94,7 @@ export function DegreePlan({
                 <div>
                     <h1>
                         {plan.name}{" "}
-                        <button
+                        <Button
                             onClick={() => setEdit(true)}
                             className="btntransparent"
                         >
@@ -103,7 +103,8 @@ export function DegreePlan({
                                 height="40"
                                 width="40"
                             />
-                        </button>
+                            Edit Name
+                        </Button>
                     </h1>
                 </div>
             )}

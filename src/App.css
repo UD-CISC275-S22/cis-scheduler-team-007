@@ -93,6 +93,7 @@
 .btntransparent{
     background-color: transparent;
     background-repeat: no-repeat;
+    color: black;
     border:none;
     cursor: pointer;
     overflow: hidden;
