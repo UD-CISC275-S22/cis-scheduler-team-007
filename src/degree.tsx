@@ -86,9 +86,9 @@ export function DegreeRequirements_Section({
 
     function display_requirement_state(state: boolean): string {
         if (state === true) {
-            return "✓";
+            return "✔️";
         } else {
-            return "✗";
+            return "❌";
         }
     }
     userSemesters.forEach((semester: Semester) => {
