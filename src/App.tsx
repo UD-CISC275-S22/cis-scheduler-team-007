@@ -104,7 +104,7 @@ function App(): JSX.Element {
                         </p>
                         <p>
                             From the dropdown, type in your course code, and
-                            clikc the course code from the dropdown to confirm
+                            click the course code from the dropdown to confirm
                             the choice. Then click <b>Add Course</b> to add the
                             course to the semester table. If the course is not
                             to your liking when in the semester table, you can
