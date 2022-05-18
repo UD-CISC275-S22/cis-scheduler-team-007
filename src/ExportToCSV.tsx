@@ -32,8 +32,7 @@ export function ExportToCSV({ degreePlan }: { degreePlan: Plan }): JSX.Element {
                 ${semesters.name},
                 ${semesters.year},
                 ${mapOutCourses()},
-                ${semesters.season},
-                ${semesters.credits}`
+                ${semesters.season}`
             )
             .join("\n");
         const blobbed = new Blob([exclusiveContent], {

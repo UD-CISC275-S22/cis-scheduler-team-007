@@ -1,8 +1,20 @@
 import React, { useState } from "react";
 import { Course } from "./Planner-Interfaces/course";
-import { Form } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
 import { Plan } from "./Planner-Interfaces/plan";
 import { Semester } from "./Planner-Interfaces/semester";
+import classesExamples from "./CISC-Courses-data/catalog.json";
+
+//All the courses that can be used to autofill
+const courseList = classesExamples.map(
+    (course): Course => ({
+        id: course.id,
+        name: course.name,
+        credits: parseInt(course.credits),
+        courseId: course.id,
+        preReq: course.prereqs
+    })
+);
 
 export function DisplayCourse({
     existingCourse,
@@ -15,13 +27,16 @@ export function DisplayCourse({
     plan: Plan;
     updatePlan: (plan: Plan) => void;
 }): JSX.Element {
+    //for editing courseID
     const [courseIdentity, setCourseIdentity] = useState<string>(
         existingCourse.courseId
     );
-    const [isEditing, setIsEditing] = useState<boolean>(false);
-    const [credits, setCredits] = useState<number>(existingCourse.credits);
-    const [name, setName] = useState<string>(existingCourse.name);
+    const [isEditing, setIsEditing] = useState<boolean>(false); //If editing course info or not
+    const [credits, setCredits] = useState<number>(existingCourse.credits); //Credit editing
+    const [name, setName] = useState<string>(existingCourse.name); //name editing
+    const [preReqs, setPreReqs] = useState<string>(existingCourse.preReq); //PreReq editing
 
+    //Saves changes made to course all the way to Plan
     function editCourse(course: Course) {
         const replace = semester.courses.findIndex(
             (course2: Course) => course2.id === course.id
@@ -37,19 +52,36 @@ export function DisplayCourse({
         updatePlan({ ...plan, semesters: newSem });
     }
 
+    //Updates info based on autofill choice
     function updateCourseIdentity(event: React.ChangeEvent<HTMLInputElement>) {
+        const newCourse = courseList.findIndex(
+            (course: Course) => course.id === event.target.value
+        );
         setCourseIdentity(event.target.value);
+        setCredits(courseList[newCourse].credits);
+        setName(courseList[newCourse].name);
+        setPreReqs(courseList[newCourse].preReq);
     }
 
-    function updateEditing(event: React.ChangeEvent<HTMLInputElement>) {
-        setIsEditing(event.target.checked);
+    //Called if save changes selected when editing (will save changes)
+    function updateEditing() {
+        setIsEditing(false);
         editCourse({
             id: existingCourse.id,
             name: name,
             credits: credits,
             courseId: courseIdentity,
-            preReq: existingCourse.preReq
+            preReq: preReqs
         });
+    }
+
+    //Called if cancel clicked when editing (won't save changes)
+    function cancelEdit() {
+        setIsEditing(false);
+        setCourseIdentity(existingCourse.courseId);
+        setCredits(existingCourse.credits);
+        setName(existingCourse.name);
+        setPreReqs(existingCourse.preReq);
     }
 
     function updateCourseName(event: React.ChangeEvent<HTMLInputElement>) {
@@ -58,15 +90,26 @@ export function DisplayCourse({
     function updateCredits(event: React.ChangeEvent<HTMLInputElement>) {
         setCredits(parseInt(event.target.value));
     }
+    function updatePreReqs(event: React.ChangeEvent<HTMLInputElement>) {
+        setPreReqs(event.target.value);
+    }
 
     return (
         <>
-            {isEditing ? (
+            {isEditing ? ( //If editing displays textboxes and 2 buttons to allow for edits to the course to be made
                 <>
                     <td>
-                        <Form.Group className="mb-3" controlId="courseID">
-                            <Form.Label>CourseID: </Form.Label>
+                        <Form.Group className="mb-3" id="courseID">
+                            <datalist id="courseIDs">
+                                {courseList.map((course: Course) => (
+                                    <option key={course.id}>{course.id}</option>
+                                ))}
+                            </datalist>
+                            <Form.Label htmlFor="courseID">
+                                CourseID:{" "}
+                            </Form.Label>
                             <Form.Control
+                                list="courseIDs"
                                 value={courseIdentity}
                                 onChange={updateCourseIdentity}
                             />
@@ -92,12 +135,22 @@ export function DisplayCourse({
                         </Form.Group>
                     </td>
                     <td>
-                        <Form.Check
-                            type="checkbox"
-                            id="is-editing-check"
-                            checked={isEditing}
-                            onChange={updateEditing}
-                        />
+                        <Form.Group className="mb-3" controlId="coursePreReqs">
+                            <Form.Label>PreReqs: </Form.Label>
+                            <Form.Control
+                                value={preReqs}
+                                onChange={updatePreReqs}
+                            />
+                        </Form.Group>
+                    </td>
+                    <td>
+                        <Button onClick={updateEditing} className="btn">
+                            Save Changes
+                        </Button>
+                        <br></br>
+                        <Button onClick={cancelEdit} className="btn">
+                            Cancel
+                        </Button>
                     </td>
                 </>
             ) : (
@@ -106,12 +159,12 @@ export function DisplayCourse({
                     <td>{name}</td>
                     <td>{credits}</td>
                     <td>
-                        <Form.Check
-                            type="checkbox"
-                            id="is-editing-check"
-                            checked={isEditing}
-                            onChange={updateEditing}
-                        />
+                        <Button
+                            onClick={() => setIsEditing(true)}
+                            className="btn"
+                        >
+                            Edit Course
+                        </Button>
                     </td>
                 </>
             )}

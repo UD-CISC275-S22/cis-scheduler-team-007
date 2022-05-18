@@ -13,7 +13,7 @@ import {
     breadthGroupD,
     TechElecs
 } from "./degreeCourses";
-Modal.setAppElement("#root");
+//Modal.setAppElement("#root");
 interface Degree_Requirements_Inputs {
     show: boolean;
     setShow: (b: boolean) => void;

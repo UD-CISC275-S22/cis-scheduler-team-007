@@ -17,11 +17,9 @@
                             "preReq": ""
                         }
                     ],
-                    "season": "",
-                    "credits": 0
+                    "season": ""
                 }
-            ],
-            "requiredCourses": []
+            ]
         },
         {
             "id": "2",
@@ -40,11 +38,9 @@
                             "preReq": ""
                         }
                     ],
-                    "season": "",
-                    "credits": 0
+                    "season": ""
                 }
-            ],
-            "requiredCourses": []
+            ]
         }
     ]
 }
