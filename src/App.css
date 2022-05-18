@@ -94,6 +94,7 @@
     background-color: transparent;
     background-repeat: no-repeat;
     color: black;
+    font-size: 0%;
     border:none;
     cursor: pointer;
     overflow: hidden;
