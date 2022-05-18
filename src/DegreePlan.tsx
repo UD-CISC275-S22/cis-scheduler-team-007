@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { makeId } from "./createId";
 import { DegreeRequirements_Section } from "./degree";
-import { ExportToCSV } from "./ExportToCSV";
 import { Plan } from "./Planner-Interfaces/plan";
 import { Semester } from "./Planner-Interfaces/semester";
 import { DisplaySemester } from "./SemesterTable";
@@ -91,8 +90,6 @@ export function DegreePlan({
                         Stop Editing
                     </Button>
                 </div>
-
-            ))}
             ) : (
                 <div>
                     <h1>

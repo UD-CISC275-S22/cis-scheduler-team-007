@@ -1,14 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { Plan } from "./Planner-Interfaces/plan";
 import { Course } from "./Planner-Interfaces/course";
 import { Semester } from "./Planner-Interfaces/semester";
+import { Button } from "react-bootstrap";
 import { CSVLink } from "react-csv";
-/*Was able to follow a basic csv fucntion from the tasks, the tome and stack overflow but had a
-really hard time getting it to download the file right and keep downloading a refrence instead*/
 
 export function ExportToCSV({ degreePlan }: { degreePlan: Plan }): JSX.Element {
+    const [planContent] = useState<Plan>(degreePlan);
     function mapOutCourses() {
-        const theCourses = degreePlan.semesters.map(
+        const theCourses = planContent.semesters.map(
             (semester: Semester): string => {
                 return semester.courses
                     .map(
@@ -20,12 +20,11 @@ export function ExportToCSV({ degreePlan }: { degreePlan: Plan }): JSX.Element {
         );
         return theCourses;
     }
-    const planToAString = mapOutCourses();
 
     /*`"${course.id}, ${course.name}, ${course.credits}, ${course.courseId}, ${course.preReq}"`*/
 
     function download() {
-        const exclusiveContent = degreePlan.semesters
+        const exclusiveContent = planContent.semesters
             .map(
                 (semesters): string =>
                     `${semesters.id},
@@ -50,14 +49,14 @@ export function ExportToCSV({ degreePlan }: { degreePlan: Plan }): JSX.Element {
     return (
         <div>
             <CSVLink
-                data={planToAString[0]}
-                filename={degreePlan.name + ".csv"}
+                data={[degreePlan]}
+                filename={"My-CSV-file.csv"}
                 className="btn btn-primary"
                 target="_blank"
-                onClick={mapNDownload}
             >
                 Download this plan as well
             </CSVLink>
+            <Button onClick={mapNDownload}>Export to CSV</Button>
         </div>
     );
 }
