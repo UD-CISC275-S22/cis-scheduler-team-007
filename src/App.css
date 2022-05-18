@@ -1,5 +1,6 @@
 .App {
     text-align: center;
+    background-color: #faf0e6;
 }
 
 .App-logo {
@@ -110,6 +111,8 @@
     margin-bottom: 3px;
   }
 
+
+
 /* All stuff under this are for the header banner and for the text that is on it */ 
 .image { 
     position: relative; 
@@ -130,3 +133,17 @@
     width: 100%; 
     color: white;
  }
+
+ .btnclose{
+    width: 180px;
+    height: 60px;
+    background:#4169e1;
+    color: white;
+    border: 3px solid #000000;
+    position:absolute;
+    top:0;
+    right:0;
+ }
+ 
+
+ 

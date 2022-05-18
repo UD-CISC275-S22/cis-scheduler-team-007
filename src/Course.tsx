@@ -144,11 +144,11 @@ export function DisplayCourse({
                         </Form.Group>
                     </td>
                     <td>
-                        <Button onClick={updateEditing} className="btn">
+                        <Button onClick={updateEditing} className="btnadd">
                             Save Changes
                         </Button>
                         <br></br>
-                        <Button onClick={cancelEdit} className="btn">
+                        <Button onClick={cancelEdit} className="btncancel">
                             Cancel
                         </Button>
                     </td>
