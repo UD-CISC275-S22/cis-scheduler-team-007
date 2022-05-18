@@ -7,6 +7,7 @@ import { makeId } from "./createId";
 import { Form } from "react-bootstrap";
 import { DisplayCourse } from "./Course";
 import classesExamples from "./CISC-Courses-data/catalog.json";
+import { PreReqs } from "./PreReqs";
 interface thisSemester {
     semester: Semester;
     plan: Plan;
@@ -148,7 +149,7 @@ export function DisplaySemester({
             name: name,
             credits: credits,
             courseId: courseIdentity,
-            preReq: ""
+            preReq: preReq
         };
         const newSem = plan.semesters.map(
             (sem: Semester): Semester =>
@@ -270,6 +271,10 @@ export function DisplaySemester({
                 >
                     Remove All Courses
                 </Button>
+                <PreReqs
+                    allSemesters={plan.semesters}
+                    semester={semester}
+                ></PreReqs>
             </table>
         </>
     );

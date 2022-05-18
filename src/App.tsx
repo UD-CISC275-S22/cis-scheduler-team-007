@@ -26,7 +26,7 @@ function App(): JSX.Element {
     const [degreePlans, setDegreePlans] = useState<Plan[]>(defaulted); //List of all plans made
     const [selectedPlan, setSelectedPlan] = useState<number>(-1); //Selected plan, -1 if no plan selected
     //Updates selected plan called from the drop down menu
-    const [isOpen, setIsOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState(true);
 
     function toggleModal() {
         setIsOpen(!isOpen);
@@ -129,6 +129,13 @@ function App(): JSX.Element {
                             next to them and those that are not satisfied will
                             have an x mark next to them.
                         </p>
+                        <p>
+                            <b>
+                                Most importantly, make sure to click Save Plan
+                                Changes if you want changes kept before you
+                                switch plans or click off the site.
+                            </b>
+                        </p>
                     </ModalBody>
                     <button
                         onClick={toggleModal}
@@ -162,7 +169,9 @@ function App(): JSX.Element {
             <Button onClick={addPlan} className="btnadd">
                 Add New Plan
             </Button>
-            <Button onClick={deletePlan}>Delete Selected Plan</Button>
+            <Button className="btncancel" onClick={deletePlan}>
+                Delete Selected Plan
+            </Button>
             {selectedPlan !== -1 ? ( //Checks to see if an actual plan is selected if so call DegreePlan to display it
                 <DegreePlan
                     key={degreePlans[selectedPlan].id}
