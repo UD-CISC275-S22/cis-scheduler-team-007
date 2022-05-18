@@ -7,6 +7,25 @@ PASS src/DegreePlan.test.tsx
   ● Console
 
     console.error
+      Warning: Use the `defaultValue` or `value` props on <select> instead of setting `selected` on <option>.
+          at option
+          at select
+          at div
+          at DisplaySemester (/home/runner/work/cis-scheduler-team-007/cis-scheduler-team-007/src/SemesterTable.tsx:27:5)
+          at div
+          at div
+          at DegreePlan (/home/runner/work/cis-scheduler-team-007/cis-scheduler-team-007/src/DegreePlan.tsx:10:5)
+
+      at printWarning (node_modules/react-dom/cjs/react-dom.development.js:67:30)
+      at error (node_modules/react-dom/cjs/react-dom.development.js:43:5)
+      at validateProps (node_modules/react-dom/cjs/react-dom.development.js:1781:7)
+      at setInitialProperties (node_modules/react-dom/cjs/react-dom.development.js:9108:7)
+      at finalizeInitialChildren (node_modules/react-dom/cjs/react-dom.development.js:10201:3)
+      at completeWork (node_modules/react-dom/cjs/react-dom.development.js:19470:17)
+      at completeUnitOfWork (node_modules/react-dom/cjs/react-dom.development.js:22812:16)
+      at performUnitOfWork (node_modules/react-dom/cjs/react-dom.development.js:22787:5)
+
+    console.error
       Warning: validateDOMNesting(...): <div> cannot appear as a child of <table>.
           at div
           at table
@@ -63,6 +82,22 @@ PASS src/DegreePlan.test.tsx
 
 PASS src/SemesterTable.test.tsx
   ● Console
+
+    console.error
+      Warning: Use the `defaultValue` or `value` props on <select> instead of setting `selected` on <option>.
+          at option
+          at select
+          at div
+          at DisplaySemester (/home/runner/work/cis-scheduler-team-007/cis-scheduler-team-007/src/SemesterTable.tsx:27:5)
+
+      at printWarning (node_modules/react-dom/cjs/react-dom.development.js:67:30)
+      at error (node_modules/react-dom/cjs/react-dom.development.js:43:5)
+      at validateProps (node_modules/react-dom/cjs/react-dom.development.js:1781:7)
+      at setInitialProperties (node_modules/react-dom/cjs/react-dom.development.js:9108:7)
+      at finalizeInitialChildren (node_modules/react-dom/cjs/react-dom.development.js:10201:3)
+      at completeWork (node_modules/react-dom/cjs/react-dom.development.js:19470:17)
+      at completeUnitOfWork (node_modules/react-dom/cjs/react-dom.development.js:22812:16)
+      at performUnitOfWork (node_modules/react-dom/cjs/react-dom.development.js:22787:5)
 
     console.error
       Warning: validateDOMNesting(...): <div> cannot appear as a child of <table>.
@@ -170,19 +205,165 @@ PASS src/Course.test.tsx
       at workLoopSync (node_modules/react-dom/cjs/react-dom.development.js:22707:5)
 
 PASS src/App.test.tsx
+  ● Console
+
+    console.error
+      Warning: react-modal: App element is not defined. Please use `Modal.setAppElement(el)` or set `appElement={el}`. This is needed so screen readers don't see main content when modal is opened. It is not recommended, but you can opt-out by setting `ariaHideApp={false}`.
+
+      at printWarning (node_modules/warning/warning.js:34:15)
+      at warning (node_modules/warning/warning.js:57:20)
+      at validateElement (node_modules/react-modal/lib/helpers/ariaAppHider.js:77:27)
+      at Object.hide (node_modules/react-modal/lib/helpers/ariaAppHider.js:89:26)
+      at ModalPortal.beforeOpen (node_modules/react-modal/lib/components/ModalPortal.js:327:22)
+      at ModalPortal._this.open (node_modules/react-modal/lib/components/ModalPortal.js:123:13)
+      at ModalPortal.componentDidMount (node_modules/react-modal/lib/components/ModalPortal.js:273:14)
+      at commitLifeCycles (node_modules/react-dom/cjs/react-dom.development.js:20663:24)
+
+    console.error
+      Warning: react-modal: App element is not defined. Please use `Modal.setAppElement(el)` or set `appElement={el}`. This is needed so screen readers don't see main content when modal is opened. It is not recommended, but you can opt-out by setting `ariaHideApp={false}`.
+
+      at printWarning (node_modules/warning/warning.js:34:15)
+      at warning (node_modules/warning/warning.js:57:20)
+      at validateElement (node_modules/react-modal/lib/helpers/ariaAppHider.js:77:27)
+      at Object.show (node_modules/react-modal/lib/helpers/ariaAppHider.js:116:27)
+      at ModalPortal._this.afterClose (node_modules/react-modal/lib/components/ModalPortal.js:102:24)
+      at ModalPortal.componentWillUnmount (node_modules/react-modal/lib/components/ModalPortal.js:305:14)
+      at callComponentWillUnmountWithTimer (node_modules/react-dom/cjs/react-dom.development.js:20413:14)
+      at HTMLUnknownElement.callCallback (node_modules/react-dom/cjs/react-dom.development.js:3945:14)
+
+    console.error
+      Warning: react-modal: App element is not defined. Please use `Modal.setAppElement(el)` or set `appElement={el}`. This is needed so screen readers don't see main content when modal is opened. It is not recommended, but you can opt-out by setting `ariaHideApp={false}`.
+
+      at printWarning (node_modules/warning/warning.js:34:15)
+      at warning (node_modules/warning/warning.js:57:20)
+      at validateElement (node_modules/react-modal/lib/helpers/ariaAppHider.js:77:27)
+      at Object.hide (node_modules/react-modal/lib/helpers/ariaAppHider.js:89:26)
+      at ModalPortal.beforeOpen (node_modules/react-modal/lib/components/ModalPortal.js:327:22)
+      at ModalPortal._this.open (node_modules/react-modal/lib/components/ModalPortal.js:123:13)
+      at ModalPortal.componentDidMount (node_modules/react-modal/lib/components/ModalPortal.js:273:14)
+      at commitLifeCycles (node_modules/react-dom/cjs/react-dom.development.js:20663:24)
+
+    console.error
+      Warning: react-modal: App element is not defined. Please use `Modal.setAppElement(el)` or set `appElement={el}`. This is needed so screen readers don't see main content when modal is opened. It is not recommended, but you can opt-out by setting `ariaHideApp={false}`.
+
+      at printWarning (node_modules/warning/warning.js:34:15)
+      at warning (node_modules/warning/warning.js:57:20)
+      at validateElement (node_modules/react-modal/lib/helpers/ariaAppHider.js:77:27)
+      at Object.show (node_modules/react-modal/lib/helpers/ariaAppHider.js:116:27)
+      at ModalPortal._this.afterClose (node_modules/react-modal/lib/components/ModalPortal.js:102:24)
+      at ModalPortal.componentWillUnmount (node_modules/react-modal/lib/components/ModalPortal.js:305:14)
+      at callComponentWillUnmountWithTimer (node_modules/react-dom/cjs/react-dom.development.js:20413:14)
+      at HTMLUnknownElement.callCallback (node_modules/react-dom/cjs/react-dom.development.js:3945:14)
+
+    console.error
+      Warning: react-modal: App element is not defined. Please use `Modal.setAppElement(el)` or set `appElement={el}`. This is needed so screen readers don't see main content when modal is opened. It is not recommended, but you can opt-out by setting `ariaHideApp={false}`.
+
+      at printWarning (node_modules/warning/warning.js:34:15)
+      at warning (node_modules/warning/warning.js:57:20)
+      at validateElement (node_modules/react-modal/lib/helpers/ariaAppHider.js:77:27)
+      at Object.hide (node_modules/react-modal/lib/helpers/ariaAppHider.js:89:26)
+      at ModalPortal.beforeOpen (node_modules/react-modal/lib/components/ModalPortal.js:327:22)
+      at ModalPortal._this.open (node_modules/react-modal/lib/components/ModalPortal.js:123:13)
+      at ModalPortal.componentDidMount (node_modules/react-modal/lib/components/ModalPortal.js:273:14)
+      at commitLifeCycles (node_modules/react-dom/cjs/react-dom.development.js:20663:24)
+
+    console.error
+      Warning: react-modal: App element is not defined. Please use `Modal.setAppElement(el)` or set `appElement={el}`. This is needed so screen readers don't see main content when modal is opened. It is not recommended, but you can opt-out by setting `ariaHideApp={false}`.
+
+      at printWarning (node_modules/warning/warning.js:34:15)
+      at warning (node_modules/warning/warning.js:57:20)
+      at validateElement (node_modules/react-modal/lib/helpers/ariaAppHider.js:77:27)
+      at Object.show (node_modules/react-modal/lib/helpers/ariaAppHider.js:116:27)
+      at ModalPortal._this.afterClose (node_modules/react-modal/lib/components/ModalPortal.js:102:24)
+      at ModalPortal.componentWillUnmount (node_modules/react-modal/lib/components/ModalPortal.js:305:14)
+      at callComponentWillUnmountWithTimer (node_modules/react-dom/cjs/react-dom.development.js:20413:14)
+      at HTMLUnknownElement.callCallback (node_modules/react-dom/cjs/react-dom.development.js:3945:14)
+
+    console.error
+      Warning: react-modal: App element is not defined. Please use `Modal.setAppElement(el)` or set `appElement={el}`. This is needed so screen readers don't see main content when modal is opened. It is not recommended, but you can opt-out by setting `ariaHideApp={false}`.
+
+      at printWarning (node_modules/warning/warning.js:34:15)
+      at warning (node_modules/warning/warning.js:57:20)
+      at validateElement (node_modules/react-modal/lib/helpers/ariaAppHider.js:77:27)
+      at Object.hide (node_modules/react-modal/lib/helpers/ariaAppHider.js:89:26)
+      at ModalPortal.beforeOpen (node_modules/react-modal/lib/components/ModalPortal.js:327:22)
+      at ModalPortal._this.open (node_modules/react-modal/lib/components/ModalPortal.js:123:13)
+      at ModalPortal.componentDidMount (node_modules/react-modal/lib/components/ModalPortal.js:273:14)
+      at commitLifeCycles (node_modules/react-dom/cjs/react-dom.development.js:20663:24)
+
+    console.error
+      Warning: react-modal: App element is not defined. Please use `Modal.setAppElement(el)` or set `appElement={el}`. This is needed so screen readers don't see main content when modal is opened. It is not recommended, but you can opt-out by setting `ariaHideApp={false}`.
+
+      at printWarning (node_modules/warning/warning.js:34:15)
+      at warning (node_modules/warning/warning.js:57:20)
+      at validateElement (node_modules/react-modal/lib/helpers/ariaAppHider.js:77:27)
+      at Object.show (node_modules/react-modal/lib/helpers/ariaAppHider.js:116:27)
+      at ModalPortal._this.afterClose (node_modules/react-modal/lib/components/ModalPortal.js:102:24)
+      at ModalPortal.componentWillUnmount (node_modules/react-modal/lib/components/ModalPortal.js:305:14)
+      at callComponentWillUnmountWithTimer (node_modules/react-dom/cjs/react-dom.development.js:20413:14)
+      at HTMLUnknownElement.callCallback (node_modules/react-dom/cjs/react-dom.development.js:3945:14)
+
+    console.error
+      Warning: react-modal: App element is not defined. Please use `Modal.setAppElement(el)` or set `appElement={el}`. This is needed so screen readers don't see main content when modal is opened. It is not recommended, but you can opt-out by setting `ariaHideApp={false}`.
+
+      at printWarning (node_modules/warning/warning.js:34:15)
+      at warning (node_modules/warning/warning.js:57:20)
+      at validateElement (node_modules/react-modal/lib/helpers/ariaAppHider.js:77:27)
+      at Object.hide (node_modules/react-modal/lib/helpers/ariaAppHider.js:89:26)
+      at ModalPortal.beforeOpen (node_modules/react-modal/lib/components/ModalPortal.js:327:22)
+      at ModalPortal._this.open (node_modules/react-modal/lib/components/ModalPortal.js:123:13)
+      at ModalPortal.componentDidMount (node_modules/react-modal/lib/components/ModalPortal.js:273:14)
+      at commitLifeCycles (node_modules/react-dom/cjs/react-dom.development.js:20663:24)
+
+    console.error
+      Warning: react-modal: App element is not defined. Please use `Modal.setAppElement(el)` or set `appElement={el}`. This is needed so screen readers don't see main content when modal is opened. It is not recommended, but you can opt-out by setting `ariaHideApp={false}`.
+
+      at printWarning (node_modules/warning/warning.js:34:15)
+      at warning (node_modules/warning/warning.js:57:20)
+      at validateElement (node_modules/react-modal/lib/helpers/ariaAppHider.js:77:27)
+      at Object.show (node_modules/react-modal/lib/helpers/ariaAppHider.js:116:27)
+      at ModalPortal._this.afterClose (node_modules/react-modal/lib/components/ModalPortal.js:102:24)
+      at ModalPortal.componentWillUnmount (node_modules/react-modal/lib/components/ModalPortal.js:305:14)
+      at callComponentWillUnmountWithTimer (node_modules/react-dom/cjs/react-dom.development.js:20413:14)
+      at HTMLUnknownElement.callCallback (node_modules/react-dom/cjs/react-dom.development.js:3945:14)
+
+    console.error
+      Warning: react-modal: App element is not defined. Please use `Modal.setAppElement(el)` or set `appElement={el}`. This is needed so screen readers don't see main content when modal is opened. It is not recommended, but you can opt-out by setting `ariaHideApp={false}`.
+
+      at printWarning (node_modules/warning/warning.js:34:15)
+      at warning (node_modules/warning/warning.js:57:20)
+      at validateElement (node_modules/react-modal/lib/helpers/ariaAppHider.js:77:27)
+      at Object.hide (node_modules/react-modal/lib/helpers/ariaAppHider.js:89:26)
+      at ModalPortal.beforeOpen (node_modules/react-modal/lib/components/ModalPortal.js:327:22)
+      at ModalPortal._this.open (node_modules/react-modal/lib/components/ModalPortal.js:123:13)
+      at ModalPortal.componentDidMount (node_modules/react-modal/lib/components/ModalPortal.js:273:14)
+      at commitLifeCycles (node_modules/react-dom/cjs/react-dom.development.js:20663:24)
+
+    console.error
+      Warning: react-modal: App element is not defined. Please use `Modal.setAppElement(el)` or set `appElement={el}`. This is needed so screen readers don't see main content when modal is opened. It is not recommended, but you can opt-out by setting `ariaHideApp={false}`.
+
+      at printWarning (node_modules/warning/warning.js:34:15)
+      at warning (node_modules/warning/warning.js:57:20)
+      at validateElement (node_modules/react-modal/lib/helpers/ariaAppHider.js:77:27)
+      at Object.show (node_modules/react-modal/lib/helpers/ariaAppHider.js:116:27)
+      at ModalPortal._this.afterClose (node_modules/react-modal/lib/components/ModalPortal.js:102:24)
+      at ModalPortal.componentWillUnmount (node_modules/react-modal/lib/components/ModalPortal.js:305:14)
+      at callComponentWillUnmountWithTimer (node_modules/react-dom/cjs/react-dom.development.js:20413:14)
+      at HTMLUnknownElement.callCallback (node_modules/react-dom/cjs/react-dom.development.js:3945:14)
+
 ------------------------|---------|----------|---------|---------|--------------------------------------------------
 File                    | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s                                
 ------------------------|---------|----------|---------|---------|--------------------------------------------------
-All files               |   45.91 |    18.75 |   56.79 |    45.6 |                                                  
- src                    |   45.91 |    18.75 |   56.79 |    45.6 |                                                  
-  App.tsx               |   86.36 |    83.33 |   77.77 |   86.36 | 18,26-28                                         
+All files               |   45.93 |    18.75 |   56.09 |   45.63 |                                                  
+ src                    |   45.93 |    18.75 |   56.09 |   45.63 |                                                  
+  App.tsx               |   83.33 |    83.33 |      70 |   83.33 | 22,32-37                                         
   Course.tsx            |   54.54 |       50 |   57.14 |   54.54 | 41-69                                            
-  DegreePlan.tsx        |   79.31 |      100 |   83.33 |   78.57 | 47-52,123                                        
+  DegreePlan.tsx        |   79.31 |      100 |   83.33 |   78.57 | 47-52,140                                        
   ExportToCSV.tsx       |       0 |      100 |       0 |       0 | 9-49                                             
   PreReqs.tsx           |     100 |      100 |     100 |     100 |                                                  
-  SemesterTable.tsx     |   27.65 |    16.66 |   28.57 |   27.65 | 34,43-79,138-165,201,235-243                     
+  SemesterTable.tsx     |   27.65 |    16.66 |   28.57 |   27.65 | 34,43-79,147-174,219,260-271                     
   createId.ts           |     100 |      100 |     100 |     100 |                                                  
-  degree.tsx            |      32 |     7.14 |      60 |      32 | 76,89,96-260,265,268-270,274,276,278,280,282,285 
+  degree.tsx            |      32 |     7.14 |      60 |      32 | 76,84,94-258,263,266-268,272,274,276,278,280,283 
   degreeCourses.tsx     |     100 |      100 |     100 |     100 |                                                  
  src/Planner-Interfaces |       0 |        0 |       0 |       0 |                                                  
   course.ts             |       0 |        0 |       0 |       0 |                                                  
@@ -193,5 +374,5 @@ All files               |   45.91 |    18.75 |   56.79 |    45.6 |
 Test Suites: 5 passed, 5 total
 Tests:       28 passed, 28 total
 Snapshots:   0 total
-Time:        9.316 s
+Time:        9.092 s
 Ran all test suites.
