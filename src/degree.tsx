@@ -13,7 +13,6 @@ import {
     breadthGroupD,
     TechElecs
 } from "./degreeCourses";
-//Modal.setAppElement("#root");
 interface Degree_Requirements_Inputs {
     show: boolean;
     setShow: (b: boolean) => void;
@@ -23,6 +22,7 @@ interface Degree_Requirements_Inputs {
 export function DegreeRequirements_Section({
     userSemesters
 }: Degree_Requirements_Inputs): JSX.Element {
+    //set all courses and wider requirements to not meet the set requirements
     let engl110 = false;
     let FYS = false;
     let DLE = false;
@@ -77,13 +77,8 @@ export function DegreeRequirements_Section({
     }
 
     let totalCreditsInPlan = 0;
-    /*
-    function hideDegReqs(): void {
-        setShow(false);
-        setWidth(12);
-    }
-    */
 
+    //Gives a check if the requirement is met, an x otherwise
     function display_requirement_state(state: boolean): string {
         if (state === true) {
             return "✓";
@@ -91,6 +86,9 @@ export function DegreeRequirements_Section({
             return "✗";
         }
     }
+
+    //Goes through all semesters and sees if a specified course is present
+    //If the course is present, then it changes the value of if its present to true and show a check
     userSemesters.forEach((semester: Semester) => {
         semester.courses.forEach((course: Course) => {
             sameBreadth = false;
@@ -285,9 +283,14 @@ export function DegreeRequirements_Section({
         moreThan124Credits = true;
     }
 
+    //Big return that houses the modal and all requirements along with the check or x that
+    //represents the true of false
+
     return (
         <div className="App">
-            <button onClick={toggleModal}>Degree Requirements</button>
+            <button className="btn" onClick={toggleModal}>
+                Degree Requirements
+            </button>
             <Modal
                 isOpen={isOpen}
                 onRequestClose={toggleModal}
@@ -299,7 +302,7 @@ export function DegreeRequirements_Section({
                             {" "}
                             <u>University Requirements:</u>{" "}
                         </h5>
-                        <p>{totalCreditsInPlan}</p>
+                        <p>Total Credits in Plan: {totalCreditsInPlan}</p>
                         <div className="col text-left">
                             <p>
                                 ENGL 110: {display_requirement_state(engl110)}

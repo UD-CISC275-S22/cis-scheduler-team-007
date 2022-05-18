@@ -1,3 +1,4 @@
+//This file is a big collection of courses that meet the breadth classes that are required.
 export const multiCultural = [
     "AFRA 110",
     "AFRA 193",

@@ -1,5 +1,6 @@
 .App {
     text-align: center;
+    background-color: #faf0e6;
 }
 
 .App-logo {
@@ -13,20 +14,14 @@
     }
 }
 
-.App-header {
-    width: 100%;
-    background-color: #1d5dde;
-    min-height: 40vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
-}
 
 .App-link {
     color: #61dafb;
+}
+.dropdownWidth{
+    width: 400px;
+    margin:auto;
+    text-align:center;
 }
 
 @keyframes App-logo-spin {
@@ -69,12 +64,87 @@
 .Table-Header tr:hover {
     background-color: #CCE7E7;
 }
+/* button for things that aren't a save or delete */
 .btn {
     width: 180px;
     height: 60px;
-    cursor: pointer;
-    background: rgb(7, 220, 240);
-    border: 1px solid #000000;
-    outline: none;
-    transition: 0.5s ease-in-out;
+    background:#4169e1;
+    color: white;
+    border: 3px solid #000000;
+    margin-left: 3px;
+    margin-right: 3px;
+    margin-top: 3px;
+    margin-bottom: 3px;
   }
+/* button for things that are for a delete */
+.btncancel {
+    width: 180px;
+    height: 60px;
+    background:#d11a2a;
+    color: white;
+    border: 3px solid #000000;
+    margin-left: 3px;
+    margin-right: 3px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+  }
+
+  /* button for things that are for an image */
+.btntransparent{
+    background-color: transparent;
+    background-repeat: no-repeat;
+    color: black;
+    border:none;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+/* button for things that are for a save */
+.btnadd {
+    width: 180px;
+    height: 60px;
+    background:#92d293;
+    color: white;
+    border: 3px solid #000000;
+    margin-left: 3px;
+    margin-right: 3px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+  }
+
+
+
+/* All stuff under this are for the header banner and for the text that is on it */ 
+.image { 
+    position: relative; 
+    width: 100%; /* for IE 6 */
+ }
+ 
+ h2 { 
+    position: absolute; 
+    top: 300px; 
+    left: 0; 
+    width: 100%;
+    color: white; 
+ }
+ h5 { 
+    position: absolute; 
+    top: 350px; 
+    left: 0; 
+    width: 100%; 
+    color: white;
+ }
+
+ .btnclose{
+    width: 180px;
+    height: 60px;
+    background:#4169e1;
+    color: white;
+    border: 3px solid #000000;
+    position:absolute;
+    top:0;
+    right:0;
+ }
+ 
+
+ 

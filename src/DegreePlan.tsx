@@ -79,7 +79,7 @@ export function DegreePlan({
         <div>
             {edit ? ( //Checks if you are editing if so displays textbox to change name, if not displays plan name with button to edit
                 <div>
-                    <Form.Group className="degreeName" controlId="planName">
+                    <Form.Group className="dropdownWidth" controlId="planName">
                         <Form.Label>Name of Plan: </Form.Label>
                         <Form.Control
                             value={plan.name}
@@ -94,42 +94,56 @@ export function DegreePlan({
                 <div>
                     <h1>
                         {plan.name}{" "}
-                        <Button onClick={() => setEdit(true)} className="btn">
+                        <Button
+                            onClick={() => setEdit(true)}
+                            className="btntransparent"
+                        >
+                            <img
+                                src="https://cdn-icons-png.flaticon.com/512/84/84380.png"
+                                height="40"
+                                width="40"
+                            />
                             Edit Name
                         </Button>
                     </h1>
                 </div>
             )}
-            {plan.semesters.map(
-                (
-                    semester: Semester //Calls DisplaySemester for each semester in plan with additional buttons to insert or delete semesters
-                ) => (
-                    <div key={semester.id}>
-                        <DisplaySemester
-                            semester={semester}
-                            plan={plan}
-                            updatePlan={setPlan}
-                        ></DisplaySemester>
-                        <Button onClick={() => insertSemester(semester.id)}>
-                            Insert New Semester
-                        </Button>
-                        <Button onClick={() => deleteSemester(semester.id)}>
-                            Delete This Semester
-                        </Button>
-                    </div>
-                )
-            )}
-            <Button onClick={() => addSemester()}>Add Semester</Button>
-            <Button onClick={() => saveChanges()}>Save Plan Changes</Button>
-            <Button onClick={() => clearAllSemesters()}>
+            {plan.semesters.map((semester: Semester) => (
+                <div key={semester.id}>
+                    <DegreeRequirements_Section
+                        show={degreeReqView}
+                        setShow={toggleDegreeReqView}
+                        userSemesters={plan.semesters}
+                    ></DegreeRequirements_Section>
+                    <DisplaySemester
+                        semester={semester}
+                        plan={plan}
+                        updatePlan={setPlan}
+                    ></DisplaySemester>
+                    <Button
+                        className="btnadd"
+                        onClick={() => insertSemester(semester.id)}
+                    >
+                        Insert New Semester
+                    </Button>
+                    <Button
+                        className="btncancel"
+                        onClick={() => deleteSemester(semester.id)}
+                    >
+                        Delete This Semester
+                    </Button>
+                </div>
+            ))}
+            <Button className="btnadd" onClick={() => addSemester()}>
+                Add Semester
+            </Button>
+            <Button className="btnadd" onClick={() => saveChanges()}>
+                Save Plan Changes
+            </Button>
+            <Button className="btncancel" onClick={() => clearAllSemesters()}>
                 Delete All Semesters
             </Button>
             <br></br>
-            <DegreeRequirements_Section
-                show={degreeReqView}
-                setShow={toggleDegreeReqView}
-                userSemesters={plan.semesters}
-            ></DegreeRequirements_Section>
         </div>
     );
 }

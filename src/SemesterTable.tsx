@@ -82,9 +82,9 @@ export function DisplaySemester({
     //Modal for adding a course
     function chooseCourse(): JSX.Element {
         return (
-            <div className=".btn">
+            <div className=".app">
                 <Button
-                    className=".btn"
+                    className="btnadd"
                     data-bs-toggle="modal"
                     data-bs-target="#myModal"
                     type="button"
@@ -110,7 +110,8 @@ export function DisplaySemester({
                             placeholder="Enter Course ID"
                             htmlFor="courseID"
                         >
-                            CourseID:{" "}
+                            Please Enter The Course ID, Then Click on The Course
+                            From the Dropdown:
                         </Form.Label>
                         <Form.Control
                             list="courseIDs"
@@ -119,12 +120,20 @@ export function DisplaySemester({
                         />
                     </Form.Group>
                     <ModalFooter>
-                        <div className="modal-footer">
-                            <Button type="submit" onClick={addCourse}>
+                        <div>
+                            <Button
+                                className="btnadd"
+                                type="submit"
+                                onClick={addCourse}
+                            >
                                 Add Course
                             </Button>
 
-                            <Button type="button" onClick={toggleModal}>
+                            <Button
+                                className="btncancel"
+                                type="button"
+                                onClick={toggleModal}
+                            >
                                 Cancel
                             </Button>
                         </div>
@@ -174,22 +183,31 @@ export function DisplaySemester({
                     <option>Spring</option>
                 </select>
                 <select>
-                    <option>2020</option>
-                    <option>2021</option>
-                    <option>2022</option>
-                    <option>2023</option>
-                    <option>2024</option>
-                    <option>2025</option>
-                    <option>2026</option>
-                    <option>2027</option>
-                    <option>2028</option>
+                    <option value="2015">2015</option>
+                    <option value="2016">2016</option>
+                    <option value="2017">2017</option>
+                    <option value="2018">2018</option>
+                    <option value="2019">2019</option>
+                    <option value="2020">2020</option>
+                    <option value="2021">2021</option>
+                    <option value="2022" selected>
+                        2022
+                    </option>
+                    <option value="2023">2023</option>
+                    <option value="2024">2024</option>
+                    <option value="2025">2025</option>
+                    <option value="2026">2026</option>
+                    <option value="2027">2027</option>
+                    <option value="2028">2028</option>
+                    <option value="2029">2029</option>
+                    <option value="2030">2030</option>
                 </select>
             </div>
             <table className="Table-Header">
                 {edit ? (
                     <div>
                         <Form.Group
-                            className="semesterName"
+                            className="dropdownWidth"
                             controlId="semName"
                         >
                             <Form.Label>Name of Semester: </Form.Label>
@@ -198,21 +216,26 @@ export function DisplaySemester({
                                 onChange={editSemName}
                             />
                         </Form.Group>
-                        <Button onClick={() => setEdit(false)} className="btn">
+                        <Button onClick={() => setEdit(false)}>
                             Stop Editing
                         </Button>
                     </div>
                 ) : (
                     <div>
-                        <h5>
+                        <h4>
                             {semester.name}{" "}
                             <Button
+                                className="btntransparent"
                                 onClick={() => setEdit(true)}
-                                className="btn"
                             >
+                                <img
+                                    src="https://cdn-icons-png.flaticon.com/512/84/84380.png"
+                                    height="40"
+                                    width="40"
+                                />
                                 Edit Semester Name
                             </Button>
-                        </h5>
+                        </h4>
                     </div>
                 )}
                 <tr>
@@ -232,7 +255,10 @@ export function DisplaySemester({
                                 updatePlan={updatePlan}
                             ></DisplayCourse>
                             <td>
-                                <Button onClick={() => deleteCourse(course.id)}>
+                                <Button
+                                    className="btncancel"
+                                    onClick={() => deleteCourse(course.id)}
+                                >
                                     Remove Course
                                 </Button>
                             </td>
@@ -240,7 +266,10 @@ export function DisplaySemester({
                     );
                 })}
                 {chooseCourse()}
-                <Button onClick={() => removeAllCourses()}>
+                <Button
+                    className="btncancel"
+                    onClick={() => removeAllCourses()}
+                >
                     Remove All Courses
                 </Button>
                 <PreReqs
